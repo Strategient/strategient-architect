@@ -2449,6 +2449,7 @@ CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.o: /home/dodzw/projects/s
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QIcon \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
@@ -6336,8 +6337,6 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtGui/QIcon:
-
 /home/dodzw/projects/strategient-architect/studio/src/main.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextedit.h:
@@ -6443,6 +6442,8 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 /home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDockWidget:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QIcon:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h:
 

@@ -1,5 +1,6 @@
 ' Strategient Architect - PlantUML Theme
-' Soft grey canvas - professional, neutral, no warm tones
+' Soft grey canvas - integrates with dark charcoal UI
+' Professional, neutral, no warm tones
 ' Auto-applied to all diagrams
 
 ' === General Settings ===
@@ -15,16 +16,16 @@ skinparam nodesep 60
 skinparam ranksep 50
 top to bottom direction
 
-' === Soft Grey Canvas (not pure white) ===
-skinparam backgroundColor #F0F2F5
+' === Soft Grey Canvas (reduced white glare) ===
+skinparam backgroundColor #E8EBEF
 
 ' === Default Element Styling ===
 skinparam roundCorner 8
 
 ' === Rectangle / Container Styling ===
 skinparam rectangle {
-    BackgroundColor #E8EAED
-    BorderColor #B0B8C1
+    BackgroundColor #D8DCE2
+    BorderColor #A0A8B2
     BorderThickness 1
     FontColor #2D3748
     FontSize 13
@@ -35,8 +36,8 @@ skinparam rectangle {
 
 ' === Package Styling ===
 skinparam package {
-    BackgroundColor #E2E5E9
-    BorderColor #A8B0BA
+    BackgroundColor #D4D8DE
+    BorderColor #9AA2AC
     BorderThickness 1
     FontColor #2D3748
     FontSize 13
@@ -45,12 +46,12 @@ skinparam package {
     shadowing false
 }
 
-' === Component Styling (muted blue-grey) ===
+' === Component Styling (muted blue-grey, reduced saturation) ===
 skinparam component {
-    BackgroundColor #D4E4F7
-    BorderColor #6B8BB8
+    BackgroundColor #C8D4E4
+    BorderColor #7088A8
     BorderThickness 1
-    FontColor #1E3A5F
+    FontColor #2A4060
     FontSize 12
     roundCorner 6
     shadowing false
@@ -58,8 +59,8 @@ skinparam component {
 
 ' === Node Styling ===
 skinparam node {
-    BackgroundColor #DDE1E6
-    BorderColor #8D99A6
+    BackgroundColor #D0D4DA
+    BorderColor #888F98
     BorderThickness 1
     FontColor #2D3748
     FontSize 12
@@ -69,53 +70,53 @@ skinparam node {
 
 ' === Database Styling (neutral slate) ===
 skinparam database {
-    BackgroundColor #E0E5EB
-    BorderColor #7A8694
+    BackgroundColor #D2D8DE
+    BorderColor #7A848E
     BorderThickness 1
     FontColor #2D3748
     FontSize 12
     shadowing false
 }
 
-' === Storage Styling (cool grey-green) ===
+' === Storage Styling (cool neutral grey) ===
 skinparam storage {
-    BackgroundColor #DEE8E4
-    BorderColor #7A9A8A
+    BackgroundColor #D4DAD8
+    BorderColor #7A8882
     BorderThickness 1
-    FontColor #2D4A3E
+    FontColor #2D3E38
     FontSize 12
     shadowing false
 }
 
-' === Queue Styling (cool grey-purple) ===
+' === Queue Styling (cool neutral grey) ===
 skinparam queue {
-    BackgroundColor #E4E0E8
-    BorderColor #8A7A9A
+    BackgroundColor #D8D4DA
+    BorderColor #887A8E
     BorderThickness 1
-    FontColor #3E2D4A
+    FontColor #382D3E
     FontSize 12
     shadowing false
 }
 
-' === Cloud Styling (light blue-grey) ===
+' === Cloud Styling (muted blue-grey) ===
 skinparam cloud {
-    BackgroundColor #E0EAF4
-    BorderColor #7A9ABB
+    BackgroundColor #D0DAE8
+    BorderColor #7088A0
     BorderThickness 1
-    FontColor #1E3A5F
+    FontColor #2A4060
     FontSize 12
     shadowing false
 }
 
 ' === Actor Styling ===
 skinparam actor {
-    BackgroundColor #F0F2F5
+    BackgroundColor #E8EBEF
     BorderColor #6B7280
     FontColor #2D3748
     FontSize 12
 }
 
-' === Arrow / Connection Styling (neutral grey) ===
+' === Arrow / Connection Styling (neutral grey, readable but quiet) ===
 skinparam arrow {
     Color #6B7280
     FontColor #4A5568
@@ -123,11 +124,11 @@ skinparam arrow {
     Thickness 1
 }
 
-' === Note Styling (subtle yellow-grey) ===
+' === Note Styling (soft neutral) ===
 skinparam note {
-    BackgroundColor #F5F6E8
-    BorderColor #B0B896
-    FontColor #4A4A3A
+    BackgroundColor #E8E9E4
+    BorderColor #A0A298
+    FontColor #3A3A38
     FontSize 11
     shadowing false
 }
@@ -148,8 +149,8 @@ skinparam title {
 
 ' === Legend Styling ===
 skinparam legend {
-    BackgroundColor #E8EAED
-    BorderColor #B0B8C1
+    BackgroundColor #D8DCE2
+    BorderColor #A0A8B2
     FontColor #2D3748
     FontSize 11
 }
@@ -158,26 +159,26 @@ skinparam legend {
 skinparam sequence {
     ArrowColor #6B7280
     ArrowFontColor #4A5568
-    LifeLineBorderColor #A8B0BA
-    LifeLineBackgroundColor #E8EAED
-    ParticipantBackgroundColor #D4E4F7
-    ParticipantBorderColor #6B8BB8
-    ParticipantFontColor #1E3A5F
+    LifeLineBorderColor #9AA2AC
+    LifeLineBackgroundColor #D8DCE2
+    ParticipantBackgroundColor #C8D4E4
+    ParticipantBorderColor #7088A8
+    ParticipantFontColor #2A4060
 }
 
 ' === Activity Diagram ===
 skinparam activity {
-    BackgroundColor #D4E4F7
-    BorderColor #6B8BB8
-    FontColor #1E3A5F
-    DiamondBackgroundColor #E0E5EB
-    DiamondBorderColor #7A8694
+    BackgroundColor #C8D4E4
+    BorderColor #7088A8
+    FontColor #2A4060
+    DiamondBackgroundColor #D2D8DE
+    DiamondBorderColor #7A848E
     DiamondFontColor #2D3748
 }
 
 ' === State Diagram ===
 skinparam state {
-    BackgroundColor #E8EAED
-    BorderColor #A8B0BA
+    BackgroundColor #D8DCE2
+    BorderColor #9AA2AC
     FontColor #2D3748
 }

@@ -49,6 +49,7 @@ private:
     PlantUMLRenderer* m_renderer;
     
     QStackedWidget* m_stack{nullptr};
+    QWidget* m_svgContainer{nullptr};
     QScrollArea* m_scrollArea{nullptr};
     QSvgWidget* m_svgWidget{nullptr};
     QLabel* m_placeholder{nullptr};

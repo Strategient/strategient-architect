@@ -3,10 +3,12 @@
 #include "PlantUMLRenderer.hpp"
 
 #include <QSvgWidget>
+#include <QSvgRenderer>
 #include <QLabel>
 #include <QStackedWidget>
 #include <QScrollArea>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QFile>
 
 DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
@@ -22,8 +24,8 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
     m_statusLabel = new QLabel("");
     m_statusLabel->setStyleSheet(
         "QLabel { "
-        "  background-color: #2d2d30; "
-        "  color: #808080; "
+        "  background-color: #22262b; "
+        "  color: #6a7280; "
         "  padding: 4px 8px; "
         "  font-size: 11px; "
         "}");
@@ -38,14 +40,14 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
     m_placeholder->setAlignment(Qt::AlignCenter);
     m_placeholder->setStyleSheet(
         "QLabel { "
-        "  background-color: #1e1e1e; "
-        "  color: #808080; "
+        "  background-color: #1a1d21; "
+        "  color: #6a7280; "
         "  font-size: 14px; "
         "}");
 
     // Error display widget
     m_errorWidget = new QWidget(this);
-    m_errorWidget->setStyleSheet("background-color: #1e1e1e;");
+    m_errorWidget->setStyleSheet("background-color: #1a1d21;");
     auto* errorLayout = new QVBoxLayout(m_errorWidget);
     errorLayout->setAlignment(Qt::AlignCenter);
     errorLayout->setSpacing(16);
@@ -71,11 +73,11 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
     m_errorDetails->setMaximumWidth(600);
     m_errorDetails->setStyleSheet(
         "QLabel { "
-        "  color: #cccccc; "
+        "  color: #d1d5db; "
         "  font-size: 12px; "
         "  font-family: 'JetBrains Mono', 'Fira Code', monospace; "
-        "  background-color: #2d2d30; "
-        "  border: 1px solid #3e3e42; "
+        "  background-color: #22262b; "
+        "  border: 1px solid #363c44; "
         "  border-radius: 4px; "
         "  padding: 16px; "
         "}");
@@ -93,22 +95,36 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
         "}");
     errorLayout->addWidget(hintLabel);
 
+    // SVG container - centers the SVG without stretching
+    m_svgContainer = new QWidget(this);
+    m_svgContainer->setStyleSheet("background-color: #1a1d21;");
+    auto* svgContainerLayout = new QVBoxLayout(m_svgContainer);
+    svgContainerLayout->setContentsMargins(20, 20, 20, 20);
+    svgContainerLayout->setAlignment(Qt::AlignCenter);
+
     // SVG view with scroll area
-    m_scrollArea = new QScrollArea(this);
-    m_scrollArea->setWidgetResizable(true);
+    m_scrollArea = new QScrollArea(m_svgContainer);
+    m_scrollArea->setWidgetResizable(false);  // Don't stretch the SVG
+    m_scrollArea->setAlignment(Qt::AlignCenter);
+    m_scrollArea->setFrameShape(QFrame::NoFrame);
     m_scrollArea->setStyleSheet(
         "QScrollArea { "
-        "  background-color: #ffffff; "
+        "  background-color: #1a1d21; "
         "  border: none; "
+        "}"
+        "QScrollArea > QWidget > QWidget { "
+        "  background-color: #1a1d21; "
         "}");
     
     m_svgWidget = new QSvgWidget();
-    m_svgWidget->setStyleSheet("background-color: #ffffff;");
+    // SVG widget will get its size from the actual SVG content
     m_scrollArea->setWidget(m_svgWidget);
+
+    svgContainerLayout->addWidget(m_scrollArea);
 
     m_stack->addWidget(m_placeholder);
     m_stack->addWidget(m_errorWidget);
-    m_stack->addWidget(m_scrollArea);
+    m_stack->addWidget(m_svgContainer);
     m_stack->setCurrentWidget(m_placeholder);
 
     layout->addWidget(m_stack);
@@ -119,7 +135,7 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
         m_statusLabel->setText("Rendering PlantUML...");
         m_statusLabel->setStyleSheet(
             "QLabel { "
-            "  background-color: #2d2d30; "
+            "  background-color: #22262b; "
             "  color: #dcdcaa; "
             "  padding: 4px 8px; "
             "  font-size: 11px; "
@@ -148,6 +164,18 @@ void DiagramView::loadSvg(const QString& filePath) {
 
     m_svgWidget->load(filePath);
     m_currentSvgPath = filePath;
+    
+    // Get the natural size of the SVG and set the widget size accordingly
+    QSvgRenderer* renderer = m_svgWidget->renderer();
+    if (renderer && renderer->isValid()) {
+        QSize svgSize = renderer->defaultSize();
+        // Scale up slightly for better readability if too small
+        if (svgSize.width() < 400) {
+            svgSize *= 1.5;
+        }
+        m_svgWidget->setFixedSize(svgSize);
+    }
+    
     showSvg();
 }
 
@@ -184,8 +212,8 @@ void DiagramView::updateDisplay() {
     m_statusLabel->setText(QString("Page: %1").arg(page->title));
     m_statusLabel->setStyleSheet(
         "QLabel { "
-        "  background-color: #2d2d30; "
-        "  color: #808080; "
+        "  background-color: #22262b; "
+        "  color: #6a7280; "
         "  padding: 4px 8px; "
         "  font-size: 11px; "
         "}");
@@ -206,7 +234,7 @@ void DiagramView::onRenderComplete(const QString& svgPath) {
     m_statusLabel->setText(QString("Page: %1 ✓").arg(page ? page->title : ""));
     m_statusLabel->setStyleSheet(
         "QLabel { "
-        "  background-color: #2d2d30; "
+        "  background-color: #22262b; "
         "  color: #6a9955; "
         "  padding: 4px 8px; "
         "  font-size: 11px; "
@@ -223,7 +251,7 @@ void DiagramView::onRenderError(const QString& errorTitle, const QString& errorD
     m_statusLabel->setText(QString("Page: %1 ✗").arg(page ? page->title : ""));
     m_statusLabel->setStyleSheet(
         "QLabel { "
-        "  background-color: #2d2d30; "
+        "  background-color: #22262b; "
         "  color: #f48771; "
         "  padding: 4px 8px; "
         "  font-size: 11px; "
@@ -239,7 +267,7 @@ void DiagramView::showPlaceholder(const QString& message) {
 }
 
 void DiagramView::showSvg() {
-    m_stack->setCurrentWidget(m_scrollArea);
+    m_stack->setCurrentWidget(m_svgContainer);
 }
 
 void DiagramView::showError(const QString& title, const QString& details) {
