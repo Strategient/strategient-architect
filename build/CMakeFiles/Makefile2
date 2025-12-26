@@ -85,12 +85,12 @@ CMakeFiles/StrategientArchitect.dir/all: CMakeFiles/StrategientArchitect_autogen
 CMakeFiles/StrategientArchitect.dir/all: CMakeFiles/StrategientArchitect_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target StrategientArchitect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target StrategientArchitect"
 .PHONY : CMakeFiles/StrategientArchitect.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/StrategientArchitect.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dodzw/projects/strategient-architect/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dodzw/projects/strategient-architect/build/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/StrategientArchitect.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dodzw/projects/strategient-architect/build/CMakeFiles 0
 .PHONY : CMakeFiles/StrategientArchitect.dir/rule
@@ -111,7 +111,7 @@ CMakeFiles/StrategientArchitect.dir/clean:
 CMakeFiles/engine_build.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_build.dir/build.make CMakeFiles/engine_build.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_build.dir/build.make CMakeFiles/engine_build.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=18 "Built target engine_build"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=22 "Built target engine_build"
 .PHONY : CMakeFiles/engine_build.dir/all
 
 # Build rule for subdir invocation for target.
@@ -163,7 +163,7 @@ CMakeFiles/StrategientArchitect_autogen_timestamp_deps.dir/clean:
 CMakeFiles/StrategientArchitect_autogen.dir/all: CMakeFiles/StrategientArchitect_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect_autogen.dir/build.make CMakeFiles/StrategientArchitect_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect_autogen.dir/build.make CMakeFiles/StrategientArchitect_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=17 "Built target StrategientArchitect_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=21 "Built target StrategientArchitect_autogen"
 .PHONY : CMakeFiles/StrategientArchitect_autogen.dir/all
 
 # Build rule for subdir invocation for target.

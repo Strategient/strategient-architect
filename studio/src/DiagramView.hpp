@@ -2,17 +2,28 @@
 #define DIAGRAMVIEW_HPP
 
 #include <QWidget>
+#include <QStackedWidget>
 
-class QSvgWidget;
+class QGraphicsView;
 class QLabel;
-class QStackedWidget;
 class QScrollArea;
+class QSvgWidget;
 class DocumentModel;
 class PlantUMLRenderer;
+class DiagramScene;
 
 /**
- * DiagramView is the central widget that displays rendered PlantUML diagrams.
- * Shows clear error overlays when rendering fails.
+ * DiagramView - Central widget for displaying diagrams.
+ * 
+ * Supports two modes:
+ * 1. Interactive mode: QGraphicsView with draggable nodes
+ * 2. Static mode: SVG render of PlantUML
+ * 
+ * Features:
+ * - Pan with middle mouse or Space+drag
+ * - Zoom with Ctrl+wheel
+ * - Node selection and dragging
+ * - Layout persistence
  */
 class DiagramView : public QWidget {
     Q_OBJECT
@@ -21,15 +32,30 @@ public:
     explicit DiagramView(DocumentModel* model, QWidget* parent = nullptr);
     ~DiagramView() override = default;
 
+    // Mode control
+    enum ViewMode { Interactive, Static };
+    void setViewMode(ViewMode mode);
+    ViewMode viewMode() const { return m_viewMode; }
+    
+    // Static mode: load SVG directly
     void loadSvg(const QString& filePath);
+    
+    // Re-render current page's PlantUML
     void renderPlantUML(const QString& source);
+    
+    // Clear display
     void clear();
+    
+    // Access to scene
+    DiagramScene* scene() const { return m_scene; }
 
 signals:
     void renderStarted();
     void renderComplete();
-    // Detailed error signal for logging
     void renderFailed(const QString& title, const QString& details);
+    void nodeSelected(const QString& nodeId);
+    void nodeDoubleClicked(const QString& nodeId);
+    void layoutChanged();
 
 public slots:
     void onCurrentPageChanged(const QString& pageId);
@@ -38,17 +64,26 @@ public slots:
 private slots:
     void onRenderComplete(const QString& svgPath);
     void onRenderError(const QString& errorTitle, const QString& errorDetails);
+    void onSceneLayoutChanged();
 
 private:
+    void setupUI();
     void updateDisplay();
     void showPlaceholder(const QString& message);
-    void showSvg();
+    void showInteractiveView();
+    void showStaticView();
     void showError(const QString& title, const QString& details);
+    void saveLayoutToModel();
 
     DocumentModel* m_model;
     PlantUMLRenderer* m_renderer;
+    DiagramScene* m_scene;
     
+    ViewMode m_viewMode = Interactive;
+    
+    // UI components
     QStackedWidget* m_stack{nullptr};
+    QGraphicsView* m_graphicsView{nullptr};
     QWidget* m_svgContainer{nullptr};
     QScrollArea* m_scrollArea{nullptr};
     QSvgWidget* m_svgWidget{nullptr};

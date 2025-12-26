@@ -240,6 +240,30 @@ src/DiagramPlaceholder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.s
 .PHONY : src/DiagramPlaceholder.cpp.s
 
+src/DiagramScene.o: src/DiagramScene.cpp.o
+.PHONY : src/DiagramScene.o
+
+# target to build an object file
+src/DiagramScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o
+.PHONY : src/DiagramScene.cpp.o
+
+src/DiagramScene.i: src/DiagramScene.cpp.i
+.PHONY : src/DiagramScene.i
+
+# target to preprocess a source file
+src/DiagramScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.i
+.PHONY : src/DiagramScene.cpp.i
+
+src/DiagramScene.s: src/DiagramScene.cpp.s
+.PHONY : src/DiagramScene.s
+
+# target to generate assembly for a file
+src/DiagramScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.s
+.PHONY : src/DiagramScene.cpp.s
+
 src/DiagramView.o: src/DiagramView.cpp.o
 .PHONY : src/DiagramView.o
 
@@ -287,6 +311,30 @@ src/DocumentModel.s: src/DocumentModel.cpp.s
 src/DocumentModel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.s
 .PHONY : src/DocumentModel.cpp.s
+
+src/EdgeItem.o: src/EdgeItem.cpp.o
+.PHONY : src/EdgeItem.o
+
+# target to build an object file
+src/EdgeItem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o
+.PHONY : src/EdgeItem.cpp.o
+
+src/EdgeItem.i: src/EdgeItem.cpp.i
+.PHONY : src/EdgeItem.i
+
+# target to preprocess a source file
+src/EdgeItem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.i
+.PHONY : src/EdgeItem.cpp.i
+
+src/EdgeItem.s: src/EdgeItem.cpp.s
+.PHONY : src/EdgeItem.s
+
+# target to generate assembly for a file
+src/EdgeItem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.s
+.PHONY : src/EdgeItem.cpp.s
 
 src/MainWindow.o: src/MainWindow.cpp.o
 .PHONY : src/MainWindow.o
@@ -360,6 +408,30 @@ src/MonacoEditorWidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.s
 .PHONY : src/MonacoEditorWidget.cpp.s
 
+src/NodeItem.o: src/NodeItem.cpp.o
+.PHONY : src/NodeItem.o
+
+# target to build an object file
+src/NodeItem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
+.PHONY : src/NodeItem.cpp.o
+
+src/NodeItem.i: src/NodeItem.cpp.i
+.PHONY : src/NodeItem.i
+
+# target to preprocess a source file
+src/NodeItem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.i
+.PHONY : src/NodeItem.cpp.i
+
+src/NodeItem.s: src/NodeItem.cpp.s
+.PHONY : src/NodeItem.s
+
+# target to generate assembly for a file
+src/NodeItem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.s
+.PHONY : src/NodeItem.cpp.s
+
 src/PagesSidebar.o: src/PagesSidebar.cpp.o
 .PHONY : src/PagesSidebar.o
 
@@ -383,6 +455,30 @@ src/PagesSidebar.s: src/PagesSidebar.cpp.s
 src/PagesSidebar.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PagesSidebar.cpp.s
 .PHONY : src/PagesSidebar.cpp.s
+
+src/PlantUMLParser.o: src/PlantUMLParser.cpp.o
+.PHONY : src/PlantUMLParser.o
+
+# target to build an object file
+src/PlantUMLParser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.o
+.PHONY : src/PlantUMLParser.cpp.o
+
+src/PlantUMLParser.i: src/PlantUMLParser.cpp.i
+.PHONY : src/PlantUMLParser.i
+
+# target to preprocess a source file
+src/PlantUMLParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.i
+.PHONY : src/PlantUMLParser.cpp.i
+
+src/PlantUMLParser.s: src/PlantUMLParser.cpp.s
+.PHONY : src/PlantUMLParser.s
+
+# target to generate assembly for a file
+src/PlantUMLParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.s
+.PHONY : src/PlantUMLParser.cpp.s
 
 src/PlantUMLPreview.o: src/PlantUMLPreview.cpp.o
 .PHONY : src/PlantUMLPreview.o
@@ -525,12 +621,18 @@ help:
 	@echo "... src/DiagramPlaceholder.o"
 	@echo "... src/DiagramPlaceholder.i"
 	@echo "... src/DiagramPlaceholder.s"
+	@echo "... src/DiagramScene.o"
+	@echo "... src/DiagramScene.i"
+	@echo "... src/DiagramScene.s"
 	@echo "... src/DiagramView.o"
 	@echo "... src/DiagramView.i"
 	@echo "... src/DiagramView.s"
 	@echo "... src/DocumentModel.o"
 	@echo "... src/DocumentModel.i"
 	@echo "... src/DocumentModel.s"
+	@echo "... src/EdgeItem.o"
+	@echo "... src/EdgeItem.i"
+	@echo "... src/EdgeItem.s"
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"
@@ -540,9 +642,15 @@ help:
 	@echo "... src/MonacoEditorWidget.o"
 	@echo "... src/MonacoEditorWidget.i"
 	@echo "... src/MonacoEditorWidget.s"
+	@echo "... src/NodeItem.o"
+	@echo "... src/NodeItem.i"
+	@echo "... src/NodeItem.s"
 	@echo "... src/PagesSidebar.o"
 	@echo "... src/PagesSidebar.i"
 	@echo "... src/PagesSidebar.s"
+	@echo "... src/PlantUMLParser.o"
+	@echo "... src/PlantUMLParser.i"
+	@echo "... src/PlantUMLParser.s"
 	@echo "... src/PlantUMLPreview.o"
 	@echo "... src/PlantUMLPreview.i"
 	@echo "... src/PlantUMLPreview.s"

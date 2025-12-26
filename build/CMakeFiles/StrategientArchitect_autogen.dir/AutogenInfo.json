@@ -409,6 +409,12 @@
 			null
 		],
 		[
+			"/home/dodzw/projects/strategient-architect/studio/src/DiagramScene.hpp",
+			"MU",
+			"UVLADIE3JM/moc_DiagramScene.cpp",
+			null
+		],
+		[
 			"/home/dodzw/projects/strategient-architect/studio/src/DiagramView.hpp",
 			"MU",
 			"UVLADIE3JM/moc_DiagramView.cpp",
@@ -418,6 +424,12 @@
 			"/home/dodzw/projects/strategient-architect/studio/src/DocumentModel.hpp",
 			"MU",
 			"UVLADIE3JM/moc_DocumentModel.cpp",
+			null
+		],
+		[
+			"/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.hpp",
+			"MU",
+			"UVLADIE3JM/moc_EdgeItem.cpp",
 			null
 		],
 		[
@@ -439,9 +451,21 @@
 			null
 		],
 		[
+			"/home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp",
+			"MU",
+			"UVLADIE3JM/moc_NodeItem.cpp",
+			null
+		],
+		[
 			"/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp",
 			"MU",
 			"UVLADIE3JM/moc_PagesSidebar.cpp",
+			null
+		],
+		[
+			"/home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.hpp",
+			"MU",
+			"UVLADIE3JM/moc_PlantUMLParser.cpp",
 			null
 		],
 		[
@@ -566,12 +590,22 @@
 			null
 		],
 		[
+			"/home/dodzw/projects/strategient-architect/studio/src/DiagramScene.cpp",
+			"MU",
+			null
+		],
+		[
 			"/home/dodzw/projects/strategient-architect/studio/src/DiagramView.cpp",
 			"MU",
 			null
 		],
 		[
 			"/home/dodzw/projects/strategient-architect/studio/src/DocumentModel.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.cpp",
 			"MU",
 			null
 		],
@@ -591,7 +625,17 @@
 			null
 		],
 		[
+			"/home/dodzw/projects/strategient-architect/studio/src/NodeItem.cpp",
+			"MU",
+			null
+		],
+		[
 			"/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.cpp",
 			"MU",
 			null
 		],

@@ -35,6 +35,7 @@ public:
     
     const architect::Page* currentPage() const;
     architect::Page* currentPage();
+    architect::Page* currentPageMutable() { return currentPage(); }  // Explicit mutable access
     int currentPageIndex() const;
     
     QString currentPageId() const { return m_currentPageId; }

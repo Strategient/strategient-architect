@@ -6,18 +6,26 @@ StrategientArchitect_autogen/timestamp: \
 	/home/dodzw/projects/strategient-architect/studio/resources.qrc \
 	/home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/DiagramScene.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/DiagramScene.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DiagramView.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DiagramView.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DocumentModel.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DocumentModel.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MainWindow.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MainWindow.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MonacoBridge.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MonacoBridge.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/NodeItem.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLRenderer.cpp \
@@ -440,6 +448,7 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/QColor \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
@@ -452,7 +461,9 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qimage.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qkeysequence.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpainterpath.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixelformat.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixmap.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qpolygon.h \
@@ -464,10 +475,17 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsitem.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsscene.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedwidget.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgets-config.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsexports.h \

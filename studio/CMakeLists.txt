@@ -24,6 +24,10 @@ set(SOURCES
     src/MonacoBridge.cpp
     src/MonacoEditorWidget.cpp
     src/PlantUMLRenderer.cpp
+    src/PlantUMLParser.cpp
+    src/NodeItem.cpp
+    src/EdgeItem.cpp
+    src/DiagramScene.cpp
 )
 
 set(HEADERS
@@ -38,6 +42,10 @@ set(HEADERS
     src/MonacoBridge.hpp
     src/MonacoEditorWidget.hpp
     src/PlantUMLRenderer.hpp
+    src/PlantUMLParser.hpp
+    src/NodeItem.hpp
+    src/EdgeItem.hpp
+    src/DiagramScene.hpp
 )
 
 # Qt resources
