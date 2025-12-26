@@ -221,6 +221,9 @@ bool DotParser::parseNode(const QString& line, ParsedNode& node) {
         QString shape = extractAttribute(attrs, "shape");
         node.type = shape.isEmpty() ? "box" : shapeToType(shape);
         
+        // Extract image attribute for custom icons
+        node.imagePath = extractAttribute(attrs, "image");
+        
         return true;
     }
     

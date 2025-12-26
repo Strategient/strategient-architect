@@ -6,6 +6,9 @@
 #include <QStyleOptionGraphicsItem>
 #include <QFontMetrics>
 #include <QCursor>
+#include <QSvgRenderer>
+#include <QFile>
+#include <QDebug>
 
 NodeItem::NodeItem(const QString& nodeId, const QString& label, 
                    const QString& nodeType, QGraphicsItem* parent)
@@ -37,6 +40,48 @@ void NodeItem::setLabel(const QString& label) {
 void NodeItem::setTestStatus(architect::TestStatus status) {
     if (m_testStatus != status) {
         m_testStatus = status;
+        update();
+    }
+}
+
+void NodeItem::setImagePath(const QString& imagePath) {
+    if (m_imagePath != imagePath) {
+        m_imagePath = imagePath;
+        
+        // Clean up old renderer
+        delete m_svgRenderer;
+        m_svgRenderer = nullptr;
+        
+        if (!imagePath.isEmpty()) {
+            // Convert various path formats to Qt resource path
+            // Input formats:
+            //   "qrc:/shapes/software/api.svg" -> ":/shapes/software/api.svg"
+            //   "shapes/software/api.svg"      -> ":/shapes/software/api.svg"
+            //   ":/shapes/software/api.svg"    -> unchanged
+            QString resourcePath = imagePath;
+            if (resourcePath.startsWith("qrc:/")) {
+                resourcePath = resourcePath.mid(3); // Remove "qrc" prefix, keep ":/..."
+            } else if (resourcePath.startsWith(":/")) {
+                // Already in correct format
+            } else {
+                // Relative path like "shapes/software/api.svg"
+                resourcePath = ":/" + resourcePath;
+            }
+            
+            qDebug() << "NodeItem: Loading image from:" << resourcePath << "(original:" << imagePath << ")";
+            
+            m_svgRenderer = new QSvgRenderer(resourcePath, this);
+            
+            if (!m_svgRenderer->isValid()) {
+                qWarning() << "NodeItem: Failed to load SVG image:" << resourcePath;
+                delete m_svgRenderer;
+                m_svgRenderer = nullptr;
+            } else {
+                qDebug() << "NodeItem: Successfully loaded SVG:" << resourcePath;
+            }
+        }
+        
+        updateGeometry();
         update();
     }
 }
@@ -92,32 +137,42 @@ void NodeItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option,
     painter->setPen(QPen(borderColor, isSelected() ? 2 : 1));
     painter->drawRoundedRect(rect, m_cornerRadius, m_cornerRadius);
     
-    // Draw type icon (left side)
-    QRectF iconRect(-m_width/2 + 8, -10, 20, 20);
-    painter->setPen(QPen(QColor("#4A6080"), 1));
-    painter->setBrush(Qt::NoBrush);
+    // Draw image icon OR type icon (left side)
+    QRectF iconRect(-m_width/2 + 8, -m_height/2 + 8, m_height - 16, m_height - 16);
     
-    if (m_nodeType == "database") {
-        // Database icon (cylinder)
-        painter->drawEllipse(iconRect.left(), iconRect.top(), iconRect.width(), 8);
-        painter->drawLine(iconRect.left(), iconRect.top() + 4, 
-                          iconRect.left(), iconRect.bottom() - 4);
-        painter->drawLine(iconRect.right(), iconRect.top() + 4, 
-                          iconRect.right(), iconRect.bottom() - 4);
-        painter->drawEllipse(iconRect.left(), iconRect.bottom() - 8, iconRect.width(), 8);
-    } else if (m_nodeType == "cloud") {
-        // Cloud icon
-        painter->drawEllipse(iconRect.adjusted(2, 4, -2, -2));
-    } else if (m_nodeType == "storage") {
-        // Storage icon (folder)
-        painter->drawRect(iconRect.adjusted(0, 4, 0, 0));
+    if (m_svgRenderer && m_svgRenderer->isValid()) {
+        // Draw SVG image
+        m_svgRenderer->render(painter, iconRect);
     } else {
-        // Component icon (default box)
-        painter->drawRect(iconRect.adjusted(2, 2, -2, -2));
-        painter->drawLine(iconRect.left() + 2, iconRect.top() + 6,
-                          iconRect.left() + 6, iconRect.top() + 6);
-        painter->drawLine(iconRect.left() + 2, iconRect.bottom() - 6,
-                          iconRect.left() + 6, iconRect.bottom() - 6);
+        // Draw type icon (fallback)
+        painter->setPen(QPen(QColor("#4A6080"), 1));
+        painter->setBrush(Qt::NoBrush);
+        
+        // Center the icon rect vertically
+        iconRect = QRectF(-m_width/2 + 8, -10, 20, 20);
+        
+        if (m_nodeType == "database") {
+            // Database icon (cylinder)
+            painter->drawEllipse(iconRect.left(), iconRect.top(), iconRect.width(), 8);
+            painter->drawLine(iconRect.left(), iconRect.top() + 4, 
+                              iconRect.left(), iconRect.bottom() - 4);
+            painter->drawLine(iconRect.right(), iconRect.top() + 4, 
+                              iconRect.right(), iconRect.bottom() - 4);
+            painter->drawEllipse(iconRect.left(), iconRect.bottom() - 8, iconRect.width(), 8);
+        } else if (m_nodeType == "cloud") {
+            // Cloud icon
+            painter->drawEllipse(iconRect.adjusted(2, 4, -2, -2));
+        } else if (m_nodeType == "storage") {
+            // Storage icon (folder)
+            painter->drawRect(iconRect.adjusted(0, 4, 0, 0));
+        } else {
+            // Component icon (default box)
+            painter->drawRect(iconRect.adjusted(2, 2, -2, -2));
+            painter->drawLine(iconRect.left() + 2, iconRect.top() + 6,
+                              iconRect.left() + 6, iconRect.top() + 6);
+            painter->drawLine(iconRect.left() + 2, iconRect.bottom() - 6,
+                              iconRect.left() + 6, iconRect.bottom() - 6);
+        }
     }
     
     // Draw label text
@@ -126,7 +181,8 @@ void NodeItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option,
     font.setWeight(QFont::Medium);
     painter->setFont(font);
     
-    QRectF textRect(-m_width/2 + 32, -m_height/2, m_width - 60, m_height);
+    qreal textLeftMargin = m_svgRenderer ? (m_height - 8) : 32;
+    QRectF textRect(-m_width/2 + textLeftMargin, -m_height/2, m_width - textLeftMargin - 28, m_height);
     painter->drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft, m_label);
     
     // Draw test status badge (right side)
@@ -205,8 +261,15 @@ void NodeItem::updateGeometry() {
     QFontMetrics fm(font);
     
     int textWidth = fm.horizontalAdvance(m_label);
-    m_width = qMax(140.0, qreal(textWidth + 70));  // padding for icon and badge
-    m_height = 44;
+    
+    // Larger size when showing an image
+    if (m_svgRenderer && m_svgRenderer->isValid()) {
+        m_height = 56;  // Taller for image
+        m_width = qMax(160.0, qreal(textWidth + m_height + 20));  // Extra space for image
+    } else {
+        m_height = 44;
+        m_width = qMax(140.0, qreal(textWidth + 70));  // padding for icon and badge
+    }
     
     prepareGeometryChange();
 }

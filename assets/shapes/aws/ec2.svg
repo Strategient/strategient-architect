@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="ec2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9900"/>
+      <stop offset="100%" style="stop-color:#FF6600"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="48" rx="4" fill="url(#ec2-grad)"/>
+  <rect x="14" y="18" width="36" height="28" rx="2" fill="none" stroke="white" stroke-width="2"/>
+  <rect x="20" y="24" width="24" height="16" fill="white" opacity="0.3"/>
+  <circle cx="32" cy="32" r="6" fill="white"/>
+  <text x="32" y="58" text-anchor="middle" font-family="Arial" font-size="8" fill="white">EC2</text>
+</svg>
+

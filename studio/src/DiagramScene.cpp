@@ -78,6 +78,11 @@ void DiagramScene::createNodesAndEdges(const architect::ParsedDiagram& diagram,
         NodeItem* nodeItem = new NodeItem(parsedNode.id, displayName, parsedNode.type);
         nodeItem->setTestStatus(testStatus);
         
+        // Set image path if specified in DOT
+        if (!parsedNode.imagePath.isEmpty()) {
+            nodeItem->setImagePath(parsedNode.imagePath);
+        }
+        
         // Connect signals
         connect(nodeItem, &NodeItem::positionChanged,
                 this, &DiagramScene::onNodePositionChanged);

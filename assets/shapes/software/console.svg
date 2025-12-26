@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="term-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D3748"/>
+      <stop offset="100%" style="stop-color:#1A202C"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="48" rx="4" fill="url(#term-grad)"/>
+  <rect x="8" y="12" width="48" height="36" rx="2" fill="#0D1117"/>
+  <polyline points="14,26 22,32 14,38" fill="none" stroke="#48BB78" stroke-width="2" stroke-linecap="round"/>
+  <line x1="26" y1="38" x2="40" y2="38" stroke="#48BB78" stroke-width="2" stroke-linecap="round"/>
+  <rect x="42" y="36" width="8" height="4" fill="#48BB78" opacity="0.5"/>
+  <text x="32" y="58" text-anchor="middle" font-family="Arial" font-size="8" fill="white">Console</text>
+</svg>
+

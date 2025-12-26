@@ -3,6 +3,7 @@
 
 #include <QGraphicsObject>
 #include <QColor>
+#include <QSvgRenderer>
 #include "ProjectModel.hpp"
 
 class EdgeItem;
@@ -41,6 +42,11 @@ public:
     void setTestStatus(architect::TestStatus status);
     architect::TestStatus testStatus() const { return m_testStatus; }
     
+    // Image icon support
+    void setImagePath(const QString& imagePath);
+    QString imagePath() const { return m_imagePath; }
+    bool hasImage() const { return m_svgRenderer && m_svgRenderer->isValid(); }
+    
     // Edge management
     void addEdge(EdgeItem* edge);
     void removeEdge(EdgeItem* edge);
@@ -76,9 +82,11 @@ private:
     QString m_nodeId;
     QString m_label;
     QString m_nodeType;
+    QString m_imagePath;
     architect::TestStatus m_testStatus = architect::TestStatus::NotRun;
     
     QVector<EdgeItem*> m_edges;
+    QSvgRenderer* m_svgRenderer{nullptr};
     
     // Cached geometry
     qreal m_width = 160;

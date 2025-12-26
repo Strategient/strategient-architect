@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="k8s-pv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#326CE5"/>
+      <stop offset="100%" style="stop-color:#2457B8"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="48" rx="4" fill="url(#k8s-pv-grad)"/>
+  <ellipse cx="32" cy="20" rx="14" ry="5" fill="none" stroke="white" stroke-width="2"/>
+  <path d="M18 20 L18 44 Q18 49 32 49 Q46 49 46 44 L46 20" fill="none" stroke="white" stroke-width="2"/>
+  <line x1="18" y1="30" x2="46" y2="30" stroke="white" stroke-width="1" opacity="0.5"/>
+  <line x1="18" y1="38" x2="46" y2="38" stroke="white" stroke-width="1" opacity="0.5"/>
+  <text x="32" y="58" text-anchor="middle" font-family="Arial" font-size="8" fill="white">PV</text>
+</svg>
+

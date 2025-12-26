@@ -19,4 +19,50 @@
         <file alias="strategient-128.png">../assets/icons/strategient-128.png</file>
         <file alias="strategient-256.png">../assets/icons/strategient-256.png</file>
     </qresource>
+    <qresource prefix="/shapes">
+        <!-- AWS icons -->
+        <file alias="aws/api-gateway.svg">../assets/shapes/aws/api-gateway.svg</file>
+        <file alias="aws/dynamodb.svg">../assets/shapes/aws/dynamodb.svg</file>
+        <file alias="aws/ec2.svg">../assets/shapes/aws/ec2.svg</file>
+        <file alias="aws/ecs.svg">../assets/shapes/aws/ecs.svg</file>
+        <file alias="aws/lambda.svg">../assets/shapes/aws/lambda.svg</file>
+        <file alias="aws/rds.svg">../assets/shapes/aws/rds.svg</file>
+        <file alias="aws/s3.svg">../assets/shapes/aws/s3.svg</file>
+        <file alias="aws/sqs.svg">../assets/shapes/aws/sqs.svg</file>
+        <!-- Data icons -->
+        <file alias="data/airflow.svg">../assets/shapes/data/airflow.svg</file>
+        <file alias="data/duckdb.svg">../assets/shapes/data/duckdb.svg</file>
+        <file alias="data/kafka.svg">../assets/shapes/data/kafka.svg</file>
+        <file alias="data/parquet.svg">../assets/shapes/data/parquet.svg</file>
+        <file alias="data/postgres.svg">../assets/shapes/data/postgres.svg</file>
+        <file alias="data/redis.svg">../assets/shapes/data/redis.svg</file>
+        <file alias="data/spark.svg">../assets/shapes/data/spark.svg</file>
+        <!-- Infrastructure icons -->
+        <file alias="infrastructure/cloud.svg">../assets/shapes/infrastructure/cloud.svg</file>
+        <file alias="infrastructure/computer.svg">../assets/shapes/infrastructure/computer.svg</file>
+        <file alias="infrastructure/database.svg">../assets/shapes/infrastructure/database.svg</file>
+        <file alias="infrastructure/firewall.svg">../assets/shapes/infrastructure/firewall.svg</file>
+        <file alias="infrastructure/load-balancer.svg">../assets/shapes/infrastructure/load-balancer.svg</file>
+        <file alias="infrastructure/network.svg">../assets/shapes/infrastructure/network.svg</file>
+        <file alias="infrastructure/server.svg">../assets/shapes/infrastructure/server.svg</file>
+        <file alias="infrastructure/storage.svg">../assets/shapes/infrastructure/storage.svg</file>
+        <!-- Kubernetes icons -->
+        <file alias="kubernetes/configmap.svg">../assets/shapes/kubernetes/configmap.svg</file>
+        <file alias="kubernetes/deployment.svg">../assets/shapes/kubernetes/deployment.svg</file>
+        <file alias="kubernetes/ingress.svg">../assets/shapes/kubernetes/ingress.svg</file>
+        <file alias="kubernetes/job.svg">../assets/shapes/kubernetes/job.svg</file>
+        <file alias="kubernetes/node.svg">../assets/shapes/kubernetes/node.svg</file>
+        <file alias="kubernetes/pod.svg">../assets/shapes/kubernetes/pod.svg</file>
+        <file alias="kubernetes/pv.svg">../assets/shapes/kubernetes/pv.svg</file>
+        <file alias="kubernetes/service.svg">../assets/shapes/kubernetes/service.svg</file>
+        <!-- Software icons -->
+        <file alias="software/api.svg">../assets/shapes/software/api.svg</file>
+        <file alias="software/console.svg">../assets/shapes/software/console.svg</file>
+        <file alias="software/docker.svg">../assets/shapes/software/docker.svg</file>
+        <file alias="software/python.svg">../assets/shapes/software/python.svg</file>
+        <file alias="software/qt.svg">../assets/shapes/software/qt.svg</file>
+        <file alias="software/react.svg">../assets/shapes/software/react.svg</file>
+        <file alias="software/rust.svg">../assets/shapes/software/rust.svg</file>
+        <file alias="software/tauri.svg">../assets/shapes/software/tauri.svg</file>
+    </qresource>
 </RCC>

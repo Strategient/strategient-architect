@@ -13,6 +13,7 @@ struct ParsedNode {
     QString label;        // Display label (from label attribute or id)
     QString type;         // Shape type: "box", "ellipse", "cylinder", etc.
     QString parentId;     // Parent subgraph/cluster if nested
+    QString imagePath;    // Image attribute path for custom icons
 };
 
 // Represents a parsed edge/relationship from DOT

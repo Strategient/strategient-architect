@@ -74,6 +74,7 @@ signals:
 
 private:
     QString validateDotSource(const QString& source);
+    QString resolveImagePaths(const QString& source);
     bool initializeGraphviz();
     void cleanupGraphviz();
     void renderToSvgViaCLI(const QString& dotSource);

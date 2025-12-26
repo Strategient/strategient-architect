@@ -16,8 +16,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp \
-  /home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.hpp \
-  /home/dodzw/projects/strategient-architect/studio/src/PlantUMLRenderer.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/RunConsole.hpp \
   StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramPlaceholder.cpp \
@@ -30,8 +28,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   StrategientArchitect_autogen/UVLADIE3JM/moc_MonacoEditorWidget.cpp \
   StrategientArchitect_autogen/UVLADIE3JM/moc_NodeItem.cpp \
   StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp \
-  StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLPreview.cpp \
-  StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLRenderer.cpp \
   StrategientArchitect_autogen/UVLADIE3JM/moc_RunConsole.cpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -69,10 +65,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/exception_ptr.h \
-  /usr/include/c++/13/bits/fs_dir.h \
-  /usr/include/c++/13/bits/fs_fwd.h \
-  /usr/include/c++/13/bits/fs_ops.h \
-  /usr/include/c++/13/bits/fs_path.h \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
@@ -161,7 +153,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
-  /usr/include/c++/13/codecvt \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
   /usr/include/c++/13/cstddef \
@@ -182,7 +173,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
-  /usr/include/c++/13/filesystem \
   /usr/include/c++/13/format \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
@@ -379,9 +369,7 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QMap \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/QProcess \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/QTemporaryFile \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QVector \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
@@ -411,8 +399,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
@@ -445,7 +431,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs_impl.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
@@ -473,7 +458,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtemporaryfile.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
@@ -484,6 +468,7 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
@@ -511,6 +496,10 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
@@ -1416,6 +1405,7 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o: /home/dodzw/projects
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
@@ -1477,6 +1467,7 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o: /home/dodzw/projects
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qcolor.h \
@@ -1496,6 +1487,10 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o: /home/dodzw/projects
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene \
@@ -3343,6 +3338,7 @@ CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
@@ -3404,6 +3400,7 @@ CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QPainter \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
@@ -3428,6 +3425,10 @@ CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsitem.h \
@@ -3947,7 +3948,6 @@ CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.o: /home/dodzw/projects/s
   /home/dodzw/projects/strategient-architect/studio/src/MainWindow.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp \
-  /home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp \
   /home/dodzw/projects/strategient-architect/studio/src/RunConsole.hpp \
   /usr/include/alloca.h \
@@ -5453,6 +5453,10 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/exception_ptr.h \
+  /usr/include/c++/13/bits/fs_dir.h \
+  /usr/include/c++/13/bits/fs_fwd.h \
+  /usr/include/c++/13/bits/fs_ops.h \
+  /usr/include/c++/13/bits/fs_path.h \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
@@ -5541,6 +5545,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
+  /usr/include/c++/13/codecvt \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
   /usr/include/c++/13/cstddef \
@@ -5561,6 +5566,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/filesystem \
   /usr/include/c++/13/format \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
@@ -5751,6 +5757,8 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonArray \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonDocument \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
@@ -5787,6 +5795,8 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
@@ -5794,6 +5804,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
@@ -5855,6 +5866,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QCursor \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QFontMetrics \
@@ -5888,6 +5900,10 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/str
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsSceneMouseEvent \
@@ -7950,6 +7966,10 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QTemporaryDir:
 
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QProcess:
+
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QDir:
@@ -8026,10 +8046,6 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 
 /usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets/QSvgWidget:
 
-/usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h:
-
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h:
@@ -8052,29 +8068,53 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QFlags:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h:
+
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QSize:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QRect:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QList:
 
+/usr/include/c++/13/filesystem:
+
+/usr/include/c++/13/codecvt:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h:
+
+/usr/include/c++/13/bits/fs_path.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTextEdit:
+
+/usr/include/c++/13/bits/fs_ops.h:
+
+/usr/include/c++/13/bits/fs_fwd.h:
+
+/usr/include/c++/13/bits/fs_dir.h:
+
 /home/dodzw/projects/strategient-architect/studio/src/DiagramView.cpp:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsSceneMouseEvent:
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
 
-/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.hpp:
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h:
 
-/home/dodzw/projects/strategient-architect/studio/src/DiagramScene.cpp:
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h:
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h:
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h:
+/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h:
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qset.h:
+
+/usr/include/c++/13/tr1/riemann_zeta.tcc:
 
 /usr/include/string.h:
 
@@ -8113,6 +8153,8 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 /usr/include/c++/13/version:
 
 /usr/include/c++/13/vector:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h:
 
 /usr/include/c++/13/unordered_map:
 
@@ -8159,6 +8201,10 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h:
 
 /usr/include/c++/13/stdlib.h:
+
+/usr/include/c++/13/bits/nested_exception.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/QTransform:
 
@@ -8210,6 +8256,10 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 
 /usr/include/c++/13/cwchar:
 
+/usr/include/c++/13/ctime:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget:
+
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qeventpoint.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/quuid.h:
@@ -8222,17 +8272,9 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 
 /usr/include/c++/13/concepts:
 
-/usr/include/c++/13/ctime:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget:
-
-/usr/include/c++/13/codecvt:
-
 /usr/include/c++/13/cmath:
 
 /usr/include/x86_64-linux-gnu/bits/select2.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h:
 
 /usr/include/c++/13/climits:
 
@@ -8262,11 +8304,9 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DocumentModel.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h:
 
-/usr/include/c++/13/tr1/riemann_zeta.tcc:
+/usr/include/x86_64-linux-gnu/bits/confname.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/QFlags:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h:
+/usr/include/c++/13/bits/locale_facets_nonio.h:
 
 /usr/include/c++/13/ostream:
 
@@ -8286,31 +8326,21 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DocumentModel.cpp:
 
 /usr/include/c++/13/bits/stl_relops.h:
 
-/usr/include/c++/13/bits/stl_raw_storage_iter.h:
+/usr/include/x86_64-linux-gnu/bits/endian.h:
 
-/usr/include/unistd.h:
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringconverter_base.h:
-
-/usr/include/c++/13/bits/stl_uninitialized.h:
-
-/usr/include/c++/13/bits/new_allocator.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qssl.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h:
-
-StrategientArchitect_autogen/UVLADIE3JM/moc_MainWindow.cpp:
-
-/usr/include/c++/13/debug/assertions.h:
-
-/usr/include/c++/13/debug/debug.h:
-
-/usr/include/c++/13/bits/stl_list.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h:
+/usr/include/c++/13/bits/cpp_type_traits.h:
 
 /usr/include/c++/13/bits/chrono_io.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWebEngineCore/qtwebenginecore-config.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/c++/13/bits/chrono.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
@@ -8320,11 +8350,21 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_MainWindow.cpp:
 
 /usr/include/linux/close_range.h:
 
+StrategientArchitect_autogen/UVLADIE3JM/moc_MainWindow.cpp:
+
 /usr/include/stdc-predef.h:
 
 /usr/include/c++/13/atomic:
 
 /usr/include/c++/13/bits/streambuf.tcc:
+
+/usr/include/c++/13/pstl/execution_defs.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qscopedpointer.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QSizeF:
+
+/usr/include/c++/13/bits/basic_ios.tcc:
 
 /usr/include/c++/13/bits/unique_ptr.h:
 
@@ -8352,29 +8392,7 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_RunConsole.cpp:
 
 /usr/include/c++/13/algorithm:
 
-/usr/include/c++/13/pstl/execution_defs.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qscopedpointer.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/QSizeF:
-
-/usr/include/c++/13/bits/basic_ios.tcc:
-
-StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLRenderer.cpp:
-
-/usr/include/c++/13/bits/ranges_cmp.h:
-
-/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/QProcess:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h:
-
-/home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp:
+/usr/include/c++/13/bits/stl_raw_storage_iter.h:
 
 /usr/include/alloca.h:
 
@@ -8388,27 +8406,13 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLRenderer.cpp:
 
 StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramView.cpp:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug:
+/home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.hpp:
 
-/usr/include/c++/13/bits/ranges_util.h:
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets/qtsvgwidgetsglobal.h:
+/usr/include/c++/13/sstream:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsexports.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
-
-/usr/include/c++/13/array:
-
-/usr/include/c++/13/bits/hash_bytes.h:
-
-/usr/include/c++/13/functional:
-
-/home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp:
-
-/home/dodzw/projects/strategient-architect/studio/src/PlantUMLRenderer.hpp:
+/home/dodzw/projects/strategient-architect/studio/src/MainWindow.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
@@ -8416,7 +8420,33 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramView.cpp:
 
 /usr/include/c++/13/bits/stl_algobase.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h:
+
+/usr/include/c++/13/bits/stream_iterator.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QFile:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h:
+
+/usr/include/c++/13/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/13/tr1/special_function_util.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
 /usr/include/c++/13/bits/allocated_ptr.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
+
+/usr/include/c++/13/array:
+
+/usr/include/c++/13/bits/hash_bytes.h:
 
 /usr/include/c++/13/cerrno:
 
@@ -8424,91 +8454,15 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramView.cpp:
 
 /usr/include/c++/13/bits/iterator_concepts.h:
 
-/usr/include/c++/13/bits/stl_numeric.h:
-
-StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramPlaceholder.cpp:
-
 /usr/include/c++/13/bits/max_size_type.h:
 
-StrategientArchitect_autogen/UVLADIE3JM/moc_NodeItem.cpp:
+/usr/include/c++/13/debug/assertions.h:
 
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
+/usr/include/c++/13/debug/debug.h:
 
-/usr/include/c++/13/utility:
+/usr/include/c++/13/bits/stl_list.h:
 
-/usr/include/c++/13/bits/locale_facets_nonio.tcc:
-
-/usr/include/c++/13/bits/chrono.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWebEngineCore/qtwebenginecore-config.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h:
-
-/usr/include/c++/13/filesystem:
-
-/usr/include/c++/13/compare:
-
-/usr/include/x86_64-linux-gnu/qt6/QtGui/QPageLayout:
-
-StrategientArchitect_autogen/mocs_compilation.cpp:
-
-/home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.hpp:
-
-/usr/include/x86_64-linux-gnu/qt6/QtGui/QFontDatabase:
-
-StrategientArchitect_autogen/UVLADIE3JM/moc_MonacoEditorWidget.cpp:
-
-/usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h:
-
-/usr/include/syscall.h:
-
-/usr/include/c++/13/bits/stl_heap.h:
-
-/usr/include/c++/13/bits/atomic_lockfree_defines.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdockwidget.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qscrollarea.h:
-
-/usr/include/c++/13/numeric:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/errno.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h:
-
-/usr/include/c++/13/bits/charconv.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h:
-
-/usr/include/c++/13/bits/fs_path.h:
-
-/usr/include/c++/13/bits/stl_pair.h:
-
-StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp:
-
-/usr/include/c++/13/bits/stl_multimap.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow:
-
-/usr/include/c++/13/bits/istream.tcc:
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtNetwork/qtnetworkglobal.h:
 
@@ -8532,27 +8486,75 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
 
-/usr/include/c++/13/bits/cpp_type_traits.h:
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h:
+/usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h:
 
-/usr/include/c++/13/bits/stream_iterator.h:
+/usr/include/c++/13/bits/charconv.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/QFile:
+/usr/include/x86_64-linux-gnu/bits/errno.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h:
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h:
 
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+StrategientArchitect_autogen/UVLADIE3JM/moc_NodeItem.cpp:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h:
+/usr/include/time.h:
 
-/usr/include/c++/13/tr1/poly_laguerre.tcc:
+/usr/include/c++/13/bits/memoryfwd.h:
 
-/usr/include/c++/13/tr1/special_function_util.h:
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h:
+/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+/usr/include/c++/13/utility:
+
+/usr/include/c++/13/bits/locale_facets_nonio.tcc:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h:
+
+/usr/include/c++/13/functional:
+
+/home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp:
+
+/usr/include/c++/13/compare:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QPageLayout:
+
+StrategientArchitect_autogen/mocs_compilation.cpp:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QFontDatabase:
+
+StrategientArchitect_autogen/UVLADIE3JM/moc_MonacoEditorWidget.cpp:
+
+/usr/include/c++/13/bits/stl_pair.h:
+
+StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp:
+
+/usr/include/c++/13/bits/istream.tcc:
+
+/usr/include/c++/13/bits/stl_multimap.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsSceneMouseEvent:
+
+/usr/include/c++/13/bits/ranges_cmp.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets/qtsvgwidgetsglobal.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsexports.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
@@ -8562,49 +8564,7 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
-/home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.hpp:
-
 /usr/include/c++/13/bits/localefwd.h:
-
-/home/dodzw/projects/strategient-architect/studio/src/MainWindow.hpp:
-
-/usr/include/c++/13/sstream:
-
-/usr/include/c++/13/bits/nested_exception.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/usr/include/c++/13/bits/fs_dir.h:
-
-/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp:
-
-/usr/include/c++/13/bits/stl_tree.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget:
-
-/usr/include/c++/13/bits/locale_facets_nonio.h:
-
-/usr/include/x86_64-linux-gnu/bits/confname.h:
-
-/usr/include/time.h:
-
-/usr/include/c++/13/locale:
-
-/usr/include/c++/13/bits/stl_map.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
-/usr/include/c++/13/bits/memoryfwd.h:
-
-/usr/include/c++/13/bits/fs_fwd.h:
-
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTextEdit:
-
-/usr/include/c++/13/bits/fs_ops.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h:
 
 /usr/include/c++/13/bits/node_handle.h:
 
@@ -8619,6 +8579,20 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp:
 /usr/include/c++/13/bits/hashtable.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/c++/13/bits/cxxabi_forced.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextcursor.h:
 
@@ -8642,6 +8616,12 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qpolygon.h:
 
+/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp:
+
+/usr/include/c++/13/bits/stl_tree.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget:
+
 /usr/include/c++/13/bits/move.h:
 
 /usr/include/c++/13/bits/invoke.h:
@@ -8661,6 +8641,14 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp:
 /usr/include/c++/13/variant:
 
 /usr/include/c++/13/bits/atomic_base.h:
+
+/usr/include/c++/13/bits/new_allocator.h:
+
+/usr/include/c++/13/bits/stl_uninitialized.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qssl.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h:
 
@@ -8760,41 +8748,33 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramScene.cpp:
 
 /usr/include/c++/13/bits/functexcept.h:
 
-/usr/include/x86_64-linux-gnu/asm/errno.h:
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdockwidget.h:
 
-/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qscrollarea.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qset.h:
+/usr/include/c++/13/numeric:
 
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
+/home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h:
 
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+/home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
+/usr/include/c++/13/bits/stl_map.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h:
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+/usr/include/c++/13/locale:
 
-/usr/include/x86_64-linux-gnu/bits/endian.h:
+/usr/include/unistd.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox:
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringconverter_base.h:
 
-/usr/include/x86_64-linux-gnu/bits/environments.h:
+StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramPlaceholder.cpp:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h:
-
-/usr/include/c++/13/bits/cxxabi_forced.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qtemporaryfile.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
+/usr/include/c++/13/bits/stl_numeric.h:
 
 /home/dodzw/projects/strategient-architect/studio/src/DiagramView.hpp:
 
@@ -8822,10 +8802,6 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramScene.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
-
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication.h:
@@ -8849,8 +8825,6 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramScene.cpp:
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/QTemporaryFile:
 
 /usr/include/x86_64-linux-gnu/asm/unistd.h:
 
@@ -8957,6 +8931,10 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramScene.cpp:
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/c++/13/bits/ranges_util.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
 
@@ -9068,6 +9046,8 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_MonacoBridge.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h:
 
+/home/dodzw/projects/strategient-architect/studio/src/DiagramScene.cpp:
+
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h:
 
 /usr/include/c++/13/bits/sstream.tcc:
@@ -9100,13 +9080,13 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_MonacoBridge.cpp:
 
 /usr/include/c++/13/bits/basic_string.h:
 
-StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLPreview.cpp:
-
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h:
 
@@ -9120,11 +9100,11 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLPreview.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem:
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qregion.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qline.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtGui/qregion.h:
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qpainterpath.h:
 
@@ -9260,6 +9240,10 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLPreview.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qfontmetrics.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h:
@@ -9271,6 +9255,22 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLPreview.cpp:
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer:
+
+/usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h:
+
+/usr/include/c++/13/bits/stl_heap.h:
+
+/usr/include/c++/13/bits/atomic_lockfree_defines.h:
+
+/usr/include/syscall.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject:
 
@@ -9289,3 +9289,7 @@ StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLPreview.cpp:
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h:

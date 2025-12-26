@@ -148,6 +148,65 @@ QString GraphvizRenderer::validateDotSource(const QString& source) {
     return QString();  // No validation errors
 }
 
+QString GraphvizRenderer::resolveImagePaths(const QString& source) {
+    // Get the assets directory path (where shapes/ folder is located)
+    QString appDir = QCoreApplication::applicationDirPath();
+    
+    // Try several possible locations for the shapes folder
+    QStringList searchPaths = {
+        appDir + "/../assets",                          // Build dir -> assets
+        appDir + "/../../assets",                       // Deeper build dir
+        appDir + "/../../../assets",                    // Even deeper
+        QDir::currentPath() + "/assets",                // Current dir
+        "/home/dodzw/projects/strategient-architect/assets"  // Fallback absolute
+    };
+    
+    QString assetsPath;
+    for (const QString& path : searchPaths) {
+        QDir dir(path);
+        if (dir.exists("shapes")) {
+            assetsPath = dir.absolutePath();
+            qDebug() << "[GraphvizRenderer] Found shapes at:" << assetsPath;
+            break;
+        }
+    }
+    
+    if (assetsPath.isEmpty()) {
+        qWarning() << "[GraphvizRenderer] Could not find shapes directory";
+        return source;  // Return unchanged
+    }
+    
+    // Replace relative image paths with absolute paths
+    // Match: image="shapes/..." or image='shapes/...'
+    QString result = source;
+    
+    static QRegularExpression imageRe(
+        "image\\s*=\\s*\"(shapes/[^\"]+)\"",
+        QRegularExpression::CaseInsensitiveOption
+    );
+    
+    QRegularExpressionMatchIterator it = imageRe.globalMatch(source);
+    QStringList replacements;
+    
+    while (it.hasNext()) {
+        QRegularExpressionMatch match = it.next();
+        QString relativePath = match.captured(1);
+        QString absolutePath = assetsPath + "/" + relativePath;
+        
+        // Check if file exists
+        if (QFile::exists(absolutePath)) {
+            QString oldStr = QString("image=\"%1\"").arg(relativePath);
+            QString newStr = QString("image=\"%1\"").arg(absolutePath);
+            result.replace(oldStr, newStr);
+            qDebug() << "[GraphvizRenderer] Resolved:" << relativePath << "->" << absolutePath;
+        } else {
+            qWarning() << "[GraphvizRenderer] Image not found:" << absolutePath;
+        }
+    }
+    
+    return result;
+}
+
 void GraphvizRenderer::renderToSvg(const QString& dotSource) {
     qDebug() << "[GraphvizRenderer] renderToSvg called, source length:" << dotSource.length();
     
@@ -162,6 +221,9 @@ void GraphvizRenderer::renderToSvg(const QString& dotSource) {
         emit renderError("DOT validation failed", validationError);
         return;
     }
+
+    // Resolve relative image paths to absolute paths
+    QString processedSource = resolveImagePaths(dotSource);
 
     emit renderStarted();
 
@@ -178,7 +240,7 @@ void GraphvizRenderer::renderToSvg(const QString& dotSource) {
     }
 
     // Parse the DOT source into a graph
-    QByteArray sourceBytes = dotSource.toUtf8();
+    QByteArray sourceBytes = processedSource.toUtf8();
     graph_t* graph = agmemread(sourceBytes.constData());
     
     if (!graph) {
@@ -246,7 +308,7 @@ void GraphvizRenderer::renderToSvg(const QString& dotSource) {
 
 #else
     // Fallback: Use dot CLI
-    renderToSvgViaCLI(dotSource);
+    renderToSvgViaCLI(processedSource);
 #endif
 }
 

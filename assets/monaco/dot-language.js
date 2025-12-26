@@ -359,6 +359,91 @@ function registerDotLanguage() {
                 return { suggestions };
             }
 
+            // Image attribute - suggest shape library icons
+            const isImageContext = /image\s*=\s*"?$/.test(textBefore);
+            if (isImageContext) {
+                // AWS icons
+                const awsIcons = [
+                    ['shapes/aws/s3.svg', 'S3 Bucket', 'AWS storage service'],
+                    ['shapes/aws/ec2.svg', 'EC2 Instance', 'AWS compute service'],
+                    ['shapes/aws/lambda.svg', 'Lambda Function', 'AWS serverless compute'],
+                    ['shapes/aws/rds.svg', 'RDS Database', 'AWS relational database'],
+                    ['shapes/aws/sqs.svg', 'SQS Queue', 'AWS message queue'],
+                    ['shapes/aws/dynamodb.svg', 'DynamoDB', 'AWS NoSQL database'],
+                    ['shapes/aws/ecs.svg', 'ECS Container', 'AWS container service'],
+                    ['shapes/aws/api-gateway.svg', 'API Gateway', 'AWS API management']
+                ];
+                awsIcons.forEach(([path, label, desc]) => {
+                    addSuggestion(path, monaco.languages.CompletionItemKind.File,
+                        path, `AWS: ${label}`, false, desc);
+                });
+
+                // Kubernetes icons
+                const k8sIcons = [
+                    ['shapes/kubernetes/pod.svg', 'Pod', 'K8s smallest deployable unit'],
+                    ['shapes/kubernetes/service.svg', 'Service', 'K8s network abstraction'],
+                    ['shapes/kubernetes/deployment.svg', 'Deployment', 'K8s workload controller'],
+                    ['shapes/kubernetes/node.svg', 'Node', 'K8s worker machine'],
+                    ['shapes/kubernetes/ingress.svg', 'Ingress', 'K8s external access'],
+                    ['shapes/kubernetes/configmap.svg', 'ConfigMap', 'K8s configuration'],
+                    ['shapes/kubernetes/pv.svg', 'PersistentVolume', 'K8s storage'],
+                    ['shapes/kubernetes/job.svg', 'Job', 'K8s batch workload']
+                ];
+                k8sIcons.forEach(([path, label, desc]) => {
+                    addSuggestion(path, monaco.languages.CompletionItemKind.File,
+                        path, `K8s: ${label}`, false, desc);
+                });
+
+                // Infrastructure icons
+                const infraIcons = [
+                    ['shapes/infrastructure/server.svg', 'Server', 'Generic server'],
+                    ['shapes/infrastructure/database.svg', 'Database', 'Generic database'],
+                    ['shapes/infrastructure/computer.svg', 'Computer', 'Desktop/workstation'],
+                    ['shapes/infrastructure/network.svg', 'Network', 'Network topology'],
+                    ['shapes/infrastructure/cloud.svg', 'Cloud', 'Cloud provider'],
+                    ['shapes/infrastructure/storage.svg', 'Storage', 'Storage array'],
+                    ['shapes/infrastructure/firewall.svg', 'Firewall', 'Security firewall'],
+                    ['shapes/infrastructure/load-balancer.svg', 'Load Balancer', 'Traffic distribution']
+                ];
+                infraIcons.forEach(([path, label, desc]) => {
+                    addSuggestion(path, monaco.languages.CompletionItemKind.File,
+                        path, `Infra: ${label}`, false, desc);
+                });
+
+                // Data/Pipeline icons
+                const dataIcons = [
+                    ['shapes/data/postgres.svg', 'PostgreSQL', 'SQL database'],
+                    ['shapes/data/duckdb.svg', 'DuckDB', 'Analytics database'],
+                    ['shapes/data/parquet.svg', 'Parquet', 'Columnar data format'],
+                    ['shapes/data/kafka.svg', 'Apache Kafka', 'Event streaming'],
+                    ['shapes/data/spark.svg', 'Apache Spark', 'Big data processing'],
+                    ['shapes/data/airflow.svg', 'Apache Airflow', 'Workflow orchestration'],
+                    ['shapes/data/redis.svg', 'Redis', 'In-memory cache']
+                ];
+                dataIcons.forEach(([path, label, desc]) => {
+                    addSuggestion(path, monaco.languages.CompletionItemKind.File,
+                        path, `Data: ${label}`, false, desc);
+                });
+
+                // Software icons
+                const softwareIcons = [
+                    ['shapes/software/rust.svg', 'Rust', 'Systems programming'],
+                    ['shapes/software/python.svg', 'Python', 'Scripting language'],
+                    ['shapes/software/docker.svg', 'Docker', 'Container runtime'],
+                    ['shapes/software/api.svg', 'API Service', 'REST/gRPC endpoint'],
+                    ['shapes/software/react.svg', 'React', 'Frontend framework'],
+                    ['shapes/software/tauri.svg', 'Tauri', 'Desktop app framework'],
+                    ['shapes/software/qt.svg', 'Qt', 'Desktop app framework'],
+                    ['shapes/software/console.svg', 'Console App', 'CLI application']
+                ];
+                softwareIcons.forEach(([path, label, desc]) => {
+                    addSuggestion(path, monaco.languages.CompletionItemKind.File,
+                        path, `Software: ${label}`, false, desc);
+                });
+
+                return { suggestions };
+            }
+
             // === Attribute name completions ===
             if (isInAttributes && !isAfterEquals) {
                 // Common attributes
@@ -442,6 +527,21 @@ function registerDotLanguage() {
             addSuggestion('color palette', monaco.languages.CompletionItemKind.Snippet,
                 '// Blue tones\n// #E3F2FD #BBDEFB #90CAF9 #64B5F6 #42A5F5 #2196F3 #1E88E5 #1976D2\n// Green tones\n// #E8F5E9 #C8E6C9 #A5D6A7 #81C784 #66BB6A #4CAF50 #43A047 #388E3C\n// Orange tones\n// #FFF3E0 #FFE0B2 #FFCC80 #FFB74D #FFA726 #FF9800 #FB8C00 #F57C00',
                 'Material Design color palette', true);
+
+            // Node with image icon
+            addSuggestion('node with icon', monaco.languages.CompletionItemKind.Snippet,
+                '${1:node_id} [label="${2:Label}", shape=none, image="${3|shapes/aws/ec2.svg,shapes/aws/s3.svg,shapes/aws/lambda.svg,shapes/data/postgres.svg,shapes/data/duckdb.svg,shapes/software/rust.svg,shapes/kubernetes/pod.svg|}", labelloc=b];',
+                'Node with shape library icon', true);
+
+            // Data pipeline template
+            addSuggestion('data pipeline', monaco.languages.CompletionItemKind.Snippet,
+                'subgraph cluster_pipeline {\n\tlabel="Data Pipeline";\n\tstyle=filled;\n\tfillcolor="#E3F2FD";\n\t\n\tsource [label="Source", shape=none, image="shapes/data/postgres.svg", labelloc=b];\n\tprocess [label="Process", shape=none, image="shapes/data/spark.svg", labelloc=b];\n\tsink [label="Sink", shape=none, image="shapes/data/duckdb.svg", labelloc=b];\n\t\n\tsource -> process -> sink;\n}',
+                'Data pipeline with icons', true);
+
+            // Rust backtester template
+            addSuggestion('rust backtester', monaco.languages.CompletionItemKind.Snippet,
+                'subgraph cluster_backtester {\n\tlabel="Rust Backtest Engine";\n\tstyle=filled;\n\tfillcolor="#FFF3E0";\n\t\n\tengine [label="Backtest Engine", shape=none, image="shapes/software/rust.svg", labelloc=b];\n\tindicators [label="Indicators", shape=component, style=filled, fillcolor="#FFE0B2"];\n\tsweep [label="Parameter Sweep", shape=component, style=filled, fillcolor="#FFE0B2"];\n\twfo [label="Walk-Forward", shape=component, style=filled, fillcolor="#FFE0B2"];\n\t\n\tengine -> indicators;\n\tengine -> sweep;\n\tsweep -> wfo;\n}',
+                'Rust backtest engine template', true);
 
             return { suggestions: suggestions };
         }

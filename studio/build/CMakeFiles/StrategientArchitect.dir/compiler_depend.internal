@@ -9,7 +9,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/mocs_compilation.cpp
  /home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DiagramScene.hpp
- /home/dodzw/projects/strategient-architect/studio/src/DiagramTypes.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DiagramView.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DocumentModel.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DotParser.hpp
@@ -19,9 +18,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp
  /home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp
  /home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp
- /home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.hpp
- /home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.hpp
- /home/dodzw/projects/strategient-architect/studio/src/PlantUMLRenderer.hpp
  /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp
  /home/dodzw/projects/strategient-architect/studio/src/RunConsole.hpp
  /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/UVLADIE3JM/moc_DiagramPlaceholder.cpp
@@ -34,8 +30,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/UVLADIE3JM/moc_MonacoEditorWidget.cpp
  /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/UVLADIE3JM/moc_NodeItem.cpp
  /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/UVLADIE3JM/moc_PagesSidebar.cpp
- /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLPreview.cpp
- /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/UVLADIE3JM/moc_PlantUMLRenderer.cpp
  /home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/UVLADIE3JM/moc_RunConsole.cpp
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
@@ -73,10 +67,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/c++/13/bits/exception.h
  /usr/include/c++/13/bits/exception_defines.h
  /usr/include/c++/13/bits/exception_ptr.h
- /usr/include/c++/13/bits/fs_dir.h
- /usr/include/c++/13/bits/fs_fwd.h
- /usr/include/c++/13/bits/fs_ops.h
- /usr/include/c++/13/bits/fs_path.h
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hash_bytes.h
@@ -165,7 +155,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/c++/13/climits
  /usr/include/c++/13/clocale
  /usr/include/c++/13/cmath
- /usr/include/c++/13/codecvt
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
  /usr/include/c++/13/cstddef
@@ -186,7 +175,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/string_conversions.h
  /usr/include/c++/13/ext/type_traits.h
- /usr/include/c++/13/filesystem
  /usr/include/c++/13/format
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
@@ -370,9 +358,7 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QMap
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QProcess
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QString
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QTemporaryFile
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QVector
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h
@@ -402,8 +388,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h
@@ -436,7 +420,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs_impl.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h
@@ -464,7 +447,6 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qtemporaryfile.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h
@@ -475,6 +457,7 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h
@@ -502,6 +485,10 @@ CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilatio
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow
@@ -1015,11 +1002,9 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.o
 CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o
  /home/dodzw/projects/strategient-architect/studio/src/DiagramScene.cpp
  /home/dodzw/projects/strategient-architect/studio/src/DiagramScene.hpp
- /home/dodzw/projects/strategient-architect/studio/src/DiagramTypes.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DotParser.hpp
  /home/dodzw/projects/strategient-architect/studio/src/EdgeItem.hpp
  /home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp
- /home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.hpp
  /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
@@ -1385,6 +1370,7 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h
@@ -1446,6 +1432,7 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qcolor.h
@@ -1465,6 +1452,10 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene
@@ -1490,13 +1481,11 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o
 CMakeFiles/StrategientArchitect.dir/src/DiagramView.cpp.o
  /home/dodzw/projects/strategient-architect/studio/src/DiagramView.cpp
  /home/dodzw/projects/strategient-architect/studio/src/DiagramScene.hpp
- /home/dodzw/projects/strategient-architect/studio/src/DiagramTypes.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DiagramView.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DocumentModel.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DotParser.hpp
  /home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.hpp
  /home/dodzw/projects/strategient-architect/studio/src/NodeItem.hpp
- /home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.hpp
  /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
@@ -2479,7 +2468,6 @@ CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.o
 
 CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o
  /home/dodzw/projects/strategient-architect/studio/src/DotParser.cpp
- /home/dodzw/projects/strategient-architect/studio/src/DiagramTypes.hpp
  /home/dodzw/projects/strategient-architect/studio/src/DotParser.hpp
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
@@ -3267,6 +3255,7 @@ CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h
@@ -3328,6 +3317,7 @@ CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPainter
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h
@@ -3352,6 +3342,10 @@ CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsitem.h
@@ -3860,7 +3854,6 @@ CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.o
  /home/dodzw/projects/strategient-architect/studio/src/MainWindow.hpp
  /home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp
  /home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp
- /home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.hpp
  /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp
  /home/dodzw/projects/strategient-architect/studio/src/RunConsole.hpp
  /usr/include/alloca.h
@@ -5330,6 +5323,10 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/c++/13/bits/exception.h
  /usr/include/c++/13/bits/exception_defines.h
  /usr/include/c++/13/bits/exception_ptr.h
+ /usr/include/c++/13/bits/fs_dir.h
+ /usr/include/c++/13/bits/fs_fwd.h
+ /usr/include/c++/13/bits/fs_ops.h
+ /usr/include/c++/13/bits/fs_path.h
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hash_bytes.h
@@ -5418,6 +5415,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/c++/13/climits
  /usr/include/c++/13/clocale
  /usr/include/c++/13/cmath
+ /usr/include/c++/13/codecvt
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
  /usr/include/c++/13/cstddef
@@ -5438,6 +5436,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/string_conversions.h
  /usr/include/c++/13/ext/type_traits.h
+ /usr/include/c++/13/filesystem
  /usr/include/c++/13/format
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
@@ -5615,6 +5614,8 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/gnu/stubs.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QFile
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonArray
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonDocument
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject
@@ -5651,6 +5652,8 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h
@@ -5658,6 +5661,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h
@@ -5719,6 +5723,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QColor
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QCursor
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QFontMetrics
@@ -5752,6 +5757,10 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsObject
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsPathItem
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsSceneMouseEvent

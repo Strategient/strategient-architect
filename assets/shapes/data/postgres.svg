@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="pg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#336791"/>
+      <stop offset="100%" style="stop-color:#264d73"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="48" rx="4" fill="url(#pg-grad)"/>
+  <ellipse cx="32" cy="20" rx="16" ry="6" fill="white" opacity="0.2"/>
+  <path d="M16 20 L16 44 Q16 50 32 50 Q48 50 48 44 L48 20" fill="none" stroke="white" stroke-width="2"/>
+  <ellipse cx="32" cy="44" rx="16" ry="6" fill="none" stroke="white" stroke-width="2"/>
+  <text x="32" y="36" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="white">PG</text>
+  <text x="32" y="58" text-anchor="middle" font-family="Arial" font-size="7" fill="white">PostgreSQL</text>
+</svg>
+

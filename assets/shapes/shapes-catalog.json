@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "description": "Shape library for Strategient Architect diagrams",
+  "basePath": "shapes/",
+  "categories": {
+    "aws": {
+      "name": "AWS Services",
+      "description": "Amazon Web Services architecture icons",
+      "shapes": {
+        "s3": { "file": "aws/s3.svg", "label": "S3 Bucket", "tags": ["storage", "cloud"] },
+        "ec2": { "file": "aws/ec2.svg", "label": "EC2 Instance", "tags": ["compute", "cloud"] },
+        "lambda": { "file": "aws/lambda.svg", "label": "Lambda Function", "tags": ["compute", "serverless"] },
+        "rds": { "file": "aws/rds.svg", "label": "RDS Database", "tags": ["database", "cloud"] },
+        "sqs": { "file": "aws/sqs.svg", "label": "SQS Queue", "tags": ["messaging", "queue"] },
+        "dynamodb": { "file": "aws/dynamodb.svg", "label": "DynamoDB", "tags": ["database", "nosql"] },
+        "ecs": { "file": "aws/ecs.svg", "label": "ECS Container", "tags": ["container", "compute"] },
+        "api-gateway": { "file": "aws/api-gateway.svg", "label": "API Gateway", "tags": ["api", "gateway"] }
+      }
+    },
+    "kubernetes": {
+      "name": "Kubernetes",
+      "description": "Kubernetes orchestration icons",
+      "shapes": {
+        "pod": { "file": "kubernetes/pod.svg", "label": "Pod", "tags": ["container", "k8s"] },
+        "service": { "file": "kubernetes/service.svg", "label": "Service", "tags": ["networking", "k8s"] },
+        "deployment": { "file": "kubernetes/deployment.svg", "label": "Deployment", "tags": ["workload", "k8s"] },
+        "node": { "file": "kubernetes/node.svg", "label": "Node", "tags": ["compute", "k8s"] },
+        "ingress": { "file": "kubernetes/ingress.svg", "label": "Ingress", "tags": ["networking", "k8s"] },
+        "configmap": { "file": "kubernetes/configmap.svg", "label": "ConfigMap", "tags": ["config", "k8s"] },
+        "pv": { "file": "kubernetes/pv.svg", "label": "PersistentVolume", "tags": ["storage", "k8s"] },
+        "job": { "file": "kubernetes/job.svg", "label": "Job", "tags": ["batch", "k8s"] }
+      }
+    },
+    "infrastructure": {
+      "name": "Infrastructure",
+      "description": "General infrastructure components",
+      "shapes": {
+        "server": { "file": "infrastructure/server.svg", "label": "Server", "tags": ["compute", "hardware"] },
+        "database": { "file": "infrastructure/database.svg", "label": "Database", "tags": ["storage", "data"] },
+        "computer": { "file": "infrastructure/computer.svg", "label": "Computer", "tags": ["compute", "client"] },
+        "network": { "file": "infrastructure/network.svg", "label": "Network", "tags": ["networking"] },
+        "cloud": { "file": "infrastructure/cloud.svg", "label": "Cloud", "tags": ["cloud", "provider"] },
+        "storage": { "file": "infrastructure/storage.svg", "label": "Storage", "tags": ["storage", "hardware"] },
+        "firewall": { "file": "infrastructure/firewall.svg", "label": "Firewall", "tags": ["security", "networking"] },
+        "load-balancer": { "file": "infrastructure/load-balancer.svg", "label": "Load Balancer", "tags": ["networking", "scaling"] }
+      }
+    },
+    "data": {
+      "name": "Data & Pipeline",
+      "description": "Data processing and storage systems",
+      "shapes": {
+        "postgres": { "file": "data/postgres.svg", "label": "PostgreSQL", "tags": ["database", "sql"] },
+        "duckdb": { "file": "data/duckdb.svg", "label": "DuckDB", "tags": ["database", "analytics"] },
+        "parquet": { "file": "data/parquet.svg", "label": "Parquet", "tags": ["format", "data"] },
+        "kafka": { "file": "data/kafka.svg", "label": "Apache Kafka", "tags": ["streaming", "messaging"] },
+        "spark": { "file": "data/spark.svg", "label": "Apache Spark", "tags": ["processing", "batch"] },
+        "airflow": { "file": "data/airflow.svg", "label": "Apache Airflow", "tags": ["orchestration", "scheduler"] },
+        "redis": { "file": "data/redis.svg", "label": "Redis", "tags": ["cache", "database"] }
+      }
+    },
+    "software": {
+      "name": "Software Components",
+      "description": "Programming languages and frameworks",
+      "shapes": {
+        "rust": { "file": "software/rust.svg", "label": "Rust", "tags": ["language", "systems"] },
+        "python": { "file": "software/python.svg", "label": "Python", "tags": ["language", "scripting"] },
+        "docker": { "file": "software/docker.svg", "label": "Docker", "tags": ["container", "deployment"] },
+        "api": { "file": "software/api.svg", "label": "API Service", "tags": ["api", "service"] },
+        "react": { "file": "software/react.svg", "label": "React", "tags": ["frontend", "ui"] },
+        "tauri": { "file": "software/tauri.svg", "label": "Tauri", "tags": ["desktop", "framework"] },
+        "qt": { "file": "software/qt.svg", "label": "Qt", "tags": ["desktop", "framework"] },
+        "console": { "file": "software/console.svg", "label": "Console App", "tags": ["cli", "terminal"] }
+      }
+    }
+  }
+}
+
