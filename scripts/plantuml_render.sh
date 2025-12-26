@@ -4,33 +4,17 @@
 #
 # Usage: ./plantuml_render.sh <input.puml> [output.svg]
 #
-# Requires: java, plantuml.jar installed on system
+# Requires: java, plantuml installed (or plantuml.jar)
 #
 set -euo pipefail
-
-# Default PlantUML jar locations (adjust if needed)
-PLANTUML_JAR="${PLANTUML_JAR:-/usr/share/plantuml/plantuml.jar}"
-
-# Alternative common locations
-if [[ ! -f "$PLANTUML_JAR" ]]; then
-    for candidate in \
-        /usr/share/java/plantuml.jar \
-        /opt/plantuml/plantuml.jar \
-        ~/plantuml.jar \
-        ./plantuml.jar; do
-        if [[ -f "$candidate" ]]; then
-            PLANTUML_JAR="$candidate"
-            break
-        fi
-    done
-fi
 
 # Check arguments
 if [[ $# -lt 1 ]]; then
     echo "Usage: $0 <input.puml> [output.svg]"
     echo ""
-    echo "Environment:"
-    echo "  PLANTUML_JAR - Path to plantuml.jar (default: /usr/share/plantuml/plantuml.jar)"
+    echo "Examples:"
+    echo "  $0 diagram.puml                  # outputs diagram.svg in same dir"
+    echo "  $0 diagram.puml /tmp/out.svg     # outputs to specified path"
     exit 1
 fi
 
@@ -43,19 +27,16 @@ if [[ ! -f "$INPUT_FILE" ]]; then
     exit 1
 fi
 
-# Validate PlantUML jar
-if [[ ! -f "$PLANTUML_JAR" ]]; then
-    echo "ERROR: plantuml.jar not found at: $PLANTUML_JAR"
-    echo ""
-    echo "Install PlantUML or set PLANTUML_JAR environment variable."
-    echo "  Ubuntu: sudo apt install plantuml"
-    exit 1
-fi
+# Get absolute paths
+INPUT_FILE="$(realpath "$INPUT_FILE")"
+INPUT_DIR="$(dirname "$INPUT_FILE")"
+INPUT_NAME="$(basename "$INPUT_FILE" .puml)"
 
 # Determine output path
 if [[ -z "$OUTPUT_FILE" ]]; then
-    # Default: same directory, .svg extension
-    OUTPUT_FILE="${INPUT_FILE%.puml}.svg"
+    OUTPUT_FILE="${INPUT_DIR}/${INPUT_NAME}.svg"
+else
+    OUTPUT_FILE="$(realpath -m "$OUTPUT_FILE")"
 fi
 
 OUTPUT_DIR="$(dirname "$OUTPUT_FILE")"
@@ -63,20 +44,60 @@ mkdir -p "$OUTPUT_DIR"
 
 echo "Rendering: $INPUT_FILE -> $OUTPUT_FILE"
 
-# Render to SVG
-java -jar "$PLANTUML_JAR" -tsvg -o "$OUTPUT_DIR" "$INPUT_FILE"
-
-# PlantUML outputs to same dir as input with .svg extension
-# Move if output location differs
-GENERATED="${INPUT_FILE%.puml}.svg"
-if [[ "$GENERATED" != "$OUTPUT_FILE" && -f "$GENERATED" ]]; then
-    mv "$GENERATED" "$OUTPUT_FILE"
+# Check if plantuml command exists (Ubuntu package)
+if command -v plantuml &> /dev/null; then
+    # Use system plantuml command - render to temp, then move
+    TEMP_DIR=$(mktemp -d)
+    plantuml -tsvg "$INPUT_FILE" -o "$TEMP_DIR"
+    
+    GENERATED="${TEMP_DIR}/${INPUT_NAME}.svg"
+    if [[ -f "$GENERATED" ]]; then
+        mv "$GENERATED" "$OUTPUT_FILE"
+        rm -rf "$TEMP_DIR"
+    else
+        rm -rf "$TEMP_DIR"
+        echo "ERROR: Failed to generate SVG"
+        exit 1
+    fi
+else
+    # Try to find plantuml.jar
+    PLANTUML_JAR="${PLANTUML_JAR:-/usr/share/plantuml/plantuml.jar}"
+    
+    for candidate in \
+        /usr/share/java/plantuml.jar \
+        /usr/share/plantuml/plantuml.jar \
+        /opt/plantuml/plantuml.jar \
+        ~/plantuml.jar \
+        ./plantuml.jar; do
+        if [[ -f "$candidate" ]]; then
+            PLANTUML_JAR="$candidate"
+            break
+        fi
+    done
+    
+    if [[ ! -f "$PLANTUML_JAR" ]]; then
+        echo "ERROR: plantuml not found. Install with: sudo apt install plantuml"
+        exit 1
+    fi
+    
+    # Render using jar
+    TEMP_DIR=$(mktemp -d)
+    java -jar "$PLANTUML_JAR" -tsvg "$INPUT_FILE" -o "$TEMP_DIR"
+    
+    GENERATED="${TEMP_DIR}/${INPUT_NAME}.svg"
+    if [[ -f "$GENERATED" ]]; then
+        mv "$GENERATED" "$OUTPUT_FILE"
+        rm -rf "$TEMP_DIR"
+    else
+        rm -rf "$TEMP_DIR"
+        echo "ERROR: Failed to generate SVG"
+        exit 1
+    fi
 fi
 
 if [[ -f "$OUTPUT_FILE" ]]; then
     echo "Done: $OUTPUT_FILE"
 else
-    echo "ERROR: Failed to generate SVG"
+    echo "ERROR: Output file not created"
     exit 1
 fi
-

@@ -16,12 +16,20 @@ set(SOURCES
     src/MainWindow.cpp
     src/RunConsole.cpp
     src/PlantUMLPreview.cpp
+    src/ProjectModel.cpp
+    src/DocumentModel.cpp
+    src/PagesSidebar.cpp
+    src/DiagramPlaceholder.cpp
 )
 
 set(HEADERS
     src/MainWindow.hpp
     src/RunConsole.hpp
     src/PlantUMLPreview.hpp
+    src/ProjectModel.hpp
+    src/DocumentModel.hpp
+    src/PagesSidebar.hpp
+    src/DiagramPlaceholder.hpp
 )
 
 # Create executable
@@ -54,4 +62,3 @@ add_custom_target(engine_build
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../engine
     COMMENT "Building Rust engine..."
 )
-

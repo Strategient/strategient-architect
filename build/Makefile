@@ -192,6 +192,54 @@ StrategientArchitect_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/mocs_compilation.cpp.s
 .PHONY : StrategientArchitect_autogen/mocs_compilation.cpp.s
 
+src/DiagramPlaceholder.o: src/DiagramPlaceholder.cpp.o
+.PHONY : src/DiagramPlaceholder.o
+
+# target to build an object file
+src/DiagramPlaceholder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.o
+.PHONY : src/DiagramPlaceholder.cpp.o
+
+src/DiagramPlaceholder.i: src/DiagramPlaceholder.cpp.i
+.PHONY : src/DiagramPlaceholder.i
+
+# target to preprocess a source file
+src/DiagramPlaceholder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.i
+.PHONY : src/DiagramPlaceholder.cpp.i
+
+src/DiagramPlaceholder.s: src/DiagramPlaceholder.cpp.s
+.PHONY : src/DiagramPlaceholder.s
+
+# target to generate assembly for a file
+src/DiagramPlaceholder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.s
+.PHONY : src/DiagramPlaceholder.cpp.s
+
+src/DocumentModel.o: src/DocumentModel.cpp.o
+.PHONY : src/DocumentModel.o
+
+# target to build an object file
+src/DocumentModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.o
+.PHONY : src/DocumentModel.cpp.o
+
+src/DocumentModel.i: src/DocumentModel.cpp.i
+.PHONY : src/DocumentModel.i
+
+# target to preprocess a source file
+src/DocumentModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.i
+.PHONY : src/DocumentModel.cpp.i
+
+src/DocumentModel.s: src/DocumentModel.cpp.s
+.PHONY : src/DocumentModel.s
+
+# target to generate assembly for a file
+src/DocumentModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.s
+.PHONY : src/DocumentModel.cpp.s
+
 src/MainWindow.o: src/MainWindow.cpp.o
 .PHONY : src/MainWindow.o
 
@@ -216,6 +264,30 @@ src/MainWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.s
 .PHONY : src/MainWindow.cpp.s
 
+src/PagesSidebar.o: src/PagesSidebar.cpp.o
+.PHONY : src/PagesSidebar.o
+
+# target to build an object file
+src/PagesSidebar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PagesSidebar.cpp.o
+.PHONY : src/PagesSidebar.cpp.o
+
+src/PagesSidebar.i: src/PagesSidebar.cpp.i
+.PHONY : src/PagesSidebar.i
+
+# target to preprocess a source file
+src/PagesSidebar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PagesSidebar.cpp.i
+.PHONY : src/PagesSidebar.cpp.i
+
+src/PagesSidebar.s: src/PagesSidebar.cpp.s
+.PHONY : src/PagesSidebar.s
+
+# target to generate assembly for a file
+src/PagesSidebar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PagesSidebar.cpp.s
+.PHONY : src/PagesSidebar.cpp.s
+
 src/PlantUMLPreview.o: src/PlantUMLPreview.cpp.o
 .PHONY : src/PlantUMLPreview.o
 
@@ -239,6 +311,30 @@ src/PlantUMLPreview.s: src/PlantUMLPreview.cpp.s
 src/PlantUMLPreview.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLPreview.cpp.s
 .PHONY : src/PlantUMLPreview.cpp.s
+
+src/ProjectModel.o: src/ProjectModel.cpp.o
+.PHONY : src/ProjectModel.o
+
+# target to build an object file
+src/ProjectModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/ProjectModel.cpp.o
+.PHONY : src/ProjectModel.cpp.o
+
+src/ProjectModel.i: src/ProjectModel.cpp.i
+.PHONY : src/ProjectModel.i
+
+# target to preprocess a source file
+src/ProjectModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/ProjectModel.cpp.i
+.PHONY : src/ProjectModel.cpp.i
+
+src/ProjectModel.s: src/ProjectModel.cpp.s
+.PHONY : src/ProjectModel.s
+
+# target to generate assembly for a file
+src/ProjectModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/ProjectModel.cpp.s
+.PHONY : src/ProjectModel.cpp.s
 
 src/RunConsole.o: src/RunConsole.cpp.o
 .PHONY : src/RunConsole.o
@@ -303,12 +399,24 @@ help:
 	@echo "... StrategientArchitect_autogen/mocs_compilation.o"
 	@echo "... StrategientArchitect_autogen/mocs_compilation.i"
 	@echo "... StrategientArchitect_autogen/mocs_compilation.s"
+	@echo "... src/DiagramPlaceholder.o"
+	@echo "... src/DiagramPlaceholder.i"
+	@echo "... src/DiagramPlaceholder.s"
+	@echo "... src/DocumentModel.o"
+	@echo "... src/DocumentModel.i"
+	@echo "... src/DocumentModel.s"
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"
+	@echo "... src/PagesSidebar.o"
+	@echo "... src/PagesSidebar.i"
+	@echo "... src/PagesSidebar.s"
 	@echo "... src/PlantUMLPreview.o"
 	@echo "... src/PlantUMLPreview.i"
 	@echo "... src/PlantUMLPreview.s"
+	@echo "... src/ProjectModel.o"
+	@echo "... src/ProjectModel.i"
+	@echo "... src/ProjectModel.s"
 	@echo "... src/RunConsole.o"
 	@echo "... src/RunConsole.i"
 	@echo "... src/RunConsole.s"

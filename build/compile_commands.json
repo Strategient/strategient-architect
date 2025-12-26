@@ -28,5 +28,29 @@
   "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_SVGWIDGETS_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB -I/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/include -I/home/dodzw/projects/strategient-architect/studio/../engine/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvg -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets -O3 -DNDEBUG -std=gnu++20 -fPIC -o CMakeFiles/StrategientArchitect.dir/src/PlantUMLPreview.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.cpp",
   "file": "/home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.cpp",
   "output": "CMakeFiles/StrategientArchitect.dir/src/PlantUMLPreview.cpp.o"
+},
+{
+  "directory": "/home/dodzw/projects/strategient-architect/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_SVGWIDGETS_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB -I/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/include -I/home/dodzw/projects/strategient-architect/studio/../engine/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvg -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets -O3 -DNDEBUG -std=gnu++20 -fPIC -o CMakeFiles/StrategientArchitect.dir/src/ProjectModel.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.cpp",
+  "file": "/home/dodzw/projects/strategient-architect/studio/src/ProjectModel.cpp",
+  "output": "CMakeFiles/StrategientArchitect.dir/src/ProjectModel.cpp.o"
+},
+{
+  "directory": "/home/dodzw/projects/strategient-architect/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_SVGWIDGETS_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB -I/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/include -I/home/dodzw/projects/strategient-architect/studio/../engine/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvg -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets -O3 -DNDEBUG -std=gnu++20 -fPIC -o CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/DocumentModel.cpp",
+  "file": "/home/dodzw/projects/strategient-architect/studio/src/DocumentModel.cpp",
+  "output": "CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.o"
+},
+{
+  "directory": "/home/dodzw/projects/strategient-architect/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_SVGWIDGETS_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB -I/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/include -I/home/dodzw/projects/strategient-architect/studio/../engine/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvg -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets -O3 -DNDEBUG -std=gnu++20 -fPIC -o CMakeFiles/StrategientArchitect.dir/src/PagesSidebar.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.cpp",
+  "file": "/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.cpp",
+  "output": "CMakeFiles/StrategientArchitect.dir/src/PagesSidebar.cpp.o"
+},
+{
+  "directory": "/home/dodzw/projects/strategient-architect/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_SVGWIDGETS_LIB -DQT_SVG_LIB -DQT_WIDGETS_LIB -I/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/include -I/home/dodzw/projects/strategient-architect/studio/../engine/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvg -isystem /usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets -O3 -DNDEBUG -std=gnu++20 -fPIC -o CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.cpp",
+  "file": "/home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.cpp",
+  "output": "CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.o"
 }
 ]

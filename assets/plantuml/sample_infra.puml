@@ -1,6 +1,5 @@
 @startuml sample_infra
 
-!theme plain
 skinparam backgroundColor #fefefe
 skinparam componentStyle rectangle
 
@@ -56,4 +55,3 @@ note bottom of studio
 end note
 
 @enduml
-
