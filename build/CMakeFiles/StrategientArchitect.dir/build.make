@@ -75,6 +75,15 @@ StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/monaco/monaco-loader.js
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/monaco/editor.html
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/monaco/qwebchannel.js
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/theme/strategient-dark.qss
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient.png
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient-24.png
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient-128.png
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient-256.png
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient-48.png
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient-32.png
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient-64.png
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/icons/strategient-16.png
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /usr/lib/qt6/libexec/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for resources.qrc"
 	/usr/bin/cmake -E cmake_autorcc /home/dodzw/projects/strategient-architect/build/CMakeFiles/StrategientArchitect_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json Release

@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <QTabWidget>
 #include <QVBoxLayout>
+#include <QIcon>
 
 #include "engine.h"
 
@@ -24,6 +25,15 @@ MainWindow::MainWindow(QWidget* parent)
     m_documentModel = new DocumentModel(this);
 
     setWindowTitle("Strategient Architect");
+    
+    // Set window icon (also set via QApplication, but some WMs need it here too)
+    QIcon windowIcon;
+    windowIcon.addFile(":/icons/strategient-16.png", QSize(16, 16));
+    windowIcon.addFile(":/icons/strategient-32.png", QSize(32, 32));
+    windowIcon.addFile(":/icons/strategient-48.png", QSize(48, 48));
+    windowIcon.addFile(":/icons/strategient-64.png", QSize(64, 64));
+    setWindowIcon(windowIcon);
+    
     resize(1400, 900);
 
     setupUI();

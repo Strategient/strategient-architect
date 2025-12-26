@@ -3,6 +3,7 @@
 #include <QTextEdit>
 #include <QVBoxLayout>
 #include <QDateTime>
+#include <QFont>
 
 RunConsole::RunConsole(QWidget* parent)
     : QWidget(parent)
@@ -11,17 +12,17 @@ RunConsole::RunConsole(QWidget* parent)
     layout->setContentsMargins(0, 0, 0, 0);
 
     m_textEdit = new QTextEdit(this);
+    m_textEdit->setObjectName("runConsole");
     m_textEdit->setReadOnly(true);
     m_textEdit->setMinimumHeight(120);
-    m_textEdit->setStyleSheet(
-        "QTextEdit { "
-        "  background-color: #1e1e1e; "
-        "  color: #d4d4d4; "
-        "  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace; "
-        "  font-size: 12px; "
-        "  border: none; "
-        "  padding: 8px; "
-        "}");
+    
+    // Use monospace font for console output
+    QFont consoleFont("JetBrains Mono", 11);
+    consoleFont.setStyleHint(QFont::Monospace);
+    QStringList fallbacks;
+    fallbacks << "Fira Code" << "Consolas" << "Monaco" << "monospace";
+    consoleFont.setFamilies(QStringList() << "JetBrains Mono" << fallbacks);
+    m_textEdit->setFont(consoleFont);
 
     layout->addWidget(m_textEdit);
 }

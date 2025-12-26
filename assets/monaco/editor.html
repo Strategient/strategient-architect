@@ -20,6 +20,10 @@
             width: 100%;
             height: 100%;
         }
+        /* Hide scrollbar fighting with Qt */
+        .monaco-editor .overflow-guard {
+            width: 100% !important;
+        }
     </style>
 </head>
 <body>
@@ -35,11 +39,12 @@
     <script src="qrc:/monaco/plantuml-language.js"></script>
 
     <script>
+        // ===== Global State =====
         let editor = null;
         let bridge = null;
-        let isUpdatingFromCpp = false;
+        let isUpdatingFromCpp = false;  // Guard against recursive updates
 
-        // Initialize QWebChannel connection
+        // ===== Initialize QWebChannel =====
         function initWebChannel() {
             return new Promise((resolve, reject) => {
                 if (typeof QWebChannel === 'undefined') {
@@ -50,11 +55,15 @@
                 new QWebChannel(qt.webChannelTransport, function(channel) {
                     bridge = channel.objects.bridge;
                     if (bridge) {
-                        // Connect to C++ signals
+                        // Connect to C++ signals - these update editor FROM C++
                         bridge.requestSetText.connect(function(text) {
-                            if (editor) {
+                            if (editor && !isUpdatingFromCpp) {
                                 isUpdatingFromCpp = true;
-                                editor.setValue(text);
+                                const currentText = editor.getValue();
+                                // Only update if text is actually different
+                                if (currentText !== text) {
+                                    editor.setValue(text);
+                                }
                                 isUpdatingFromCpp = false;
                             }
                         });
@@ -79,43 +88,109 @@
             });
         }
 
-        // Initialize Monaco Editor
+        // ===== Initialize Monaco Editor =====
         function initMonaco() {
             return new Promise((resolve) => {
-                // Register PlantUML language
+                // 1. Define Strategient dark theme
+                defineStrategientTheme();
+                
+                // 2. Register PlantUML language
                 registerPlantUMLLanguage();
                 
-                // Create editor
+                // 3. Create editor with Strategient theme
                 editor = monaco.editor.create(document.getElementById('editor-container'), {
                     value: '',
                     language: 'plantuml',
-                    theme: 'vs-dark',
+                    theme: 'strategient-dark',  // Use our custom theme
+                    
+                    // Layout
                     automaticLayout: true,
-                    minimap: { enabled: false },
                     scrollBeyondLastLine: false,
+                    
+                    // Font
                     fontSize: 13,
-                    fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
+                    fontFamily: "'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace",
+                    fontLigatures: true,
+                    
+                    // Line numbers
                     lineNumbers: 'on',
+                    lineNumbersMinChars: 3,
                     renderLineHighlight: 'line',
+                    
+                    // Minimap - disabled for cleaner look in dock
+                    minimap: { enabled: false },
+                    
+                    // Scrollbar
+                    scrollbar: {
+                        vertical: 'auto',
+                        horizontal: 'auto',
+                        verticalScrollbarSize: 10,
+                        horizontalScrollbarSize: 10
+                    },
+                    
+                    // Editing
                     wordWrap: 'on',
                     tabSize: 2,
                     insertSpaces: true,
+                    autoIndent: 'advanced',
+                    formatOnPaste: false,
+                    formatOnType: false,
+                    
+                    // Features
                     folding: true,
-                    bracketPairColorization: { enabled: true }
+                    foldingStrategy: 'indentation',
+                    showFoldingControls: 'mouseover',
+                    bracketPairColorization: { enabled: true },
+                    
+                    // Suggestions
+                    suggestOnTriggerCharacters: true,
+                    quickSuggestions: {
+                        other: true,
+                        comments: false,
+                        strings: false
+                    },
+                    acceptSuggestionOnEnter: 'on',
+                    
+                    // Cursor
+                    cursorStyle: 'line',
+                    cursorBlinking: 'smooth',
+                    cursorSmoothCaretAnimation: 'on',
+                    
+                    // Selection
+                    selectionHighlight: true,
+                    occurrencesHighlight: true,
+                    
+                    // Other
+                    renderWhitespace: 'selection',
+                    guides: {
+                        indentation: true,
+                        bracketPairs: true
+                    }
                 });
 
-                // Listen for content changes
-                editor.onDidChangeModelContent(function() {
+                // 4. Listen for content changes - notify C++ ONLY when user edits
+                editor.onDidChangeModelContent(function(event) {
+                    // CRITICAL: Do not notify if we're updating from C++
+                    // This prevents recursive render loops
                     if (!isUpdatingFromCpp && bridge) {
                         bridge.notifyTextChanged(editor.getValue());
                     }
+                });
+
+                // 5. Handle focus for better Qt integration
+                editor.onDidFocusEditorText(function() {
+                    document.body.classList.add('editor-focused');
+                });
+                
+                editor.onDidBlurEditorText(function() {
+                    document.body.classList.remove('editor-focused');
                 });
 
                 resolve(editor);
             });
         }
 
-        // Main initialization
+        // ===== Main Initialization =====
         async function init() {
             try {
                 await initWebChannel();
@@ -125,8 +200,10 @@
                 if (bridge) {
                     bridge.notifyEditorReady();
                 }
+                
+                console.log('[Monaco] Editor initialized with Strategient theme');
             } catch (error) {
-                console.error('Initialization error:', error);
+                console.error('[Monaco] Initialization error:', error);
             }
         }
 
@@ -140,4 +217,3 @@
     </script>
 </body>
 </html>
-

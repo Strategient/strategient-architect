@@ -11,7 +11,16 @@
 		"/home/dodzw/projects/strategient-architect/assets/monaco/plantuml-language.js",
 		"/home/dodzw/projects/strategient-architect/assets/monaco/monaco-loader.js",
 		"/home/dodzw/projects/strategient-architect/assets/monaco/editor.html",
-		"/home/dodzw/projects/strategient-architect/assets/monaco/qwebchannel.js"
+		"/home/dodzw/projects/strategient-architect/assets/monaco/qwebchannel.js",
+		"/home/dodzw/projects/strategient-architect/assets/theme/strategient-dark.qss",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-24.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-128.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-256.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-48.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-32.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-64.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-16.png"
 	],
 	"LOCK_FILE" : "/home/dodzw/projects/strategient-architect/build/CMakeFiles/StrategientArchitect_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

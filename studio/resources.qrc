@@ -6,5 +6,17 @@
         <file alias="plantuml-language.js">../assets/monaco/plantuml-language.js</file>
         <file alias="qwebchannel.js">../assets/monaco/qwebchannel.js</file>
     </qresource>
+    <qresource prefix="/theme">
+        <file alias="strategient-dark.qss">../assets/theme/strategient-dark.qss</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file alias="strategient.png">../assets/icons/strategient.png</file>
+        <file alias="strategient-16.png">../assets/icons/strategient-16.png</file>
+        <file alias="strategient-24.png">../assets/icons/strategient-24.png</file>
+        <file alias="strategient-32.png">../assets/icons/strategient-32.png</file>
+        <file alias="strategient-48.png">../assets/icons/strategient-48.png</file>
+        <file alias="strategient-64.png">../assets/icons/strategient-64.png</file>
+        <file alias="strategient-128.png">../assets/icons/strategient-128.png</file>
+        <file alias="strategient-256.png">../assets/icons/strategient-256.png</file>
+    </qresource>
 </RCC>
-
