@@ -161,7 +161,6 @@
 #define __SIZEOF_FLOAT__ 4
 #define __HAVE_SPECULATION_SAFE_VALUE 1
 #define __cpp_fold_expressions 201603L
-#define NO_GRAPHVIZ 1
 #define __DEC32_MIN_EXP__ (-94)
 #define __INTPTR_WIDTH__ 64
 #define __UINT_LEAST32_MAX__ 0xffffffffU

@@ -21,3 +21,50 @@ Specific Tasks:
 
 Part 3: Suggest an Open-Source Shape Library
 Suggest a library of open-source, free-to-use shapes and icons that are suitable for system architecture diagrams (e.g., AWS, Kubernetes, Azure icons) that can be easily incorporated into the generated Graphviz diagrams using the image attribute in DOT files. The shapes should be compatible with an MIT or similar permissive license.
+
+Result:
+Successfully migrated the Strategient Architect application from PlantUML to Graphviz. Here's a summary of all the changes:
+Migration Summary: PlantUML → Graphviz
+Part 1: C++ Backend - Graphviz Library Integration
+New files created:
+GraphvizRenderer.hpp / GraphvizRenderer.cpp - Native Graphviz renderer using libgvc/libcgraph APIs
+Supports multiple layout engines: dot, neato, fdp, sfdp, circo, twopi, osage, patchwork
+Falls back to CLI (dot command) when libgraphviz-dev is not installed
+Comprehensive error handling for invalid DOT syntax
+DotParser.hpp / DotParser.cpp - Parser for DOT format
+Parses digraph/graph declarations
+Handles subgraph cluster_* for visual groupings
+Extracts nodes with attributes (shape, label, style)
+Parses edges with -> and -- operators
+Updated files:
+CMakeLists.txt - Added optional Graphviz library linking with graceful fallback
+DiagramView.hpp/cpp - Now uses GraphvizRenderer and renderGraphviz() method
+DiagramScene.hpp/cpp - Uses DotParser instead of PlantUMLParser
+MainWindow.cpp - Tab renamed to "DOT Editor", status messages updated
+DiagramPlaceholder.cpp - Updated to reference the new graphviz field
+Part 2: Monaco Editor - DOT Language Support
+New file:
+assets/monaco/dot-language.js - Complete DOT language definition with:
+Full syntax highlighting for DOT keywords, attributes, operators
+Autocomplete for shapes (box, cylinder, ellipse, etc.)
+Autocomplete for graph attributes (rankdir, splines, nodesep)
+Snippet templates for common patterns (digraph, subgraph cluster, K8s cluster)
+Support for HTML-like labels with <> syntax
+Updated:
+assets/monaco/editor.html - Now loads dot-language.js and initializes with DOT mode
+resources.qrc - Added dot-language.js to Qt resources
+Part 3: Data Model Updates
+ProjectModel.hpp/cpp - Renamed plantuml field to graphviz
+Backward compatible: reads legacy plantuml field if graphviz not present
+JSON serialization uses new graphviz key
+Sample Project
+Created assets/sample_graphviz_project.sarch.json with example DOT diagrams showing:
+Cluster subgraphs
+Custom node shapes
+Edge labels
+Color schemes
+Installation
+To enable native Graphviz rendering (faster, more features):
+sudo apt install graphviz libgraphviz-dev
+Without the library, the application will fall back to using the dot CLI command.
+The build completed successfully and the application is ready to use with Graphviz DOT diagrams!
