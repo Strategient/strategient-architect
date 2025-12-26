@@ -395,6 +395,9 @@
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsTargets-none.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsAdditionalTargetInfo.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsVersionlessTargets.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPkgConfig.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake",
 		"/home/dodzw/projects/strategient-architect/studio/resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/dodzw/projects/strategient-architect/studio",
@@ -427,9 +430,21 @@
 			null
 		],
 		[
+			"/home/dodzw/projects/strategient-architect/studio/src/DotParser.hpp",
+			"MU",
+			"UVLADIE3JM/moc_DotParser.cpp",
+			null
+		],
+		[
 			"/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.hpp",
 			"MU",
 			"UVLADIE3JM/moc_EdgeItem.cpp",
+			null
+		],
+		[
+			"/home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.hpp",
+			"MU",
+			"UVLADIE3JM/moc_GraphvizRenderer.cpp",
 			null
 		],
 		[
@@ -526,6 +541,7 @@
 	"MOC_INCLUDES" : 
 	[
 		"/home/dodzw/projects/strategient-architect/engine/include",
+		"/usr/include/graphviz",
 		"/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
 		"/usr/include/x86_64-linux-gnu/qt6",
 		"/usr/include/x86_64-linux-gnu/qt6/QtCore",
@@ -605,7 +621,17 @@
 			null
 		],
 		[
+			"/home/dodzw/projects/strategient-architect/studio/src/DotParser.cpp",
+			"MU",
+			null
+		],
+		[
 			"/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.cpp",
 			"MU",
 			null
 		],

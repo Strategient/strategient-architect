@@ -4,6 +4,7 @@
         <file alias="editor.html">../assets/monaco/editor.html</file>
         <file alias="monaco-loader.js">../assets/monaco/monaco-loader.js</file>
         <file alias="plantuml-language.js">../assets/monaco/plantuml-language.js</file>
+        <file alias="dot-language.js">../assets/monaco/dot-language.js</file>
         <file alias="qwebchannel.js">../assets/monaco/qwebchannel.js</file>
     </qresource>
     <qresource prefix="/theme">

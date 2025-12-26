@@ -71,6 +71,7 @@ include CMakeFiles/StrategientArchitect.dir/flags.make
 
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/studio/resources.qrc
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: CMakeFiles/StrategientArchitect_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/monaco/dot-language.js
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/monaco/plantuml-language.js
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/monaco/monaco-loader.js
 StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp: /home/dodzw/projects/strategient-architect/assets/monaco/editor.html
@@ -284,10 +285,38 @@ CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dodzw/projects/strategient-architect/studio/src/PlantUMLParser.cpp -o CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.s
 
+CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o: CMakeFiles/StrategientArchitect.dir/flags.make
+CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o: /home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.cpp
+CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o: CMakeFiles/StrategientArchitect.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o -MF CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o.d -o CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.cpp
+
+CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.cpp > CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.i
+
+CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.cpp -o CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.s
+
+CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o: CMakeFiles/StrategientArchitect.dir/flags.make
+CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o: /home/dodzw/projects/strategient-architect/studio/src/DotParser.cpp
+CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o: CMakeFiles/StrategientArchitect.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o -MF CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o.d -o CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/DotParser.cpp
+
+CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dodzw/projects/strategient-architect/studio/src/DotParser.cpp > CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.i
+
+CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dodzw/projects/strategient-architect/studio/src/DotParser.cpp -o CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.s
+
 CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: CMakeFiles/StrategientArchitect.dir/flags.make
 CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: /home/dodzw/projects/strategient-architect/studio/src/NodeItem.cpp
 CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o: CMakeFiles/StrategientArchitect.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o -MF CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o.d -o CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/NodeItem.cpp
 
 CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.i: cmake_force
@@ -301,7 +330,7 @@ CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.s: cmake_force
 CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o: CMakeFiles/StrategientArchitect.dir/flags.make
 CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o: /home/dodzw/projects/strategient-architect/studio/src/EdgeItem.cpp
 CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o: CMakeFiles/StrategientArchitect.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o -MF CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o.d -o CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/EdgeItem.cpp
 
 CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.i: cmake_force
@@ -315,7 +344,7 @@ CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.s: cmake_force
 CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o: CMakeFiles/StrategientArchitect.dir/flags.make
 CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o: /home/dodzw/projects/strategient-architect/studio/src/DiagramScene.cpp
 CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o: CMakeFiles/StrategientArchitect.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o -MF CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o.d -o CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o -c /home/dodzw/projects/strategient-architect/studio/src/DiagramScene.cpp
 
 CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.i: cmake_force
@@ -329,7 +358,7 @@ CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.s: cmake_force
 CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/StrategientArchitect.dir/flags.make
 CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o: StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp
 CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/StrategientArchitect.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o -MF CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o.d -o CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp
 
 CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.i: cmake_force
@@ -356,6 +385,8 @@ StrategientArchitect_OBJECTS = \
 "CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.o" \
 "CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.o" \
 "CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.o" \
+"CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o" \
+"CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o" \
 "CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o" \
 "CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o" \
 "CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o" \
@@ -378,6 +409,8 @@ StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/MonacoBridge.cpp.o
 StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.o
 StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.o
 StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.o
+StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o
+StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o
 StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/NodeItem.cpp.o
 StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o
 StrategientArchitect: CMakeFiles/StrategientArchitect.dir/src/DiagramScene.cpp.o
@@ -402,7 +435,7 @@ StrategientArchitect: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 StrategientArchitect: /usr/lib/x86_64-linux-gnu/libGLX.so
 StrategientArchitect: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 StrategientArchitect: CMakeFiles/StrategientArchitect.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable StrategientArchitect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dodzw/projects/strategient-architect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable StrategientArchitect"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/StrategientArchitect.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

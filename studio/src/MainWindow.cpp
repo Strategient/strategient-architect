@@ -64,7 +64,7 @@ void MainWindow::setupUI() {
 
     // Connect diagram view signals
     connect(m_diagramView, &DiagramView::renderStarted, this, [this]() {
-        statusBar()->showMessage("Rendering PlantUML...");
+        statusBar()->showMessage("Rendering Graphviz...");
     });
     connect(m_diagramView, &DiagramView::renderComplete, this, [this]() {
         statusBar()->showMessage("Render complete", 3000);
@@ -132,9 +132,9 @@ void MainWindow::setupUI() {
     m_runConsole = new RunConsole(this);
     m_bottomTabs->addTab(m_runConsole, "Run Console");
 
-    // Tab 2: PlantUML Editor (Monaco)
+    // Tab 2: DOT/Graphviz Editor (Monaco)
     m_monacoEditor = new MonacoEditorWidget(this);
-    m_bottomTabs->addTab(m_monacoEditor, "PlantUML Editor");
+    m_bottomTabs->addTab(m_monacoEditor, "DOT Editor");
 
     // Connect Monaco editor signals
     connect(m_monacoEditor, &MonacoEditorWidget::textChanged,
@@ -298,14 +298,14 @@ void MainWindow::onEditorTextChanged(const QString& newText) {
         return;
     }
 
-    // Update the page's PlantUML in the model
+    // Update the page's Graphviz DOT source in the model
     auto* page = m_documentModel->currentPage();
-    if (page && page->plantuml != newText) {
-        page->plantuml = newText;
+    if (page && page->graphviz != newText) {
+        page->graphviz = newText;
         m_documentModel->setDirty(true);
         
         // Trigger re-render of the diagram view
-        m_diagramView->renderPlantUML(newText);
+        m_diagramView->renderGraphviz(newText);
     }
 }
 
@@ -326,7 +326,7 @@ void MainWindow::updateEditorForCurrentPage() {
     
     if (page) {
         m_monacoEditor->setReadOnly(false);
-        m_monacoEditor->setText(page->plantuml);
+        m_monacoEditor->setText(page->graphviz);
     } else {
         m_monacoEditor->setText("");
         m_monacoEditor->setReadOnly(true);

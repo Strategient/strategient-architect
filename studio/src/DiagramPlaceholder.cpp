@@ -33,7 +33,7 @@ DiagramPlaceholder::DiagramPlaceholder(DocumentModel* model, QWidget* parent)
         "}");
     layout->addWidget(m_typeLabel);
 
-    // PlantUML preview (first few lines)
+    // DOT/Graphviz preview (first few lines)
     m_plantumlPreview = new QLabel("");
     m_plantumlPreview->setAlignment(Qt::AlignCenter);
     m_plantumlPreview->setWordWrap(true);
@@ -83,9 +83,9 @@ void DiagramPlaceholder::updateDisplay() {
     m_typeLabel->setText(QString("Type: %1").arg(
         architect::pageTypeToString(page->pageType)));
 
-    // Show first ~10 lines of PlantUML
-    if (!page->plantuml.isEmpty()) {
-        QStringList lines = page->plantuml.split('\n');
+    // Show first ~10 lines of DOT source
+    if (!page->graphviz.isEmpty()) {
+        QStringList lines = page->graphviz.split('\n');
         QStringList preview;
         for (int i = 0; i < qMin(12, lines.size()); ++i) {
             preview.append(lines[i]);
@@ -96,7 +96,7 @@ void DiagramPlaceholder::updateDisplay() {
         m_plantumlPreview->setText(preview.join('\n'));
         m_plantumlPreview->setVisible(true);
     } else {
-        m_plantumlPreview->setText("(no PlantUML content)");
+        m_plantumlPreview->setText("(no DOT/Graphviz content)");
         m_plantumlPreview->setVisible(true);
     }
 }

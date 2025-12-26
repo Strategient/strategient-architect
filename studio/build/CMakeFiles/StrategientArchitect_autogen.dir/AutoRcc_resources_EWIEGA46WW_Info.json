@@ -1,0 +1,36 @@
+{
+	"BUILD_DIR" : "/home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen",
+	"CMAKE_BINARY_DIR" : "/home/dodzw/projects/strategient-architect/studio/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/dodzw/projects/strategient-architect/studio/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/dodzw/projects/strategient-architect/studio",
+	"CMAKE_SOURCE_DIR" : "/home/dodzw/projects/strategient-architect/studio",
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/home/dodzw/projects/strategient-architect/studio/build/StrategientArchitect_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/dodzw/projects/strategient-architect/assets/monaco/dot-language.js",
+		"/home/dodzw/projects/strategient-architect/assets/monaco/plantuml-language.js",
+		"/home/dodzw/projects/strategient-architect/assets/monaco/monaco-loader.js",
+		"/home/dodzw/projects/strategient-architect/assets/monaco/editor.html",
+		"/home/dodzw/projects/strategient-architect/assets/monaco/qwebchannel.js",
+		"/home/dodzw/projects/strategient-architect/assets/theme/strategient-dark.qss",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-24.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-128.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-256.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-48.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-32.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-64.png",
+		"/home/dodzw/projects/strategient-architect/assets/icons/strategient-16.png"
+	],
+	"LOCK_FILE" : "/home/dodzw/projects/strategient-architect/studio/build/CMakeFiles/StrategientArchitect_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/dodzw/projects/strategient-architect/studio/build/CMakeFiles/StrategientArchitect_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/dodzw/projects/strategient-architect/studio/resources.qrc",
+	"VERBOSITY" : 0
+}

@@ -8,6 +8,7 @@
 	"INCLUDE_DIR" : "/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/include",
 	"INPUTS" : 
 	[
+		"/home/dodzw/projects/strategient-architect/assets/monaco/dot-language.js",
 		"/home/dodzw/projects/strategient-architect/assets/monaco/plantuml-language.js",
 		"/home/dodzw/projects/strategient-architect/assets/monaco/monaco-loader.js",
 		"/home/dodzw/projects/strategient-architect/assets/monaco/editor.html",

@@ -192,7 +192,7 @@ QJsonObject Page::toJson() const {
         {"page_id", pageId},
         {"title", title},
         {"page_type", pageTypeToString(pageType)},
-        {"plantuml", plantuml},
+        {"graphviz", graphviz},
         {"metadata", metadata.toJson()}
     };
 }
@@ -202,7 +202,13 @@ Page Page::fromJson(const QJsonObject& json) {
     p.pageId = json["page_id"].toString();
     p.title = json["title"].toString();
     p.pageType = pageTypeFromString(json["page_type"].toString());
-    p.plantuml = json["plantuml"].toString();
+    // Support both new "graphviz" and legacy "plantuml" fields
+    if (json.contains("graphviz")) {
+        p.graphviz = json["graphviz"].toString();
+    } else if (json.contains("plantuml")) {
+        // Backward compatibility: read legacy PlantUML format
+        p.graphviz = json["plantuml"].toString();
+    }
     p.metadata = PageMetadata::fromJson(json["metadata"].toObject());
     return p;
 }

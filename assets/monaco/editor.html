@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlantUML Editor</title>
+    <title>Graphviz DOT Editor</title>
     <style>
         * {
             margin: 0;
@@ -35,8 +35,8 @@
     <!-- Monaco loader (AMD-style) -->
     <script src="qrc:/monaco/monaco-loader.js"></script>
     
-    <!-- PlantUML language definition -->
-    <script src="qrc:/monaco/plantuml-language.js"></script>
+    <!-- DOT/Graphviz language definition -->
+    <script src="qrc:/monaco/dot-language.js"></script>
 
     <script>
         // ===== Global State =====
@@ -94,14 +94,14 @@
                 // 1. Define Strategient dark theme
                 defineStrategientTheme();
                 
-                // 2. Register PlantUML language
-                registerPlantUMLLanguage();
+                // 2. Register DOT/Graphviz language
+                registerDotLanguage();
                 
-                // 3. Create editor with Strategient theme
+                // 3. Create editor with Strategient theme and DOT language
                 editor = monaco.editor.create(document.getElementById('editor-container'), {
                     value: '',
-                    language: 'plantuml',
-                    theme: 'strategient-dark',  // Use our custom theme
+                    language: 'dot',  // Use DOT language instead of PlantUML
+                    theme: 'strategient-dark',
                     
                     // Layout
                     automaticLayout: true,
@@ -201,7 +201,7 @@
                     bridge.notifyEditorReady();
                 }
                 
-                console.log('[Monaco] Editor initialized with Strategient theme');
+                console.log('[Monaco] DOT/Graphviz editor initialized with Strategient theme');
             } catch (error) {
                 console.error('[Monaco] Initialization error:', error);
             }

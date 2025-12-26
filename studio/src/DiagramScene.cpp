@@ -1,4 +1,5 @@
 #include "DiagramScene.hpp"
+#include "DotParser.hpp"
 #include "NodeItem.hpp"
 #include "EdgeItem.hpp"
 
@@ -18,16 +19,16 @@ DiagramScene::DiagramScene(QObject* parent)
     setBackgroundBrush(QColor("#2D3A47"));
 }
 
-void DiagramScene::loadDiagram(const QString& plantuml, 
+void DiagramScene::loadDiagram(const QString& dotSource, 
                                const architect::PageMetadata& metadata) {
     clearDiagram();
     
-    if (plantuml.isEmpty()) {
+    if (dotSource.isEmpty()) {
         return;
     }
     
-    // Parse PlantUML
-    architect::ParsedDiagram diagram = m_parser.parse(plantuml);
+    // Parse DOT source
+    architect::ParsedDiagram diagram = m_parser.parse(dotSource);
     
     // Create graphics items
     createNodesAndEdges(diagram, metadata);

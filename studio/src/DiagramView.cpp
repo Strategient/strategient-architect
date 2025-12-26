@@ -1,6 +1,6 @@
 #include "DiagramView.hpp"
 #include "DocumentModel.hpp"
-#include "PlantUMLRenderer.hpp"
+#include "GraphvizRenderer.hpp"
 #include "DiagramScene.hpp"
 #include "NodeItem.hpp"
 
@@ -148,15 +148,15 @@ private:
 DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
     : QWidget(parent)
     , m_model(model)
-    , m_renderer(new PlantUMLRenderer(this))
+    , m_renderer(new GraphvizRenderer(this))
     , m_scene(new DiagramScene(this))
 {
     setupUI();
     
     // Connect renderer signals
-    connect(m_renderer, &PlantUMLRenderer::renderStarted, this, [this]() {
+    connect(m_renderer, &GraphvizRenderer::renderStarted, this, [this]() {
         m_isRendering = true;
-        m_statusLabel->setText("Rendering PlantUML...");
+        m_statusLabel->setText("Rendering Graphviz...");
         m_statusLabel->setStyleSheet(
             "QLabel { background-color: #435160; color: #dcdcaa; "
             "padding: 4px 8px; font-size: 11px; }");
@@ -164,9 +164,9 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
         emit renderStarted();
     });
     
-    connect(m_renderer, &PlantUMLRenderer::renderComplete,
+    connect(m_renderer, &GraphvizRenderer::renderComplete,
             this, &DiagramView::onRenderComplete);
-    connect(m_renderer, &PlantUMLRenderer::renderError,
+    connect(m_renderer, &GraphvizRenderer::renderError,
             this, &DiagramView::onRenderError);
 
     // Connect document model signals
@@ -300,20 +300,20 @@ void DiagramView::loadSvg(const QString& filePath) {
     showStaticView();
 }
 
-void DiagramView::renderPlantUML(const QString& source) {
-    if (source.trimmed().isEmpty()) {
-        showPlaceholder("No PlantUML content.\n\nAdd PlantUML code in the editor below.");
+void DiagramView::renderGraphviz(const QString& dotSource) {
+    if (dotSource.trimmed().isEmpty()) {
+        showPlaceholder("No Graphviz DOT content.\n\nAdd DOT code in the editor below.");
         return;
     }
     
     // For static mode, render to SVG
     if (m_viewMode == Static) {
-        m_renderer->renderToSvg(source);
+        m_renderer->renderToSvg(dotSource);
     } else {
         // For interactive mode, load into scene
         const architect::Page* page = m_model->currentPage();
         if (page) {
-            m_scene->loadDiagram(source, page->metadata);
+            m_scene->loadDiagram(dotSource, page->metadata);
             
             // Fit the view to show all content
             m_graphicsView->fitInView(m_scene->itemsBoundingRect().adjusted(-50, -50, 50, 50), 
@@ -353,13 +353,13 @@ void DiagramView::updateDisplay() {
         "padding: 4px 8px; font-size: 11px; }");
     m_statusLabel->setVisible(true);
 
-    if (page->plantuml.isEmpty()) {
-        showPlaceholder(QString("Page: %1\n\nNo PlantUML content.\n"
-                                "Edit in the PlantUML Editor tab below.").arg(page->title));
+    if (page->graphviz.isEmpty()) {
+        showPlaceholder(QString("Page: %1\n\nNo Graphviz DOT content.\n"
+                                "Edit in the DOT Editor tab below.").arg(page->title));
         return;
     }
 
-    renderPlantUML(page->plantuml);
+    renderGraphviz(page->graphviz);
 }
 
 void DiagramView::onRenderComplete(const QString& svgPath) {

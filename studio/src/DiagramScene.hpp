@@ -3,7 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QMap>
-#include "PlantUMLParser.hpp"
+#include "DotParser.hpp"
 #include "ProjectModel.hpp"
 
 class NodeItem;
@@ -11,10 +11,10 @@ class EdgeItem;
 class DocumentModel;
 
 /**
- * DiagramScene - Manages the graphical representation of a PlantUML diagram.
+ * DiagramScene - Manages the graphical representation of a Graphviz DOT diagram.
  * 
  * Responsibilities:
- * - Creates NodeItem and EdgeItem from parsed PlantUML
+ * - Creates NodeItem and EdgeItem from parsed DOT source
  * - Applies layout positions from metadata
  * - Emits signals when layout changes (for persistence)
  * - Handles selection and interaction
@@ -26,8 +26,8 @@ public:
     explicit DiagramScene(QObject* parent = nullptr);
     ~DiagramScene() override = default;
     
-    // Load diagram from PlantUML and metadata
-    void loadDiagram(const QString& plantuml, const architect::PageMetadata& metadata);
+    // Load diagram from DOT source and metadata
+    void loadDiagram(const QString& dotSource, const architect::PageMetadata& metadata);
     
     // Clear all items
     void clearDiagram();
@@ -62,7 +62,7 @@ private:
                              const architect::PageMetadata& metadata);
     void autoLayoutNodes();
     
-    architect::PlantUMLParser m_parser;
+    architect::DotParser m_parser;
     QMap<QString, NodeItem*> m_nodeMap;
     QVector<EdgeItem*> m_edges;
     

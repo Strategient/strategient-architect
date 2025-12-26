@@ -9,7 +9,7 @@ class QLabel;
 class QScrollArea;
 class QSvgWidget;
 class DocumentModel;
-class PlantUMLRenderer;
+class GraphvizRenderer;
 class DiagramScene;
 
 /**
@@ -17,13 +17,14 @@ class DiagramScene;
  * 
  * Supports two modes:
  * 1. Interactive mode: QGraphicsView with draggable nodes
- * 2. Static mode: SVG render of PlantUML
+ * 2. Static mode: SVG render of Graphviz DOT
  * 
  * Features:
  * - Pan with middle mouse or Space+drag
  * - Zoom with Ctrl+wheel
  * - Node selection and dragging
  * - Layout persistence
+ * - Multiple Graphviz layout engines (dot, neato, fdp, etc.)
  */
 class DiagramView : public QWidget {
     Q_OBJECT
@@ -40,8 +41,11 @@ public:
     // Static mode: load SVG directly
     void loadSvg(const QString& filePath);
     
-    // Re-render current page's PlantUML
-    void renderPlantUML(const QString& source);
+    // Re-render current page's Graphviz DOT source
+    void renderGraphviz(const QString& dotSource);
+    
+    // Alias for backward compatibility
+    void renderPlantUML(const QString& source) { renderGraphviz(source); }
     
     // Clear display
     void clear();
@@ -76,7 +80,7 @@ private:
     void saveLayoutToModel();
 
     DocumentModel* m_model;
-    PlantUMLRenderer* m_renderer;
+    GraphvizRenderer* m_renderer;
     DiagramScene* m_scene;
     
     ViewMode m_viewMode = Interactive;

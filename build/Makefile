@@ -312,6 +312,30 @@ src/DocumentModel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DocumentModel.cpp.s
 .PHONY : src/DocumentModel.cpp.s
 
+src/DotParser.o: src/DotParser.cpp.o
+.PHONY : src/DotParser.o
+
+# target to build an object file
+src/DotParser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o
+.PHONY : src/DotParser.cpp.o
+
+src/DotParser.i: src/DotParser.cpp.i
+.PHONY : src/DotParser.i
+
+# target to preprocess a source file
+src/DotParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.i
+.PHONY : src/DotParser.cpp.i
+
+src/DotParser.s: src/DotParser.cpp.s
+.PHONY : src/DotParser.s
+
+# target to generate assembly for a file
+src/DotParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.s
+.PHONY : src/DotParser.cpp.s
+
 src/EdgeItem.o: src/EdgeItem.cpp.o
 .PHONY : src/EdgeItem.o
 
@@ -335,6 +359,30 @@ src/EdgeItem.s: src/EdgeItem.cpp.s
 src/EdgeItem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.s
 .PHONY : src/EdgeItem.cpp.s
+
+src/GraphvizRenderer.o: src/GraphvizRenderer.cpp.o
+.PHONY : src/GraphvizRenderer.o
+
+# target to build an object file
+src/GraphvizRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o
+.PHONY : src/GraphvizRenderer.cpp.o
+
+src/GraphvizRenderer.i: src/GraphvizRenderer.cpp.i
+.PHONY : src/GraphvizRenderer.i
+
+# target to preprocess a source file
+src/GraphvizRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.i
+.PHONY : src/GraphvizRenderer.cpp.i
+
+src/GraphvizRenderer.s: src/GraphvizRenderer.cpp.s
+.PHONY : src/GraphvizRenderer.s
+
+# target to generate assembly for a file
+src/GraphvizRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.s
+.PHONY : src/GraphvizRenderer.cpp.s
 
 src/MainWindow.o: src/MainWindow.cpp.o
 .PHONY : src/MainWindow.o
@@ -630,9 +678,15 @@ help:
 	@echo "... src/DocumentModel.o"
 	@echo "... src/DocumentModel.i"
 	@echo "... src/DocumentModel.s"
+	@echo "... src/DotParser.o"
+	@echo "... src/DotParser.i"
+	@echo "... src/DotParser.s"
 	@echo "... src/EdgeItem.o"
 	@echo "... src/EdgeItem.i"
 	@echo "... src/EdgeItem.s"
+	@echo "... src/GraphvizRenderer.o"
+	@echo "... src/GraphvizRenderer.i"
+	@echo "... src/GraphvizRenderer.s"
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"

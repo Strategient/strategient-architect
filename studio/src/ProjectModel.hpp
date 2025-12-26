@@ -51,7 +51,7 @@ struct LayoutPosition {
     static LayoutPosition fromJson(const QJsonObject& json);
 };
 
-// Metadata for a single node (keyed by PlantUML alias)
+// Metadata for a single node (keyed by node ID/alias from DOT)
 struct NodeMetadata {
     QString displayName;           // Optional override
     QString agentPromptText;       // Prompt for agent
@@ -88,7 +88,7 @@ struct Page {
     QString pageId;
     QString title;
     PageType pageType = PageType::DiagramOnly;
-    QString plantuml;          // Canonical PlantUML source
+    QString graphviz;          // Canonical Graphviz DOT source
     PageMetadata metadata;
 
     QJsonObject toJson() const;

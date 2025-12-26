@@ -1,0 +1,214 @@
+{
+    "pages": [
+        {
+            "metadata": {
+                "edges": {
+                    "ALPHA->RISK": {
+                        "description": "Alpha signals pass through risk checks before execution",
+                        "label": "signals"
+                    },
+                    "MARKET_FEED->UNIVERSE": {
+                        "description": "Real-time market data flows to universe filter",
+                        "label": "tick data"
+                    }
+                },
+                "layout": {
+                    "ALPHA": { "x": 500, "y": 150 },
+                    "ALT_DATA": { "x": 50, "y": 165 },
+                    "FEATURES": { "x": 340, "y": 340 },
+                    "MARKET_FEED": { "x": 150, "y": 85 },
+                    "POSITIONS": { "x": 590, "y": 335 },
+                    "RISK": { "x": 700, "y": 15 },
+                    "ROUTER": { "x": 650, "y": 230 },
+                    "UNIVERSE": { "x": 435, "y": 30 }
+                },
+                "nodes": {
+                    "ALPHA": {
+                        "agent_prompt_text": "Define the alpha generation model. Supports ML models, factor models, or custom scoring.",
+                        "code_refs": ["src/models/alpha.py"],
+                        "display_name": "Alpha Model",
+                        "tasks": [
+                            { "id": "task-2", "status": "in_progress", "title": "Fix model serialization bug" }
+                        ],
+                        "test_status": "fail"
+                    },
+                    "ALT_DATA": {
+                        "agent_prompt_text": "Set up alternative data sources like sentiment, satellite imagery, or web scraping.",
+                        "code_refs": ["src/data/alt_data.py"],
+                        "display_name": "Alternative Data",
+                        "tasks": [
+                            { "id": "task-1", "status": "pending", "title": "Add Twitter sentiment feed" }
+                        ],
+                        "test_status": "not_run"
+                    },
+                    "FEATURES": {
+                        "agent_prompt_text": "Configure feature engineering pipeline. Add technical indicators, fundamental ratios, or custom features.",
+                        "code_refs": ["src/pipeline/features.py", "src/pipeline/indicators.py"],
+                        "display_name": "Feature Engine",
+                        "test_status": "pass"
+                    },
+                    "MARKET_FEED": {
+                        "agent_prompt_text": "Configure the market data feed connection. Supports IEX, Polygon, or custom websocket feeds.",
+                        "code_refs": ["src/data/market_feed.py"],
+                        "display_name": "Market Data Feed",
+                        "test_status": "pass"
+                    },
+                    "POSITIONS": {
+                        "agent_prompt_text": "Configure position and P&L tracking, reconciliation with broker.",
+                        "code_refs": ["src/execution/positions.py"],
+                        "display_name": "Position Tracker",
+                        "test_status": "pass"
+                    },
+                    "RISK": {
+                        "agent_prompt_text": "Configure risk limits: position sizing, sector exposure, drawdown limits.",
+                        "code_refs": ["src/execution/risk.py"],
+                        "display_name": "Risk Manager",
+                        "test_status": "pass"
+                    },
+                    "ROUTER": {
+                        "agent_prompt_text": "Set up order routing: broker connections, execution algorithms, smart order routing.",
+                        "code_refs": ["src/execution/router.py"],
+                        "display_name": "Order Router",
+                        "test_status": "not_run"
+                    },
+                    "UNIVERSE": {
+                        "agent_prompt_text": "Define the stock universe filtering criteria: market cap, liquidity, sector constraints.",
+                        "code_refs": ["src/pipeline/universe.py"],
+                        "display_name": "Universe Filter",
+                        "test_status": "pass"
+                    }
+                }
+            },
+            "page_id": "page-pipeline-main",
+            "page_type": "PipelineDiagram",
+            "graphviz": "digraph main_pipeline {\n    // Graph attributes\n    rankdir=LR;\n    splines=ortho;\n    nodesep=0.8;\n    ranksep=1.0;\n    bgcolor=\"#2D3A47\";\n    fontname=\"Helvetica\";\n    \n    // Default node style\n    node [shape=component, style=\"filled,rounded\", fillcolor=\"#4A5568\", fontcolor=\"white\", fontname=\"Helvetica\"];\n    \n    // Default edge style\n    edge [color=\"#718096\", penwidth=1.5, arrowhead=vee];\n    \n    // Data Sources cluster\n    subgraph cluster_data {\n        label=\"Data Sources\";\n        style=filled;\n        fillcolor=\"#2C5282\";\n        fontcolor=white;\n        \n        MARKET_FEED [label=\"Market Data Feed\", shape=cylinder, fillcolor=\"#3182CE\"];\n        ALT_DATA [label=\"Alternative Data\", shape=cylinder, fillcolor=\"#3182CE\"];\n    }\n    \n    // Processing cluster\n    subgraph cluster_processing {\n        label=\"Processing\";\n        style=filled;\n        fillcolor=\"#285E61\";\n        fontcolor=white;\n        \n        UNIVERSE [label=\"Universe Filter\", fillcolor=\"#38A169\"];\n        FEATURES [label=\"Feature Engine\", fillcolor=\"#38A169\"];\n        ALPHA [label=\"Alpha Model\", fillcolor=\"#38A169\"];\n    }\n    \n    // Execution cluster\n    subgraph cluster_execution {\n        label=\"Execution\";\n        style=filled;\n        fillcolor=\"#744210\";\n        fontcolor=white;\n        \n        RISK [label=\"Risk Manager\", fillcolor=\"#DD6B20\"];\n        ROUTER [label=\"Order Router\", fillcolor=\"#DD6B20\"];\n        POSITIONS [label=\"Position Tracker\", fillcolor=\"#DD6B20\"];\n    }\n    \n    // Edges\n    MARKET_FEED -> UNIVERSE [label=\"tick data\"];\n    ALT_DATA -> FEATURES;\n    UNIVERSE -> FEATURES;\n    FEATURES -> ALPHA;\n    ALPHA -> RISK [label=\"signals\"];\n    RISK -> ROUTER;\n    ROUTER -> POSITIONS;\n}",
+            "title": "Main Pipeline"
+        },
+        {
+            "metadata": {
+                "layout": {
+                    "ENGINE": { "x": 200, "y": 100 },
+                    "GATEWAY": { "x": 0, "y": 25 },
+                    "OMS": { "x": -5, "y": 305 },
+                    "PIPELINE": { "x": 220, "y": 280 },
+                    "RDS": { "x": 460, "y": 130 },
+                    "S3": { "x": 505, "y": 205 },
+                    "SQS": { "x": 305, "y": 15 }
+                },
+                "nodes": {
+                    "ENGINE": {
+                        "agent_prompt_text": "Configure the main trading engine: instance type, auto-scaling, monitoring.",
+                        "code_refs": ["infra/terraform/compute.tf"],
+                        "display_name": "Trading Engine",
+                        "test_status": "pass"
+                    },
+                    "GATEWAY": {
+                        "agent_prompt_text": "On-premise market data gateway configuration.",
+                        "code_refs": ["infra/ansible/gateway.yml"],
+                        "display_name": "Market Gateway",
+                        "test_status": "pass"
+                    },
+                    "OMS": {
+                        "agent_prompt_text": "Order management system configuration and broker connections.",
+                        "code_refs": ["infra/ansible/oms.yml"],
+                        "display_name": "Order Management",
+                        "test_status": "pass"
+                    },
+                    "PIPELINE": {
+                        "agent_prompt_text": "Set up the data ingestion and processing pipeline infrastructure.",
+                        "code_refs": ["infra/terraform/pipeline.tf"],
+                        "display_name": "Data Pipeline",
+                        "test_status": "pass"
+                    },
+                    "RDS": {
+                        "agent_prompt_text": "Configure the PostgreSQL database: instance class, storage, backups.",
+                        "code_refs": ["infra/terraform/database.tf"],
+                        "display_name": "RDS PostgreSQL",
+                        "test_status": "pass"
+                    },
+                    "S3": {
+                        "agent_prompt_text": "Set up S3 buckets for historical data storage, lifecycle policies.",
+                        "code_refs": ["infra/terraform/storage.tf"],
+                        "display_name": "S3 Data Lake",
+                        "test_status": "not_run"
+                    },
+                    "SQS": {
+                        "agent_prompt_text": "Configure message queues for async event processing.",
+                        "code_refs": ["infra/terraform/messaging.tf"],
+                        "display_name": "SQS Queues",
+                        "test_status": "pass"
+                    }
+                }
+            },
+            "page_id": "page-infra-config",
+            "page_type": "InfraConfig",
+            "graphviz": "digraph infrastructure {\n    // Graph attributes\n    rankdir=TB;\n    splines=spline;\n    bgcolor=\"#2D3A47\";\n    fontname=\"Helvetica\";\n    \n    // Default styles\n    node [style=\"filled,rounded\", fontcolor=\"white\", fontname=\"Helvetica\"];\n    edge [color=\"#718096\", penwidth=1.5, arrowhead=vee];\n    \n    // AWS Cloud cluster\n    subgraph cluster_aws {\n        label=\"AWS\";\n        style=filled;\n        fillcolor=\"#FF9900\";\n        fontcolor=white;\n        \n        // EC2 Compute subcluster\n        subgraph cluster_ec2 {\n            label=\"EC2 Compute\";\n            fillcolor=\"#FF6600\";\n            \n            ENGINE [label=\"Trading Engine\", shape=box3d, fillcolor=\"#CC5500\"];\n            PIPELINE [label=\"Data Pipeline\", shape=box3d, fillcolor=\"#CC5500\"];\n        }\n        \n        RDS [label=\"RDS PostgreSQL DB\", shape=cylinder, fillcolor=\"#3B48CC\"];\n        S3 [label=\"S3 Data Lake\", shape=folder, fillcolor=\"#569A31\"];\n        SQS [label=\"SQS Queues\", shape=component, fillcolor=\"#FF4F8B\"];\n    }\n    \n    // On-Premise cluster\n    subgraph cluster_onprem {\n        label=\"On-Premise\";\n        style=filled;\n        fillcolor=\"#4A5568\";\n        fontcolor=white;\n        \n        GATEWAY [label=\"Market Gateway\", shape=component, fillcolor=\"#2D3748\"];\n        OMS [label=\"Order Management\", shape=component, fillcolor=\"#2D3748\"];\n    }\n    \n    // Connections\n    GATEWAY -> ENGINE [label=\"market data\"];\n    ENGINE -> OMS [label=\"orders\"];\n    ENGINE -> RDS [label=\"state\"];\n    PIPELINE -> S3 [label=\"historical data\"];\n    ENGINE -> SQS [label=\"events\"];\n}",
+            "title": "Infrastructure"
+        },
+        {
+            "metadata": {
+                "nodes": {
+                    "COLLECTOR": {
+                        "agent_prompt_text": "Configure results aggregation and storage.",
+                        "code_refs": ["src/backtest/collector.py"],
+                        "display_name": "Results Collector",
+                        "test_status": "pass"
+                    },
+                    "CONTROLLER": {
+                        "agent_prompt_text": "Configure the parameter sweep controller: grid search, random search, Bayesian.",
+                        "code_refs": ["src/backtest/sweep_controller.py"],
+                        "display_name": "Sweep Controller",
+                        "test_status": "pass"
+                    },
+                    "LOOKBACK": {
+                        "agent_prompt_text": "Define lookback window parameter ranges: [5, 10, 20, 60, 120] days.",
+                        "display_name": "Lookback Windows",
+                        "test_status": "not_run"
+                    },
+                    "METRICS": {
+                        "agent_prompt_text": "Define performance metrics: Sharpe, Sortino, max drawdown, win rate.",
+                        "code_refs": ["src/analysis/metrics.py"],
+                        "display_name": "Performance Metrics",
+                        "test_status": "pass"
+                    },
+                    "MODELS": {
+                        "agent_prompt_text": "Select model variants to test: linear, xgboost, neural.",
+                        "display_name": "Model Variants",
+                        "test_status": "not_run"
+                    },
+                    "REPORT": {
+                        "agent_prompt_text": "Generate PDF/HTML reports for backtest sweep results.",
+                        "code_refs": ["src/analysis/report.py"],
+                        "display_name": "Report Generator",
+                        "test_status": "not_run"
+                    },
+                    "THRESHOLDS": {
+                        "agent_prompt_text": "Define threshold parameter ranges for entry/exit signals.",
+                        "display_name": "Threshold Values",
+                        "test_status": "not_run"
+                    },
+                    "VIZ": {
+                        "agent_prompt_text": "Configure result visualization: heatmaps, equity curves, parameter sensitivity.",
+                        "code_refs": ["src/analysis/viz.py"],
+                        "display_name": "Visualization",
+                        "test_status": "not_run"
+                    },
+                    "WORKERS": {
+                        "agent_prompt_text": "Configure parallel worker pool for running backtests.",
+                        "code_refs": ["src/backtest/workers.py"],
+                        "display_name": "Worker Pool",
+                        "test_status": "pass"
+                    }
+                }
+            },
+            "page_id": "page-backtest-sweeps",
+            "page_type": "BacktestSweeps",
+            "graphviz": "digraph backtest_sweeps {\n    // Graph attributes\n    rankdir=LR;\n    splines=ortho;\n    bgcolor=\"#2D3A47\";\n    fontname=\"Helvetica\";\n    \n    // Default styles\n    node [shape=component, style=\"filled,rounded\", fontcolor=\"white\", fontname=\"Helvetica\"];\n    edge [color=\"#718096\", penwidth=1.5, arrowhead=vee];\n    \n    // Parameter Space cluster\n    subgraph cluster_params {\n        label=\"Parameter Space\";\n        style=filled;\n        fillcolor=\"#553C9A\";\n        fontcolor=white;\n        \n        LOOKBACK [label=\"Lookback Windows\", fillcolor=\"#805AD5\"];\n        THRESHOLDS [label=\"Threshold Values\", fillcolor=\"#805AD5\"];\n        MODELS [label=\"Model Variants\", fillcolor=\"#805AD5\"];\n    }\n    \n    // Execution cluster\n    subgraph cluster_exec {\n        label=\"Execution\";\n        style=filled;\n        fillcolor=\"#2C5282\";\n        fontcolor=white;\n        \n        CONTROLLER [label=\"Sweep Controller\", fillcolor=\"#3182CE\"];\n        WORKERS [label=\"Worker Pool\", fillcolor=\"#3182CE\"];\n        COLLECTOR [label=\"Results Collector\", fillcolor=\"#3182CE\"];\n    }\n    \n    // Analysis cluster\n    subgraph cluster_analysis {\n        label=\"Analysis\";\n        style=filled;\n        fillcolor=\"#285E61\";\n        fontcolor=white;\n        \n        METRICS [label=\"Performance Metrics\", fillcolor=\"#38A169\"];\n        VIZ [label=\"Visualization\", fillcolor=\"#38A169\"];\n        REPORT [label=\"Report Generator\", fillcolor=\"#38A169\"];\n    }\n    \n    // Edges\n    LOOKBACK -> CONTROLLER;\n    THRESHOLDS -> CONTROLLER;\n    MODELS -> CONTROLLER;\n    CONTROLLER -> WORKERS;\n    WORKERS -> COLLECTOR;\n    COLLECTOR -> METRICS;\n    METRICS -> VIZ;\n    METRICS -> REPORT;\n}",
+            "title": "Backtest Sweeps"
+        }
+    ],
+    "project_id": "sample-graphviz-project",
+    "schema_version": 1,
+    "title": "Sample Trading Pipeline (Graphviz)"
+}
+

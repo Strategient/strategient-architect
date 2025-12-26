@@ -10,6 +10,17 @@ set(CMAKE_AUTOUIC ON)
 # Find Qt6
 find_package(Qt6 REQUIRED COMPONENTS Widgets Svg SvgWidgets WebEngineWidgets WebChannel)
 
+# Find Graphviz (libgvc, libcgraph)
+# Install with: sudo apt install graphviz libgraphviz-dev
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GRAPHVIZ libgvc libcgraph)
+
+if(NOT GRAPHVIZ_FOUND)
+    message(WARNING "Graphviz libraries not found. Install with: sudo apt install graphviz libgraphviz-dev")
+    message(WARNING "GraphvizRenderer will be disabled. Falling back to static SVG rendering only.")
+    add_definitions(-DNO_GRAPHVIZ)
+endif()
+
 # Source files
 set(SOURCES
     src/main.cpp
@@ -25,6 +36,8 @@ set(SOURCES
     src/MonacoEditorWidget.cpp
     src/PlantUMLRenderer.cpp
     src/PlantUMLParser.cpp
+    src/GraphvizRenderer.cpp
+    src/DotParser.cpp
     src/NodeItem.cpp
     src/EdgeItem.cpp
     src/DiagramScene.cpp
@@ -43,6 +56,8 @@ set(HEADERS
     src/MonacoEditorWidget.hpp
     src/PlantUMLRenderer.hpp
     src/PlantUMLParser.hpp
+    src/GraphvizRenderer.hpp
+    src/DotParser.hpp
     src/NodeItem.hpp
     src/EdgeItem.hpp
     src/DiagramScene.hpp
@@ -56,12 +71,16 @@ set(RESOURCES
 # Create executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCES})
 
-# Include engine header
+# Include engine header (and Graphviz headers if available)
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../engine/include
 )
 
-# Link Qt6
+if(GRAPHVIZ_FOUND)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${GRAPHVIZ_INCLUDE_DIRS})
+endif()
+
+# Link Qt6 (and Graphviz if available)
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Widgets
     Qt6::Svg
@@ -69,6 +88,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::WebEngineWidgets
     Qt6::WebChannel
 )
+
+if(GRAPHVIZ_FOUND)
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${GRAPHVIZ_LIBRARIES})
+endif()
 
 # Link Rust engine static library
 set(ENGINE_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../engine/target/release)
