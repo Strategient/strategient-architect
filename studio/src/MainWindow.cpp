@@ -59,8 +59,12 @@ void MainWindow::setupUI() {
     connect(m_diagramView, &DiagramView::renderComplete, this, [this]() {
         statusBar()->showMessage("Render complete", 3000);
     });
-    connect(m_diagramView, &DiagramView::renderError, this, [this](const QString& msg) {
-        logMessage(QString("[render] Error: %1").arg(msg));
+    connect(m_diagramView, &DiagramView::renderFailed, this, 
+            [this](const QString& title, const QString& details) {
+        // Log full error to Run Console
+        logMessage(QString("[render] ⚠️ %1").arg(title));
+        logMessage(QString("[render] %1").arg(details));
+        statusBar()->showMessage("Render failed - see Run Console", 5000);
     });
 
     // Left dock - Pages sidebar

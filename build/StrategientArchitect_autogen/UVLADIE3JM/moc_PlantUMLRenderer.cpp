@@ -26,21 +26,22 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_PlantUMLRenderer_t {
-    uint offsetsAndSizes[28];
+    uint offsetsAndSizes[30];
     char stringdata0[17];
     char stringdata1[14];
     char stringdata2[1];
     char stringdata3[15];
     char stringdata4[8];
     char stringdata5[12];
-    char stringdata6[13];
-    char stringdata7[18];
-    char stringdata8[9];
-    char stringdata9[21];
-    char stringdata10[11];
-    char stringdata11[15];
-    char stringdata12[23];
-    char stringdata13[6];
+    char stringdata6[11];
+    char stringdata7[13];
+    char stringdata8[18];
+    char stringdata9[9];
+    char stringdata10[21];
+    char stringdata11[11];
+    char stringdata12[15];
+    char stringdata13[23];
+    char stringdata14[6];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_PlantUMLRenderer_t::offsetsAndSizes) + ofs), len 
@@ -52,14 +53,15 @@ Q_CONSTINIT static const qt_meta_stringdata_PlantUMLRenderer_t qt_meta_stringdat
         QT_MOC_LITERAL(32, 14),  // "renderComplete"
         QT_MOC_LITERAL(47, 7),  // "svgPath"
         QT_MOC_LITERAL(55, 11),  // "renderError"
-        QT_MOC_LITERAL(67, 12),  // "errorMessage"
-        QT_MOC_LITERAL(80, 17),  // "onProcessFinished"
-        QT_MOC_LITERAL(98, 8),  // "exitCode"
-        QT_MOC_LITERAL(107, 20),  // "QProcess::ExitStatus"
-        QT_MOC_LITERAL(128, 10),  // "exitStatus"
-        QT_MOC_LITERAL(139, 14),  // "onProcessError"
-        QT_MOC_LITERAL(154, 22),  // "QProcess::ProcessError"
-        QT_MOC_LITERAL(177, 5)   // "error"
+        QT_MOC_LITERAL(67, 10),  // "errorTitle"
+        QT_MOC_LITERAL(78, 12),  // "errorDetails"
+        QT_MOC_LITERAL(91, 17),  // "onProcessFinished"
+        QT_MOC_LITERAL(109, 8),  // "exitCode"
+        QT_MOC_LITERAL(118, 20),  // "QProcess::ExitStatus"
+        QT_MOC_LITERAL(139, 10),  // "exitStatus"
+        QT_MOC_LITERAL(150, 14),  // "onProcessError"
+        QT_MOC_LITERAL(165, 22),  // "QProcess::ProcessError"
+        QT_MOC_LITERAL(188, 5)   // "error"
     },
     "PlantUMLRenderer",
     "renderStarted",
@@ -67,7 +69,8 @@ Q_CONSTINIT static const qt_meta_stringdata_PlantUMLRenderer_t qt_meta_stringdat
     "renderComplete",
     "svgPath",
     "renderError",
-    "errorMessage",
+    "errorTitle",
+    "errorDetails",
     "onProcessFinished",
     "exitCode",
     "QProcess::ExitStatus",
@@ -95,20 +98,20 @@ Q_CONSTINIT static const uint qt_meta_data_PlantUMLRenderer[] = {
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
        1,    0,   44,    2, 0x06,    1 /* Public */,
        3,    1,   45,    2, 0x06,    2 /* Public */,
-       5,    1,   48,    2, 0x06,    4 /* Public */,
+       5,    2,   48,    2, 0x06,    4 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       7,    2,   51,    2, 0x08,    6 /* Private */,
-      11,    1,   56,    2, 0x08,    9 /* Private */,
+       8,    2,   53,    2, 0x08,    7 /* Private */,
+      12,    1,   58,    2, 0x08,   10 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    4,
-    QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    6,    7,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int, 0x80000000 | 9,    8,   10,
-    QMetaType::Void, 0x80000000 | 12,   13,
+    QMetaType::Void, QMetaType::Int, 0x80000000 | 10,    9,   11,
+    QMetaType::Void, 0x80000000 | 13,   14,
 
        0        // eod
 };
@@ -130,6 +133,7 @@ Q_CONSTINIT const QMetaObject PlantUMLRenderer::staticMetaObject = { {
         // method 'renderError'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'onProcessFinished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
@@ -149,7 +153,7 @@ void PlantUMLRenderer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         switch (_id) {
         case 0: _t->renderStarted(); break;
         case 1: _t->renderComplete((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 2: _t->renderError((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 2: _t->renderError((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 3: _t->onProcessFinished((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QProcess::ExitStatus>>(_a[2]))); break;
         case 4: _t->onProcessError((*reinterpret_cast< std::add_pointer_t<QProcess::ProcessError>>(_a[1]))); break;
         default: ;
@@ -171,7 +175,7 @@ void PlantUMLRenderer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
             }
         }
         {
-            using _t = void (PlantUMLRenderer::*)(const QString & );
+            using _t = void (PlantUMLRenderer::*)(const QString & , const QString & );
             if (_t _q_method = &PlantUMLRenderer::renderError; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 2;
                 return;
@@ -224,9 +228,9 @@ void PlantUMLRenderer::renderComplete(const QString & _t1)
 }
 
 // SIGNAL 2
-void PlantUMLRenderer::renderError(const QString & _t1)
+void PlantUMLRenderer::renderError(const QString & _t1, const QString & _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP

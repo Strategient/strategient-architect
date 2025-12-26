@@ -4802,6 +4802,7 @@ CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.o: /home/dodzw/proj
   /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
@@ -4833,10 +4834,14 @@ CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.o: /home/dodzw/proj
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerinfo.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontiguouscache.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
@@ -4859,6 +4864,7 @@ CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.o: /home/dodzw/proj
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetacontainer.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject_impl.h \
@@ -6315,12 +6321,6 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h:
-
 /home/dodzw/projects/strategient-architect/studio/src/main.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextedit.h:
@@ -6330,6 +6330,12 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QDateTime:
 
 /home/dodzw/projects/strategient-architect/studio/src/ProjectModel.cpp:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QRegularExpression:
 
@@ -6386,6 +6392,8 @@ CMakeFiles/StrategientArchitect.dir/src/main.cpp.o: /home/dodzw/projects/strateg
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qcryptographichash.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue:
 

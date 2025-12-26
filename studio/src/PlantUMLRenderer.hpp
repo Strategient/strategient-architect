@@ -9,7 +9,7 @@
 /**
  * PlantUMLRenderer handles rendering PlantUML source to SVG.
  * Automatically applies the Strategient theme for consistent styling.
- * Runs plantuml asynchronously and emits signals when complete.
+ * Provides detailed error reporting for diagnostics.
  */
 class PlantUMLRenderer : public QObject {
     Q_OBJECT
@@ -36,7 +36,9 @@ public:
 signals:
     void renderStarted();
     void renderComplete(const QString& svgPath);
-    void renderError(const QString& errorMessage);
+    
+    // Error signal with title and detailed message
+    void renderError(const QString& errorTitle, const QString& errorDetails);
 
 private slots:
     void onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
@@ -46,6 +48,7 @@ private:
     void cleanupProcess();
     QString loadTheme();
     QString applyTheme(const QString& plantumlSource);
+    QString validateSource(const QString& source);
     
     QProcess* m_process{nullptr};
     QTemporaryFile* m_inputFile{nullptr};

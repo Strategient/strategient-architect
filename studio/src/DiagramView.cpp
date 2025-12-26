@@ -43,17 +43,55 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
         "  font-size: 14px; "
         "}");
 
-    // Error display
-    m_errorLabel = new QLabel("");
-    m_errorLabel->setAlignment(Qt::AlignCenter);
-    m_errorLabel->setWordWrap(true);
-    m_errorLabel->setStyleSheet(
+    // Error display widget
+    m_errorWidget = new QWidget(this);
+    m_errorWidget->setStyleSheet("background-color: #1e1e1e;");
+    auto* errorLayout = new QVBoxLayout(m_errorWidget);
+    errorLayout->setAlignment(Qt::AlignCenter);
+    errorLayout->setSpacing(16);
+    errorLayout->setContentsMargins(40, 40, 40, 40);
+
+    // Error icon and title
+    m_errorTitle = new QLabel("⚠️ Render Error");
+    m_errorTitle->setAlignment(Qt::AlignCenter);
+    m_errorTitle->setStyleSheet(
         "QLabel { "
-        "  background-color: #1e1e1e; "
         "  color: #f48771; "
-        "  font-size: 12px; "
-        "  padding: 20px; "
+        "  font-size: 18px; "
+        "  font-weight: bold; "
+        "  background: transparent; "
         "}");
+    errorLayout->addWidget(m_errorTitle);
+
+    // Error details
+    m_errorDetails = new QLabel("");
+    m_errorDetails->setAlignment(Qt::AlignCenter);
+    m_errorDetails->setWordWrap(true);
+    m_errorDetails->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_errorDetails->setMaximumWidth(600);
+    m_errorDetails->setStyleSheet(
+        "QLabel { "
+        "  color: #cccccc; "
+        "  font-size: 12px; "
+        "  font-family: 'JetBrains Mono', 'Fira Code', monospace; "
+        "  background-color: #2d2d30; "
+        "  border: 1px solid #3e3e42; "
+        "  border-radius: 4px; "
+        "  padding: 16px; "
+        "}");
+    errorLayout->addWidget(m_errorDetails);
+
+    // Hint label
+    auto* hintLabel = new QLabel("Check the Run Console for full error details.");
+    hintLabel->setAlignment(Qt::AlignCenter);
+    hintLabel->setStyleSheet(
+        "QLabel { "
+        "  color: #6a9955; "
+        "  font-size: 11px; "
+        "  background: transparent; "
+        "  margin-top: 8px; "
+        "}");
+    errorLayout->addWidget(hintLabel);
 
     // SVG view with scroll area
     m_scrollArea = new QScrollArea(this);
@@ -69,7 +107,7 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
     m_scrollArea->setWidget(m_svgWidget);
 
     m_stack->addWidget(m_placeholder);
-    m_stack->addWidget(m_errorLabel);
+    m_stack->addWidget(m_errorWidget);
     m_stack->addWidget(m_scrollArea);
     m_stack->setCurrentWidget(m_placeholder);
 
@@ -79,9 +117,17 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
     connect(m_renderer, &PlantUMLRenderer::renderStarted, this, [this]() {
         m_isRendering = true;
         m_statusLabel->setText("Rendering PlantUML...");
+        m_statusLabel->setStyleSheet(
+            "QLabel { "
+            "  background-color: #2d2d30; "
+            "  color: #dcdcaa; "
+            "  padding: 4px 8px; "
+            "  font-size: 11px; "
+            "}");
         m_statusLabel->setVisible(true);
         emit renderStarted();
     });
+    
     connect(m_renderer, &PlantUMLRenderer::renderComplete,
             this, &DiagramView::onRenderComplete);
     connect(m_renderer, &PlantUMLRenderer::renderError,
@@ -96,7 +142,7 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
 
 void DiagramView::loadSvg(const QString& filePath) {
     if (!QFile::exists(filePath)) {
-        showError(QString("SVG file not found:\n%1").arg(filePath));
+        showError("File not found", QString("SVG file does not exist:\n%1").arg(filePath));
         return;
     }
 
@@ -136,6 +182,13 @@ void DiagramView::updateDisplay() {
     }
 
     m_statusLabel->setText(QString("Page: %1").arg(page->title));
+    m_statusLabel->setStyleSheet(
+        "QLabel { "
+        "  background-color: #2d2d30; "
+        "  color: #808080; "
+        "  padding: 4px 8px; "
+        "  font-size: 11px; "
+        "}");
     m_statusLabel->setVisible(true);
 
     if (page->plantuml.isEmpty()) {
@@ -143,24 +196,41 @@ void DiagramView::updateDisplay() {
         return;
     }
 
-    // Auto-render the PlantUML
     renderPlantUML(page->plantuml);
 }
 
 void DiagramView::onRenderComplete(const QString& svgPath) {
     m_isRendering = false;
-    m_statusLabel->setText(QString("Page: %1 (rendered)").arg(
-        m_model->currentPage() ? m_model->currentPage()->title : ""));
+    
+    const auto* page = m_model->currentPage();
+    m_statusLabel->setText(QString("Page: %1 ✓").arg(page ? page->title : ""));
+    m_statusLabel->setStyleSheet(
+        "QLabel { "
+        "  background-color: #2d2d30; "
+        "  color: #6a9955; "
+        "  padding: 4px 8px; "
+        "  font-size: 11px; "
+        "}");
     
     loadSvg(svgPath);
     emit renderComplete();
 }
 
-void DiagramView::onRenderError(const QString& errorMessage) {
+void DiagramView::onRenderError(const QString& errorTitle, const QString& errorDetails) {
     m_isRendering = false;
-    m_statusLabel->setVisible(false);
-    showError(errorMessage);
-    emit renderError(errorMessage);
+    
+    const auto* page = m_model->currentPage();
+    m_statusLabel->setText(QString("Page: %1 ✗").arg(page ? page->title : ""));
+    m_statusLabel->setStyleSheet(
+        "QLabel { "
+        "  background-color: #2d2d30; "
+        "  color: #f48771; "
+        "  padding: 4px 8px; "
+        "  font-size: 11px; "
+        "}");
+    
+    showError(errorTitle, errorDetails);
+    emit renderFailed(errorTitle, errorDetails);
 }
 
 void DiagramView::showPlaceholder(const QString& message) {
@@ -172,8 +242,15 @@ void DiagramView::showSvg() {
     m_stack->setCurrentWidget(m_scrollArea);
 }
 
-void DiagramView::showError(const QString& message) {
-    m_errorLabel->setText(QString("⚠️ Render Error\n\n%1").arg(message));
-    m_stack->setCurrentWidget(m_errorLabel);
+void DiagramView::showError(const QString& title, const QString& details) {
+    m_errorTitle->setText(QString("⚠️ %1").arg(title));
+    
+    // Format details for display (limit length for UI)
+    QString displayDetails = details;
+    if (displayDetails.length() > 500) {
+        displayDetails = displayDetails.left(500) + "\n\n... (see Run Console for full output)";
+    }
+    m_errorDetails->setText(displayDetails);
+    
+    m_stack->setCurrentWidget(m_errorWidget);
 }
-

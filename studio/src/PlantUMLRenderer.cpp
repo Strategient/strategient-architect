@@ -10,10 +10,6 @@ PlantUMLRenderer::PlantUMLRenderer(QObject* parent)
     : QObject(parent)
 {
     // Set default theme path relative to the application
-    // In development, look relative to the build directory
-    // The theme file is at: assets/plantuml/themes/strategient.puml
-    
-    // Try several possible locations
     QStringList searchPaths = {
         QCoreApplication::applicationDirPath() + "/../assets/plantuml/themes/strategient.puml",
         QCoreApplication::applicationDirPath() + "/../../assets/plantuml/themes/strategient.puml",
@@ -57,7 +53,7 @@ bool PlantUMLRenderer::isPlantUMLAvailable() {
 
 void PlantUMLRenderer::setThemePath(const QString& path) {
     m_themePath = path;
-    m_cachedTheme.clear();  // Clear cache to reload
+    m_cachedTheme.clear();
 }
 
 QString PlantUMLRenderer::loadTheme() {
@@ -76,7 +72,6 @@ QString PlantUMLRenderer::loadTheme() {
     }
     
     m_cachedTheme = QString::fromUtf8(file.readAll());
-    qDebug() << "[PlantUMLRenderer] Loaded theme:" << m_cachedTheme.length() << "chars";
     return m_cachedTheme;
 }
 
@@ -90,23 +85,42 @@ QString PlantUMLRenderer::applyTheme(const QString& plantumlSource) {
         return plantumlSource;
     }
     
-    // Insert theme right after @startuml line
     QRegularExpression startumlRe("(@startuml[^\\n]*\\n)");
     QRegularExpressionMatch match = startumlRe.match(plantumlSource);
     
     if (match.hasMatch()) {
         QString result = plantumlSource;
         int insertPos = match.capturedEnd(1);
-        
-        // Add theme content with newlines
         QString themeBlock = "\n' === Strategient Theme (auto-applied) ===\n" + theme + "\n' === End Theme ===\n\n";
         result.insert(insertPos, themeBlock);
-        
         return result;
     }
     
-    // If no @startuml found, just prepend
     return theme + "\n" + plantumlSource;
+}
+
+// Validate PlantUML source for common errors
+QString PlantUMLRenderer::validateSource(const QString& source) {
+    QString trimmed = source.trimmed();
+    
+    // Check for @startuml
+    if (!trimmed.contains("@startuml")) {
+        return "Missing @startuml directive. PlantUML diagrams must start with @startuml";
+    }
+    
+    // Check for @enduml
+    if (!trimmed.contains("@enduml")) {
+        return "Missing @enduml directive. PlantUML diagrams must end with @enduml";
+    }
+    
+    // Check that @enduml comes after @startuml
+    int startPos = trimmed.indexOf("@startuml");
+    int endPos = trimmed.indexOf("@enduml");
+    if (endPos < startPos) {
+        return "@enduml appears before @startuml. Check diagram structure.";
+    }
+    
+    return QString(); // No validation errors
 }
 
 // Extract diagram name from @startuml <name>
@@ -123,14 +137,19 @@ void PlantUMLRenderer::renderToSvg(const QString& plantumlSource) {
     qDebug() << "[PlantUMLRenderer] renderToSvg called, source length:" << plantumlSource.length();
     
     if (plantumlSource.trimmed().isEmpty()) {
-        qDebug() << "[PlantUMLRenderer] Empty source, skipping";
-        emit renderError("Empty PlantUML source");
+        emit renderError("Empty PlantUML source", "No PlantUML content to render.");
+        return;
+    }
+
+    // Validate source before attempting render
+    QString validationError = validateSource(plantumlSource);
+    if (!validationError.isEmpty()) {
+        emit renderError("PlantUML validation failed", validationError);
         return;
     }
 
     // Clean up previous process safely
     if (m_process) {
-        qDebug() << "[PlantUMLRenderer] Cleaning up previous process";
         m_process->disconnect();
         m_process->kill();
         m_process->waitForFinished(500);
@@ -147,15 +166,13 @@ void PlantUMLRenderer::renderToSvg(const QString& plantumlSource) {
 
     // Apply theme to the source
     QString themedSource = applyTheme(plantumlSource);
-    qDebug() << "[PlantUMLRenderer] Themed source length:" << themedSource.length();
 
     // Create temp file for input
     m_inputFile = new QTemporaryFile(QDir::tempPath() + "/strategient_XXXXXX.puml");
     m_inputFile->setAutoRemove(false);
     
     if (!m_inputFile->open()) {
-        qDebug() << "[PlantUMLRenderer] Failed to create temp file";
-        emit renderError("Failed to create temporary file");
+        emit renderError("File system error", "Failed to create temporary file for PlantUML input.");
         return;
     }
 
@@ -165,8 +182,8 @@ void PlantUMLRenderer::renderToSvg(const QString& plantumlSource) {
     
     QString inputPath = m_inputFile->fileName();
     
-    // PlantUML outputs based on @startuml name, not input filename
-    QString diagramName = extractDiagramName(plantumlSource);  // Use original source for name
+    // Determine output path based on diagram name
+    QString diagramName = extractDiagramName(plantumlSource);
     if (!diagramName.isEmpty()) {
         m_outputPath = QDir::tempPath() + "/" + diagramName + ".svg";
     } else {
@@ -190,7 +207,6 @@ void PlantUMLRenderer::renderToSvg(const QString& plantumlSource) {
 
     emit renderStarted();
     
-    // Run: plantuml -tsvg -o /tmp input.puml
     m_process->start("plantuml", {"-tsvg", "-o", QDir::tempPath(), inputPath});
 }
 
@@ -198,82 +214,128 @@ void PlantUMLRenderer::onProcessFinished(int exitCode, QProcess::ExitStatus exit
     Q_UNUSED(exitStatus);
     
     if (!m_process) {
-        qDebug() << "[PlantUMLRenderer] onProcessFinished called but process is null";
         return;
     }
     
     qDebug() << "[PlantUMLRenderer] Process finished, exit code:" << exitCode;
     
-    QString stderrOutput = QString::fromUtf8(m_process->readAllStandardError());
-    QString stdoutOutput = QString::fromUtf8(m_process->readAllStandardOutput());
+    // Capture both stdout and stderr
+    QString stderrOutput = QString::fromUtf8(m_process->readAllStandardError()).trimmed();
+    QString stdoutOutput = QString::fromUtf8(m_process->readAllStandardOutput()).trimmed();
     
-    if (exitCode == 0 || exitCode == 200) {
-        if (QFileInfo::exists(m_outputPath)) {
-            m_lastSvgPath = m_outputPath;
-            qDebug() << "[PlantUMLRenderer] SVG created:" << m_outputPath;
-            cleanupProcess();
-            emit renderComplete(m_lastSvgPath);
-        } else {
-            // Try to find SVG by scanning /tmp for recent files
-            qDebug() << "[PlantUMLRenderer] SVG not at expected path, scanning...";
-            QDir tmpDir(QDir::tempPath());
-            QStringList svgFiles = tmpDir.entryList({"*.svg"}, QDir::Files, QDir::Time);
-            
-            QString foundSvg;
-            for (const QString& svg : svgFiles) {
-                QString fullPath = tmpDir.filePath(svg);
-                QFileInfo info(fullPath);
-                if (info.lastModified().secsTo(QDateTime::currentDateTime()) < 10) {
-                    foundSvg = fullPath;
-                    break;
-                }
-            }
-            
-            if (!foundSvg.isEmpty()) {
-                m_lastSvgPath = foundSvg;
-                m_outputPath = foundSvg;
-                qDebug() << "[PlantUMLRenderer] Found SVG:" << foundSvg;
-                cleanupProcess();
-                emit renderComplete(m_lastSvgPath);
-            } else {
-                QString errorMsg = stderrOutput.isEmpty() ? stdoutOutput : stderrOutput;
-                cleanupProcess();
-                emit renderError(QString("SVG file was not created. %1").arg(errorMsg.trimmed()));
+    // Combine outputs for logging
+    QString fullOutput;
+    if (!stdoutOutput.isEmpty()) {
+        fullOutput += "stdout: " + stdoutOutput;
+    }
+    if (!stderrOutput.isEmpty()) {
+        if (!fullOutput.isEmpty()) fullOutput += "\n";
+        fullOutput += "stderr: " + stderrOutput;
+    }
+    
+    // Log all output for diagnostics
+    if (!fullOutput.isEmpty()) {
+        qDebug() << "[PlantUMLRenderer] Process output:\n" << fullOutput;
+    }
+
+    // Check if SVG was created
+    bool svgExists = QFileInfo::exists(m_outputPath);
+    
+    if (!svgExists) {
+        // Try to find SVG by scanning /tmp for recent files
+        QDir tmpDir(QDir::tempPath());
+        QStringList svgFiles = tmpDir.entryList({"*.svg"}, QDir::Files, QDir::Time);
+        
+        for (const QString& svg : svgFiles) {
+            QString fullPath = tmpDir.filePath(svg);
+            QFileInfo info(fullPath);
+            if (info.lastModified().secsTo(QDateTime::currentDateTime()) < 10) {
+                m_outputPath = fullPath;
+                svgExists = true;
+                break;
             }
         }
-    } else {
-        QString errorMsg = stderrOutput.isEmpty() ? stdoutOutput : stderrOutput;
-        qDebug() << "[PlantUMLRenderer] Error:" << errorMsg.trimmed();
+    }
+
+    if (svgExists) {
+        m_lastSvgPath = m_outputPath;
+        qDebug() << "[PlantUMLRenderer] SVG created:" << m_outputPath;
         cleanupProcess();
-        emit renderError(QString("PlantUML error (exit %1): %2").arg(exitCode).arg(errorMsg.trimmed()));
+        emit renderComplete(m_lastSvgPath);
+    } else {
+        // Build detailed error message
+        QString errorTitle;
+        QString errorDetails;
+        
+        if (exitCode == 0) {
+            errorTitle = "SVG not generated";
+            errorDetails = "PlantUML completed but no SVG file was created.";
+        } else if (exitCode == 200) {
+            errorTitle = "PlantUML syntax error";
+            errorDetails = "The diagram contains errors.";
+        } else {
+            errorTitle = QString("PlantUML failed (exit code %1)").arg(exitCode);
+            errorDetails = "PlantUML encountered an error during rendering.";
+        }
+        
+        // Append process output to details
+        if (!stderrOutput.isEmpty()) {
+            // Parse PlantUML error output for line numbers
+            QRegularExpression lineErrorRe("Error line (\\d+)");
+            QRegularExpressionMatch match = lineErrorRe.match(stderrOutput);
+            if (match.hasMatch()) {
+                errorDetails += QString("\n\nError at line %1").arg(match.captured(1));
+            }
+            errorDetails += "\n\n" + stderrOutput;
+        } else if (!stdoutOutput.isEmpty()) {
+            errorDetails += "\n\n" + stdoutOutput;
+        }
+        
+        cleanupProcess();
+        emit renderError(errorTitle, errorDetails);
     }
 }
 
 void PlantUMLRenderer::onProcessError(QProcess::ProcessError error) {
     if (!m_process) {
-        qDebug() << "[PlantUMLRenderer] onProcessError called but process is null";
         return;
     }
     
-    QString errorMsg;
+    QString errorTitle;
+    QString errorDetails;
+    
     switch (error) {
         case QProcess::FailedToStart:
-            errorMsg = "PlantUML not found. Install with: sudo apt install plantuml";
+            errorTitle = "PlantUML not found";
+            errorDetails = "The PlantUML command could not be started.\n\n"
+                          "Install PlantUML with:\n"
+                          "  sudo apt install plantuml";
             break;
         case QProcess::Crashed:
-            errorMsg = "PlantUML process crashed";
+            errorTitle = "PlantUML crashed";
+            errorDetails = "The PlantUML process terminated unexpectedly.";
             break;
         case QProcess::Timedout:
-            errorMsg = "PlantUML process timed out";
+            errorTitle = "PlantUML timeout";
+            errorDetails = "The PlantUML process took too long to respond.";
+            break;
+        case QProcess::ReadError:
+            errorTitle = "Read error";
+            errorDetails = "Failed to read PlantUML output.";
+            break;
+        case QProcess::WriteError:
+            errorTitle = "Write error";
+            errorDetails = "Failed to write to PlantUML process.";
             break;
         default:
-            errorMsg = QString("Process error: %1").arg(error);
+            errorTitle = "Process error";
+            errorDetails = QString("An unknown error occurred (code %1).").arg(static_cast<int>(error));
             break;
     }
     
-    qDebug() << "[PlantUMLRenderer] Process error:" << errorMsg;
+    qDebug() << "[PlantUMLRenderer] Process error:" << errorTitle << "-" << errorDetails;
     cleanupProcess();
-    emit renderError(errorMsg);
+    emit renderError(errorTitle, errorDetails);
 }
 
 void PlantUMLRenderer::cleanupProcess() {
