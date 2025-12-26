@@ -26,7 +26,6 @@ set(SOURCES
     src/main.cpp
     src/MainWindow.cpp
     src/RunConsole.cpp
-    src/PlantUMLPreview.cpp
     src/ProjectModel.cpp
     src/DocumentModel.cpp
     src/PagesSidebar.cpp
@@ -34,8 +33,6 @@ set(SOURCES
     src/DiagramView.cpp
     src/MonacoBridge.cpp
     src/MonacoEditorWidget.cpp
-    src/PlantUMLRenderer.cpp
-    src/PlantUMLParser.cpp
     src/GraphvizRenderer.cpp
     src/DotParser.cpp
     src/NodeItem.cpp
@@ -46,7 +43,6 @@ set(SOURCES
 set(HEADERS
     src/MainWindow.hpp
     src/RunConsole.hpp
-    src/PlantUMLPreview.hpp
     src/ProjectModel.hpp
     src/DocumentModel.hpp
     src/PagesSidebar.hpp
@@ -54,8 +50,6 @@ set(HEADERS
     src/DiagramView.hpp
     src/MonacoBridge.hpp
     src/MonacoEditorWidget.hpp
-    src/PlantUMLRenderer.hpp
-    src/PlantUMLParser.hpp
     src/GraphvizRenderer.hpp
     src/DotParser.hpp
     src/NodeItem.hpp

@@ -44,8 +44,6 @@ public:
     // Re-render current page's Graphviz DOT source
     void renderGraphviz(const QString& dotSource);
     
-    // Alias for backward compatibility
-    void renderPlantUML(const QString& source) { renderGraphviz(source); }
     
     // Clear display
     void clear();

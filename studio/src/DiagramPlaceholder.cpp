@@ -34,11 +34,11 @@ DiagramPlaceholder::DiagramPlaceholder(DocumentModel* model, QWidget* parent)
     layout->addWidget(m_typeLabel);
 
     // DOT/Graphviz preview (first few lines)
-    m_plantumlPreview = new QLabel("");
-    m_plantumlPreview->setAlignment(Qt::AlignCenter);
-    m_plantumlPreview->setWordWrap(true);
-    m_plantumlPreview->setMaximumWidth(600);
-    m_plantumlPreview->setStyleSheet(
+    m_dotPreview = new QLabel("");
+    m_dotPreview->setAlignment(Qt::AlignCenter);
+    m_dotPreview->setWordWrap(true);
+    m_dotPreview->setMaximumWidth(600);
+    m_dotPreview->setStyleSheet(
         "QLabel { "
         "  color: #6a9955; "
         "  font-family: 'JetBrains Mono', 'Fira Code', monospace; "
@@ -48,7 +48,7 @@ DiagramPlaceholder::DiagramPlaceholder(DocumentModel* model, QWidget* parent)
         "  border-radius: 4px; "
         "  padding: 12px; "
         "}");
-    layout->addWidget(m_plantumlPreview);
+    layout->addWidget(m_dotPreview);
 
     setStyleSheet("background-color: #1e1e1e;");
 
@@ -74,8 +74,8 @@ void DiagramPlaceholder::updateDisplay() {
     if (!page) {
         m_titleLabel->setText("No Page Selected");
         m_typeLabel->setText("Open a project or select a page from the sidebar");
-        m_plantumlPreview->setText("");
-        m_plantumlPreview->setVisible(false);
+        m_dotPreview->setText("");
+        m_dotPreview->setVisible(false);
         return;
     }
 
@@ -93,11 +93,11 @@ void DiagramPlaceholder::updateDisplay() {
         if (lines.size() > 12) {
             preview.append("...");
         }
-        m_plantumlPreview->setText(preview.join('\n'));
-        m_plantumlPreview->setVisible(true);
+        m_dotPreview->setText(preview.join('\n'));
+        m_dotPreview->setVisible(true);
     } else {
-        m_plantumlPreview->setText("(no DOT/Graphviz content)");
-        m_plantumlPreview->setVisible(true);
+        m_dotPreview->setText("(no DOT/Graphviz content)");
+        m_dotPreview->setVisible(true);
     }
 }
 

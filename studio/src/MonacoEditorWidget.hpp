@@ -9,7 +9,7 @@ class MonacoBridge;
 
 /**
  * MonacoEditorWidget wraps QWebEngineView to provide a Monaco-based code editor.
- * Used for editing PlantUML source with syntax highlighting and autocomplete.
+ * Used for editing Graphviz DOT source with syntax highlighting and autocomplete.
  */
 class MonacoEditorWidget : public QWidget {
     Q_OBJECT
@@ -43,7 +43,7 @@ private:
     
     bool m_editorReady{false};
     QString m_pendingText;
-    QString m_pendingLanguage{"plantuml"};
+    QString m_pendingLanguage{"dot"};
     bool m_pendingReadOnly{false};
 };
 

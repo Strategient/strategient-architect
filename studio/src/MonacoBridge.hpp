@@ -48,7 +48,7 @@ signals:
 
 private:
     QString m_currentText;
-    QString m_currentLanguage{"plantuml"};
+    QString m_currentLanguage{"dot"};
     bool m_readOnly{false};
 };
 

@@ -203,7 +203,7 @@ void DiagramView::setupUI() {
     // Placeholder
     m_placeholder = new QLabel("No diagram to display.\n\n"
                                "Select a page from the sidebar\n"
-                               "and edit PlantUML in the editor below.");
+                               "and edit DOT in the editor below.");
     m_placeholder->setAlignment(Qt::AlignCenter);
     m_placeholder->setStyleSheet(
         "QLabel { background-color: #2D3A47; color: #8495A9; font-size: 14px; }");

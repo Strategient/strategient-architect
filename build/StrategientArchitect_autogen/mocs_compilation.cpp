@@ -9,6 +9,4 @@
 #include "UVLADIE3JM/moc_MonacoEditorWidget.cpp"
 #include "UVLADIE3JM/moc_NodeItem.cpp"
 #include "UVLADIE3JM/moc_PagesSidebar.cpp"
-#include "UVLADIE3JM/moc_PlantUMLPreview.cpp"
-#include "UVLADIE3JM/moc_PlantUMLRenderer.cpp"
 #include "UVLADIE3JM/moc_RunConsole.cpp"

@@ -4,7 +4,6 @@
 #include <QMainWindow>
 
 class RunConsole;
-class PlantUMLPreview;
 class DocumentModel;
 class PagesSidebar;
 class DiagramView;
@@ -41,7 +40,6 @@ private:
     
     // UI components
     RunConsole* m_runConsole{nullptr};
-    PlantUMLPreview* m_plantUMLPreview{nullptr};
     PagesSidebar* m_pagesSidebar{nullptr};
     DiagramView* m_diagramView{nullptr};
     MonacoEditorWidget* m_monacoEditor{nullptr};

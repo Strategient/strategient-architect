@@ -11,7 +11,7 @@ class EdgeItem;
  * NodeItem - A draggable node in the diagram canvas.
  * 
  * Displays:
- * - Node label (from metadata.displayName or PlantUML alias)
+ * - Node label (from metadata.displayName or DOT node ID)
  * - Test status badge (Pass/Fail/NotRun)
  * - Type icon indicator
  * 

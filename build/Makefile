@@ -504,78 +504,6 @@ src/PagesSidebar.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PagesSidebar.cpp.s
 .PHONY : src/PagesSidebar.cpp.s
 
-src/PlantUMLParser.o: src/PlantUMLParser.cpp.o
-.PHONY : src/PlantUMLParser.o
-
-# target to build an object file
-src/PlantUMLParser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.o
-.PHONY : src/PlantUMLParser.cpp.o
-
-src/PlantUMLParser.i: src/PlantUMLParser.cpp.i
-.PHONY : src/PlantUMLParser.i
-
-# target to preprocess a source file
-src/PlantUMLParser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.i
-.PHONY : src/PlantUMLParser.cpp.i
-
-src/PlantUMLParser.s: src/PlantUMLParser.cpp.s
-.PHONY : src/PlantUMLParser.s
-
-# target to generate assembly for a file
-src/PlantUMLParser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLParser.cpp.s
-.PHONY : src/PlantUMLParser.cpp.s
-
-src/PlantUMLPreview.o: src/PlantUMLPreview.cpp.o
-.PHONY : src/PlantUMLPreview.o
-
-# target to build an object file
-src/PlantUMLPreview.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLPreview.cpp.o
-.PHONY : src/PlantUMLPreview.cpp.o
-
-src/PlantUMLPreview.i: src/PlantUMLPreview.cpp.i
-.PHONY : src/PlantUMLPreview.i
-
-# target to preprocess a source file
-src/PlantUMLPreview.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLPreview.cpp.i
-.PHONY : src/PlantUMLPreview.cpp.i
-
-src/PlantUMLPreview.s: src/PlantUMLPreview.cpp.s
-.PHONY : src/PlantUMLPreview.s
-
-# target to generate assembly for a file
-src/PlantUMLPreview.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLPreview.cpp.s
-.PHONY : src/PlantUMLPreview.cpp.s
-
-src/PlantUMLRenderer.o: src/PlantUMLRenderer.cpp.o
-.PHONY : src/PlantUMLRenderer.o
-
-# target to build an object file
-src/PlantUMLRenderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.o
-.PHONY : src/PlantUMLRenderer.cpp.o
-
-src/PlantUMLRenderer.i: src/PlantUMLRenderer.cpp.i
-.PHONY : src/PlantUMLRenderer.i
-
-# target to preprocess a source file
-src/PlantUMLRenderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.i
-.PHONY : src/PlantUMLRenderer.cpp.i
-
-src/PlantUMLRenderer.s: src/PlantUMLRenderer.cpp.s
-.PHONY : src/PlantUMLRenderer.s
-
-# target to generate assembly for a file
-src/PlantUMLRenderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.s
-.PHONY : src/PlantUMLRenderer.cpp.s
-
 src/ProjectModel.o: src/ProjectModel.cpp.o
 .PHONY : src/ProjectModel.o
 
@@ -702,15 +630,6 @@ help:
 	@echo "... src/PagesSidebar.o"
 	@echo "... src/PagesSidebar.i"
 	@echo "... src/PagesSidebar.s"
-	@echo "... src/PlantUMLParser.o"
-	@echo "... src/PlantUMLParser.i"
-	@echo "... src/PlantUMLParser.s"
-	@echo "... src/PlantUMLPreview.o"
-	@echo "... src/PlantUMLPreview.i"
-	@echo "... src/PlantUMLPreview.s"
-	@echo "... src/PlantUMLRenderer.o"
-	@echo "... src/PlantUMLRenderer.i"
-	@echo "... src/PlantUMLRenderer.s"
 	@echo "... src/ProjectModel.o"
 	@echo "... src/ProjectModel.i"
 	@echo "... src/ProjectModel.s"

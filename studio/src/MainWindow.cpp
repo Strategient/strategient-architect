@@ -1,6 +1,5 @@
 #include "MainWindow.hpp"
 #include "RunConsole.hpp"
-#include "PlantUMLPreview.hpp"
 #include "DocumentModel.hpp"
 #include "PagesSidebar.hpp"
 #include "DiagramView.hpp"
@@ -57,7 +56,7 @@ MainWindow::MainWindow(QWidget* parent)
 }
 
 void MainWindow::setupUI() {
-    // Central widget - DiagramView (shows rendered PlantUML)
+    // Central widget - DiagramView (shows rendered Graphviz DOT diagrams)
     m_diagramView = new DiagramView(m_documentModel, this);
     m_diagramView->setMinimumSize(600, 400);
     setCentralWidget(m_diagramView);
@@ -94,14 +93,7 @@ void MainWindow::setupUI() {
     agentDock->setWidget(agentPlaceholder);
     addDockWidget(Qt::LeftDockWidgetArea, agentDock);
 
-    // Right dock - PlantUML Preview (SVG file viewer)
-    auto* plantUMLDock = new QDockWidget("SVG Preview", this);
-    plantUMLDock->setAllowedAreas(Qt::AllDockWidgetAreas);
-    m_plantUMLPreview = new PlantUMLPreview(this);
-    plantUMLDock->setWidget(m_plantUMLPreview);
-    addDockWidget(Qt::RightDockWidgetArea, plantUMLDock);
-
-    // Bottom dock - Tab widget with Run Console, PlantUML Editor, Inspector
+    // Bottom dock - Tab widget with Run Console, DOT Editor, Inspector
     m_bottomDock = new QDockWidget("Tools", this);
     m_bottomDock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::TopDockWidgetArea);
     m_bottomDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
@@ -179,18 +171,6 @@ void MainWindow::setupMenus() {
 
     fileMenu->addSeparator();
 
-    // Open SVG (for PlantUML preview)
-    auto* openSvgAction = fileMenu->addAction("Open SVG...");
-    connect(openSvgAction, &QAction::triggered, this, [this]() {
-        QString filePath = QFileDialog::getOpenFileName(
-            this, "Open SVG", QString(), "SVG Files (*.svg)");
-        if (!filePath.isEmpty()) {
-            m_plantUMLPreview->loadSvg(filePath);
-            logMessage(QString("[ui] Loaded SVG: %1").arg(filePath));
-        }
-    });
-
-    fileMenu->addSeparator();
 
     // Exit
     auto* exitAction = fileMenu->addAction("E&xit");

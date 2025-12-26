@@ -27,7 +27,7 @@ private:
     DocumentModel* m_model;
     QLabel* m_titleLabel;
     QLabel* m_typeLabel;
-    QLabel* m_plantumlPreview;
+    QLabel* m_dotPreview;
 };
 
 #endif // DIAGRAMPLACEHOLDER_HPP
