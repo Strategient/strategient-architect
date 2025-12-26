@@ -1,0 +1,309 @@
+{
+    "pages": [
+        {
+            "metadata": {
+                "edges": {
+                    "ALPHA->RISK": {
+                        "description": "Alpha signals pass through risk checks before execution",
+                        "label": "signals"
+                    },
+                    "MARKET_FEED->UNIVERSE": {
+                        "description": "Real-time market data flows to universe filter",
+                        "label": "tick data"
+                    }
+                },
+                "layout": {
+                    "ALPHA": {
+                        "x": 500,
+                        "y": 150
+                    },
+                    "ALT_DATA": {
+                        "x": 100,
+                        "y": 200
+                    },
+                    "FEATURES": {
+                        "x": 300,
+                        "y": 200
+                    },
+                    "MARKET_FEED": {
+                        "x": 100,
+                        "y": 100
+                    },
+                    "POSITIONS": {
+                        "x": 700,
+                        "y": 300
+                    },
+                    "RISK": {
+                        "x": 700,
+                        "y": 100
+                    },
+                    "ROUTER": {
+                        "x": 700,
+                        "y": 200
+                    },
+                    "UNIVERSE": {
+                        "x": 300,
+                        "y": 100
+                    }
+                },
+                "nodes": {
+                    "ALPHA": {
+                        "agent_prompt_text": "Define the alpha generation model. Supports ML models, factor models, or custom scoring.",
+                        "code_refs": [
+                            "src/models/alpha.py"
+                        ],
+                        "display_name": "Alpha Model",
+                        "tasks": [
+                            {
+                                "id": "task-2",
+                                "status": "in_progress",
+                                "title": "Fix model serialization bug"
+                            }
+                        ],
+                        "test_status": "fail"
+                    },
+                    "ALT_DATA": {
+                        "agent_prompt_text": "Set up alternative data sources like sentiment, satellite imagery, or web scraping.",
+                        "code_refs": [
+                            "src/data/alt_data.py"
+                        ],
+                        "display_name": "Alternative Data",
+                        "tasks": [
+                            {
+                                "id": "task-1",
+                                "status": "pending",
+                                "title": "Add Twitter sentiment feed"
+                            }
+                        ],
+                        "test_status": "not_run"
+                    },
+                    "FEATURES": {
+                        "agent_prompt_text": "Configure feature engineering pipeline. Add technical indicators, fundamental ratios, or custom features.",
+                        "code_refs": [
+                            "src/pipeline/features.py",
+                            "src/pipeline/indicators.py"
+                        ],
+                        "display_name": "Feature Engine",
+                        "test_status": "pass"
+                    },
+                    "MARKET_FEED": {
+                        "agent_prompt_text": "Configure the market data feed connection. Supports IEX, Polygon, or custom websocket feeds.",
+                        "code_refs": [
+                            "src/data/market_feed.py"
+                        ],
+                        "display_name": "Market Data Feed",
+                        "test_status": "pass"
+                    },
+                    "POSITIONS": {
+                        "agent_prompt_text": "Configure position and P&L tracking, reconciliation with broker.",
+                        "code_refs": [
+                            "src/execution/positions.py"
+                        ],
+                        "display_name": "Position Tracker",
+                        "test_status": "pass"
+                    },
+                    "RISK": {
+                        "agent_prompt_text": "Configure risk limits: position sizing, sector exposure, drawdown limits.",
+                        "code_refs": [
+                            "src/execution/risk.py"
+                        ],
+                        "display_name": "Risk Manager",
+                        "test_status": "pass"
+                    },
+                    "ROUTER": {
+                        "agent_prompt_text": "Set up order routing: broker connections, execution algorithms, smart order routing.",
+                        "code_refs": [
+                            "src/execution/router.py"
+                        ],
+                        "display_name": "Order Router",
+                        "test_status": "not_run"
+                    },
+                    "UNIVERSE": {
+                        "agent_prompt_text": "Define the stock universe filtering criteria: market cap, liquidity, sector constraints.",
+                        "code_refs": [
+                            "src/pipeline/universe.py"
+                        ],
+                        "display_name": "Universe Filter",
+                        "test_status": "pass"
+                    }
+                }
+            },
+            "page_id": "page-pipeline-main",
+            "page_type": "PipelineDiagram",
+            "plantuml": "@startuml main_pipeline\ntop to bottom direction\n\nskinparam dpi 150\nskinparam shadowing false\nskinparam padding 8\nskinparam nodesep 40\nskinparam ranksep 50\n\nskinparam rectangle {\n  BackgroundColor #ffffff\n  BorderColor #333333\n  BorderThickness 2\n}\n\nskinparam component {\n  BackgroundColor #fef9e7\n  BorderColor #b03a2e\n  BorderThickness 1.5\n  FontSize 14\n}\n\nskinparam ArrowColor #555555\nskinparam ArrowThickness 1.5\n\nskinparam defaultFontName \"Inter\"\nskinparam defaultFontSize 15\nskinparam TitleFontSize 20\n\ntitle Main Trading Pipeline\n\npackage \"Data Sources\" {\n  component \"Market Data Feed\" as MARKET_FEED\n  component \"Alternative Data\" as ALT_DATA\n}\n\npackage \"Processing\" {\n  component \"Universe Filter\" as UNIVERSE\n  component \"Feature Engine\" as FEATURES\n  component \"Alpha Model\" as ALPHA\n}\n\npackage \"Execution\" {\n  component \"Risk Manager\" as RISK\n  component \"Order Router\" as ROUTER\n  component \"Position Tracker\" as POSITIONS\n}\n\nMARKET_FEED --> UNIVERSE\nALT_DATA ..> FEATURES : enrichment\nUNIVERSE --> FEATURES\nFEATURES --> ALPHA\nALPHA --> RISK\nRISK --> ROUTER\nROUTER --> POSITIONS\n\n@enduml\n",
+            "title": "Main Pipeline"
+        },
+        {
+            "metadata": {
+                "layout": {
+                    "ENGINE": {
+                        "x": 200,
+                        "y": 100
+                    },
+                    "GATEWAY": {
+                        "x": 50,
+                        "y": 100
+                    },
+                    "OMS": {
+                        "x": 50,
+                        "y": 200
+                    },
+                    "PIPELINE": {
+                        "x": 200,
+                        "y": 200
+                    },
+                    "RDS": {
+                        "x": 400,
+                        "y": 150
+                    },
+                    "S3": {
+                        "x": 400,
+                        "y": 250
+                    },
+                    "SQS": {
+                        "x": 400,
+                        "y": 50
+                    }
+                },
+                "nodes": {
+                    "ENGINE": {
+                        "agent_prompt_text": "Configure the main trading engine: instance type, auto-scaling, monitoring.",
+                        "code_refs": [
+                            "infra/terraform/compute.tf"
+                        ],
+                        "display_name": "Trading Engine",
+                        "test_status": "pass"
+                    },
+                    "GATEWAY": {
+                        "agent_prompt_text": "On-premise market data gateway configuration.",
+                        "code_refs": [
+                            "infra/ansible/gateway.yml"
+                        ],
+                        "display_name": "Market Gateway",
+                        "test_status": "pass"
+                    },
+                    "OMS": {
+                        "agent_prompt_text": "Order management system configuration and broker connections.",
+                        "code_refs": [
+                            "infra/ansible/oms.yml"
+                        ],
+                        "display_name": "Order Management",
+                        "test_status": "pass"
+                    },
+                    "PIPELINE": {
+                        "agent_prompt_text": "Set up the data ingestion and processing pipeline infrastructure.",
+                        "code_refs": [
+                            "infra/terraform/pipeline.tf"
+                        ],
+                        "display_name": "Data Pipeline",
+                        "test_status": "pass"
+                    },
+                    "RDS": {
+                        "agent_prompt_text": "Configure the PostgreSQL database: instance class, storage, backups.",
+                        "code_refs": [
+                            "infra/terraform/database.tf"
+                        ],
+                        "display_name": "RDS PostgreSQL",
+                        "test_status": "pass"
+                    },
+                    "S3": {
+                        "agent_prompt_text": "Set up S3 buckets for historical data storage, lifecycle policies.",
+                        "code_refs": [
+                            "infra/terraform/storage.tf"
+                        ],
+                        "display_name": "S3 Data Lake",
+                        "test_status": "not_run"
+                    },
+                    "SQS": {
+                        "agent_prompt_text": "Configure message queues for async event processing.",
+                        "code_refs": [
+                            "infra/terraform/messaging.tf"
+                        ],
+                        "display_name": "SQS Queues",
+                        "test_status": "pass"
+                    }
+                }
+            },
+            "page_id": "page-infra-config",
+            "page_type": "InfraConfig",
+            "plantuml": "@startuml infrastructure\nskinparam backgroundColor #fefefe\n\ntitle Infrastructure Configuration\n\ncloud \"AWS\" as AWS {\n  node \"EC2 Compute\" as EC2 {\n    component \"Trading Engine\" as ENGINE\n    component \"Data Pipeline\" as PIPELINE\n  }\n  \n  database \"RDS PostgreSQL\" as RDS\n  storage \"S3 Data Lake\" as S3\n  queue \"SQS Queues\" as SQS\n}\n\nnode \"On-Premise\" as ONPREM {\n  component \"Market Gateway\" as GATEWAY\n  component \"Order Management\" as OMS\n}\n\nGATEWAY --> ENGINE : market data\nENGINE --> OMS : orders\nENGINE --> RDS : state\nPIPELINE --> S3 : historical data\nENGINE --> SQS : events\n\n@enduml",
+            "title": "Infrastructure"
+        },
+        {
+            "metadata": {
+                "nodes": {
+                    "COLLECTOR": {
+                        "agent_prompt_text": "Configure results aggregation and storage.",
+                        "code_refs": [
+                            "src/backtest/collector.py"
+                        ],
+                        "display_name": "Results Collector",
+                        "test_status": "pass"
+                    },
+                    "CONTROLLER": {
+                        "agent_prompt_text": "Configure the parameter sweep controller: grid search, random search, Bayesian.",
+                        "code_refs": [
+                            "src/backtest/sweep_controller.py"
+                        ],
+                        "display_name": "Sweep Controller",
+                        "test_status": "pass"
+                    },
+                    "LOOKBACK": {
+                        "agent_prompt_text": "Define lookback window parameter ranges: [5, 10, 20, 60, 120] days.",
+                        "display_name": "Lookback Windows",
+                        "test_status": "not_run"
+                    },
+                    "METRICS": {
+                        "agent_prompt_text": "Define performance metrics: Sharpe, Sortino, max drawdown, win rate.",
+                        "code_refs": [
+                            "src/analysis/metrics.py"
+                        ],
+                        "display_name": "Performance Metrics",
+                        "test_status": "pass"
+                    },
+                    "MODELS": {
+                        "agent_prompt_text": "Select model variants to test: linear, xgboost, neural.",
+                        "display_name": "Model Variants",
+                        "test_status": "not_run"
+                    },
+                    "REPORT": {
+                        "agent_prompt_text": "Generate PDF/HTML reports for backtest sweep results.",
+                        "code_refs": [
+                            "src/analysis/report.py"
+                        ],
+                        "display_name": "Report Generator",
+                        "test_status": "not_run"
+                    },
+                    "THRESHOLDS": {
+                        "agent_prompt_text": "Define threshold parameter ranges for entry/exit signals.",
+                        "display_name": "Threshold Values",
+                        "test_status": "not_run"
+                    },
+                    "VIZ": {
+                        "agent_prompt_text": "Configure result visualization: heatmaps, equity curves, parameter sensitivity.",
+                        "code_refs": [
+                            "src/analysis/viz.py"
+                        ],
+                        "display_name": "Visualization",
+                        "test_status": "not_run"
+                    },
+                    "WORKERS": {
+                        "agent_prompt_text": "Configure parallel worker pool for running backtests.",
+                        "code_refs": [
+                            "src/backtest/workers.py"
+                        ],
+                        "display_name": "Worker Pool",
+                        "test_status": "pass"
+                    }
+                }
+            },
+            "page_id": "page-backtest-sweeps",
+            "page_type": "BacktestSweeps",
+            "plantuml": "@startuml backtest_sweeps\nskinparam backgroundColor #fefefe\n\ntitle Backtest Parameter Sweeps\n\nrectangle \"Parameter Space\" as PARAMS {\n  component \"Lookback Windows\" as LOOKBACK\n  component \"Threshold Values\" as THRESHOLDS\n  component \"Model Variants\" as MODELS\n}\n\nrectangle \"Execution\" as EXEC {\n  component \"Sweep Controller\" as CONTROLLER\n  component \"Worker Pool\" as WORKERS\n  component \"Results Collector\" as COLLECTOR\n}\n\nrectangle \"Analysis\" as ANALYSIS {\n  component \"Performance Metrics\" as METRICS\n  component \"Visualization\" as VIZ\n  component \"Report Generator\" as REPORT\n}\n\nLOOKBACK --> CONTROLLER\nTHRESHOLDS --> CONTROLLER\nMODELS --> CONTROLLER\nCONTROLLER --> WORKERS\nWORKERS --> COLLECTOR\nCOLLECTOR --> METRICS\nMETRICS --> VIZ\nMETRICS --> REPORT\n\n@enduml",
+            "title": "Backtest Sweeps"
+        }
+    ],
+    "project_id": "sample-project-001",
+    "schema_version": 1,
+    "title": "Sample Trading Pipeline"
+}

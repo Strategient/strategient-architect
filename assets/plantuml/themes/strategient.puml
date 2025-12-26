@@ -1,0 +1,154 @@
+' Strategient Architect - PlantUML Theme
+' Auto-applied to all diagrams for consistent styling
+
+' === General Settings ===
+skinparam dpi 150
+skinparam shadowing false
+skinparam handwritten false
+skinparam defaultFontName "Inter, SF Pro Display, Segoe UI, Roboto, sans-serif"
+skinparam defaultFontSize 12
+
+' === Layout ===
+skinparam nodesep 60
+skinparam ranksep 50
+top to bottom direction
+
+' === Background ===
+skinparam backgroundColor #FAFAFA
+
+' === Default Element Styling ===
+skinparam roundCorner 8
+
+' === Rectangle / Container Styling ===
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #D0D0D0
+    BorderThickness 1
+    FontColor #333333
+    FontSize 13
+    FontStyle bold
+    roundCorner 12
+    shadowing false
+}
+
+' === Package Styling ===
+skinparam package {
+    BackgroundColor #F5F7FA
+    BorderColor #C8D0D8
+    BorderThickness 1
+    FontColor #444444
+    FontSize 13
+    FontStyle bold
+    roundCorner 10
+    shadowing false
+}
+
+' === Component Styling ===
+skinparam component {
+    BackgroundColor #E8F4FC
+    BorderColor #4A90D9
+    BorderThickness 1
+    FontColor #2C5282
+    FontSize 12
+    roundCorner 6
+    shadowing false
+}
+
+' === Node Styling ===
+skinparam node {
+    BackgroundColor #F0F4F8
+    BorderColor #A0AEC0
+    BorderThickness 1
+    FontColor #2D3748
+    FontSize 12
+    roundCorner 8
+    shadowing false
+}
+
+' === Database Styling ===
+skinparam database {
+    BackgroundColor #FEF3E2
+    BorderColor #DD9A4C
+    BorderThickness 1
+    FontColor #744210
+    FontSize 12
+    shadowing false
+}
+
+' === Storage Styling ===
+skinparam storage {
+    BackgroundColor #F0FFF4
+    BorderColor #68D391
+    BorderThickness 1
+    FontColor #276749
+    FontSize 12
+    shadowing false
+}
+
+' === Queue Styling ===
+skinparam queue {
+    BackgroundColor #FFF5F5
+    BorderColor #FC8181
+    BorderThickness 1
+    FontColor #C53030
+    FontSize 12
+    shadowing false
+}
+
+' === Cloud Styling ===
+skinparam cloud {
+    BackgroundColor #EBF8FF
+    BorderColor #63B3ED
+    BorderThickness 1
+    FontColor #2B6CB0
+    FontSize 12
+    shadowing false
+}
+
+' === Actor Styling ===
+skinparam actor {
+    BackgroundColor #FFFFFF
+    BorderColor #718096
+    FontColor #2D3748
+    FontSize 12
+}
+
+' === Arrow / Connection Styling ===
+skinparam arrow {
+    Color #718096
+    FontColor #4A5568
+    FontSize 10
+    Thickness 1
+}
+
+' === Note Styling ===
+skinparam note {
+    BackgroundColor #FFFBEB
+    BorderColor #ECC94B
+    FontColor #744210
+    FontSize 11
+    shadowing false
+}
+
+' === Hide UML Noise ===
+hide stereotype
+hide empty description
+hide empty members
+hide circle
+
+' === Title Styling ===
+skinparam title {
+    FontColor #1A202C
+    FontSize 16
+    FontStyle bold
+    BorderThickness 0
+}
+
+' === Legend Styling ===
+skinparam legend {
+    BackgroundColor #FFFFFF
+    BorderColor #E2E8F0
+    FontColor #4A5568
+    FontSize 11
+}
+

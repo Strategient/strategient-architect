@@ -8,7 +8,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Find Qt6
-find_package(Qt6 REQUIRED COMPONENTS Widgets Svg SvgWidgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets Svg SvgWidgets WebEngineWidgets WebChannel)
 
 # Source files
 set(SOURCES
@@ -20,6 +20,10 @@ set(SOURCES
     src/DocumentModel.cpp
     src/PagesSidebar.cpp
     src/DiagramPlaceholder.cpp
+    src/DiagramView.cpp
+    src/MonacoBridge.cpp
+    src/MonacoEditorWidget.cpp
+    src/PlantUMLRenderer.cpp
 )
 
 set(HEADERS
@@ -30,10 +34,19 @@ set(HEADERS
     src/DocumentModel.hpp
     src/PagesSidebar.hpp
     src/DiagramPlaceholder.hpp
+    src/DiagramView.hpp
+    src/MonacoBridge.hpp
+    src/MonacoEditorWidget.hpp
+    src/PlantUMLRenderer.hpp
+)
+
+# Qt resources
+set(RESOURCES
+    resources.qrc
 )
 
 # Create executable
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCES})
 
 # Include engine header
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -45,6 +58,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Widgets
     Qt6::Svg
     Qt6::SvgWidgets
+    Qt6::WebEngineWidgets
+    Qt6::WebChannel
 )
 
 # Link Rust engine static library

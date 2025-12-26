@@ -3,7 +3,8 @@
 #include "PlantUMLPreview.hpp"
 #include "DocumentModel.hpp"
 #include "PagesSidebar.hpp"
-#include "DiagramPlaceholder.hpp"
+#include "DiagramView.hpp"
+#include "MonacoEditorWidget.hpp"
 
 #include <QDockWidget>
 #include <QLabel>
@@ -11,6 +12,8 @@
 #include <QFileDialog>
 #include <QStatusBar>
 #include <QMessageBox>
+#include <QTabWidget>
+#include <QVBoxLayout>
 
 #include "engine.h"
 
@@ -44,10 +47,21 @@ MainWindow::MainWindow(QWidget* parent)
 }
 
 void MainWindow::setupUI() {
-    // Central widget - DiagramPlaceholder (shows active page)
-    m_diagramPlaceholder = new DiagramPlaceholder(m_documentModel, this);
-    m_diagramPlaceholder->setMinimumSize(600, 400);
-    setCentralWidget(m_diagramPlaceholder);
+    // Central widget - DiagramView (shows rendered PlantUML)
+    m_diagramView = new DiagramView(m_documentModel, this);
+    m_diagramView->setMinimumSize(600, 400);
+    setCentralWidget(m_diagramView);
+
+    // Connect diagram view signals
+    connect(m_diagramView, &DiagramView::renderStarted, this, [this]() {
+        statusBar()->showMessage("Rendering PlantUML...");
+    });
+    connect(m_diagramView, &DiagramView::renderComplete, this, [this]() {
+        statusBar()->showMessage("Render complete", 3000);
+    });
+    connect(m_diagramView, &DiagramView::renderError, this, [this](const QString& msg) {
+        logMessage(QString("[render] Error: %1").arg(msg));
+    });
 
     // Left dock - Pages sidebar
     auto* pagesDock = new QDockWidget("Pages", this);
@@ -66,31 +80,68 @@ void MainWindow::setupUI() {
     agentDock->setWidget(agentPlaceholder);
     addDockWidget(Qt::LeftDockWidgetArea, agentDock);
 
-    // Right dock - Inspector panel
-    auto* inspectorDock = new QDockWidget("Inspector", this);
-    inspectorDock->setAllowedAreas(Qt::RightDockWidgetArea | Qt::LeftDockWidgetArea);
-    auto* inspectorPlaceholder = new QLabel("Inspector Panel\n(placeholder)");
-    inspectorPlaceholder->setAlignment(Qt::AlignCenter);
-    inspectorPlaceholder->setMinimumWidth(250);
-    inspectorPlaceholder->setStyleSheet("QLabel { background-color: #252526; color: #808080; }");
-    inspectorDock->setWidget(inspectorPlaceholder);
-    addDockWidget(Qt::RightDockWidgetArea, inspectorDock);
-
-    // Right dock - PlantUML Preview (tabbed with Inspector)
-    auto* plantUMLDock = new QDockWidget("PlantUML Preview", this);
+    // Right dock - PlantUML Preview (SVG file viewer)
+    auto* plantUMLDock = new QDockWidget("SVG Preview", this);
     plantUMLDock->setAllowedAreas(Qt::AllDockWidgetAreas);
     m_plantUMLPreview = new PlantUMLPreview(this);
     plantUMLDock->setWidget(m_plantUMLPreview);
     addDockWidget(Qt::RightDockWidgetArea, plantUMLDock);
-    tabifyDockWidget(inspectorDock, plantUMLDock);
-    inspectorDock->raise();
 
-    // Bottom dock - Run/Log Console
-    auto* consoleDock = new QDockWidget("Run Console", this);
-    consoleDock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::TopDockWidgetArea);
+    // Bottom dock - Tab widget with Run Console, PlantUML Editor, Inspector
+    m_bottomDock = new QDockWidget("Tools", this);
+    m_bottomDock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::TopDockWidgetArea);
+    m_bottomDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+
+    m_bottomTabs = new QTabWidget(this);
+    m_bottomTabs->setTabPosition(QTabWidget::South);
+    m_bottomTabs->setStyleSheet(
+        "QTabWidget::pane { "
+        "  border: none; "
+        "  background-color: #1e1e1e; "
+        "} "
+        "QTabBar::tab { "
+        "  background-color: #2d2d30; "
+        "  color: #808080; "
+        "  padding: 8px 16px; "
+        "  border: none; "
+        "  border-right: 1px solid #3e3e42; "
+        "} "
+        "QTabBar::tab:selected { "
+        "  background-color: #1e1e1e; "
+        "  color: #ffffff; "
+        "} "
+        "QTabBar::tab:hover:!selected { "
+        "  background-color: #3e3e42; "
+        "}");
+
+    // Tab 1: Run Console
     m_runConsole = new RunConsole(this);
-    consoleDock->setWidget(m_runConsole);
-    addDockWidget(Qt::BottomDockWidgetArea, consoleDock);
+    m_bottomTabs->addTab(m_runConsole, "Run Console");
+
+    // Tab 2: PlantUML Editor (Monaco)
+    m_monacoEditor = new MonacoEditorWidget(this);
+    m_bottomTabs->addTab(m_monacoEditor, "PlantUML Editor");
+
+    // Connect Monaco editor signals
+    connect(m_monacoEditor, &MonacoEditorWidget::textChanged,
+            this, &MainWindow::onEditorTextChanged);
+    connect(m_monacoEditor, &MonacoEditorWidget::editorReady,
+            this, &MainWindow::onEditorReady);
+
+    // Tab 3: Inspector
+    m_inspectorWidget = new QWidget(this);
+    auto* inspectorLayout = new QVBoxLayout(m_inspectorWidget);
+    auto* inspectorPlaceholder = new QLabel("Inspector Panel\n\nSelect a node in the diagram\nto view its properties.");
+    inspectorPlaceholder->setAlignment(Qt::AlignCenter);
+    inspectorPlaceholder->setStyleSheet("QLabel { background-color: #252526; color: #808080; }");
+    inspectorLayout->addWidget(inspectorPlaceholder);
+    m_bottomTabs->addTab(m_inspectorWidget, "Inspector");
+
+    m_bottomDock->setWidget(m_bottomTabs);
+    addDockWidget(Qt::BottomDockWidgetArea, m_bottomDock);
+
+    // Set minimum height for bottom dock
+    m_bottomDock->setMinimumHeight(200);
 }
 
 void MainWindow::setupMenus() {
@@ -207,6 +258,7 @@ void MainWindow::onSaveProjectAs() {
 
 void MainWindow::onDocumentLoaded() {
     updateWindowTitle();
+    updateEditorForCurrentPage();
     logMessage(QString("[project] Loaded: %1 (%2 pages)")
         .arg(m_documentModel->documentTitle())
         .arg(m_documentModel->pageCount()));
@@ -222,7 +274,51 @@ void MainWindow::onCurrentPageChanged(const QString& pageId) {
     if (page) {
         logMessage(QString("[page] Switched to: %1").arg(page->title));
     }
+    updateEditorForCurrentPage();
     Q_UNUSED(pageId);
+}
+
+void MainWindow::onEditorTextChanged(const QString& newText) {
+    // Guard against circular updates
+    if (m_updatingFromModel) {
+        return;
+    }
+
+    // Update the page's PlantUML in the model
+    auto* page = m_documentModel->currentPage();
+    if (page && page->plantuml != newText) {
+        page->plantuml = newText;
+        m_documentModel->setDirty(true);
+        
+        // Trigger re-render of the diagram view
+        m_diagramView->renderPlantUML(newText);
+    }
+}
+
+void MainWindow::onEditorReady() {
+    logMessage("[editor] Monaco editor ready");
+    updateEditorForCurrentPage();
+}
+
+void MainWindow::updateEditorForCurrentPage() {
+    // Safety check - editor might not be ready yet
+    if (!m_monacoEditor) {
+        return;
+    }
+    
+    const auto* page = m_documentModel->currentPage();
+    
+    m_updatingFromModel = true;
+    
+    if (page) {
+        m_monacoEditor->setReadOnly(false);
+        m_monacoEditor->setText(page->plantuml);
+    } else {
+        m_monacoEditor->setText("");
+        m_monacoEditor->setReadOnly(true);
+    }
+    
+    m_updatingFromModel = false;
 }
 
 void MainWindow::logMessage(const QString& message) {

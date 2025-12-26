@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen",
+	"CMAKE_BINARY_DIR" : "/home/dodzw/projects/strategient-architect/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/dodzw/projects/strategient-architect/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/dodzw/projects/strategient-architect/studio",
+	"CMAKE_SOURCE_DIR" : "/home/dodzw/projects/strategient-architect/studio",
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/dodzw/projects/strategient-architect/assets/monaco/plantuml-language.js",
+		"/home/dodzw/projects/strategient-architect/assets/monaco/monaco-loader.js",
+		"/home/dodzw/projects/strategient-architect/assets/monaco/editor.html",
+		"/home/dodzw/projects/strategient-architect/assets/monaco/qwebchannel.js"
+	],
+	"LOCK_FILE" : "/home/dodzw/projects/strategient-architect/build/CMakeFiles/StrategientArchitect_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/dodzw/projects/strategient-architect/build/CMakeFiles/StrategientArchitect_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/dodzw/projects/strategient-architect/studio/resources.qrc",
+	"VERBOSITY" : 0
+}

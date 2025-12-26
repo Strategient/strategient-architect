@@ -3,16 +3,25 @@ StrategientArchitect_autogen/timestamp: \
 	/home/dodzw/projects/strategient-architect/build/CMakeFiles/3.28.3/CMakeSystem.cmake \
 	/home/dodzw/projects/strategient-architect/build/StrategientArchitect_autogen/moc_predefs.h \
 	/home/dodzw/projects/strategient-architect/studio/CMakeLists.txt \
+	/home/dodzw/projects/strategient-architect/studio/resources.qrc \
 	/home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DiagramPlaceholder.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/DiagramView.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/DiagramView.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DocumentModel.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/DocumentModel.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MainWindow.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/MainWindow.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/MonacoBridge.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/MonacoBridge.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PagesSidebar.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLPreview.hpp \
+	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLRenderer.cpp \
+	/home/dodzw/projects/strategient-architect/studio/src/PlantUMLRenderer.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/ProjectModel.cpp \
 	/home/dodzw/projects/strategient-architect/studio/src/ProjectModel.hpp \
 	/home/dodzw/projects/strategient-architect/studio/src/RunConsole.cpp \
@@ -43,6 +52,8 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/c++/13/bits/c++0x_warning.h \
 	/usr/include/c++/13/bits/char_traits.h \
 	/usr/include/c++/13/bits/charconv.h \
+	/usr/include/c++/13/bits/chrono.h \
+	/usr/include/c++/13/bits/codecvt.h \
 	/usr/include/c++/13/bits/concept_check.h \
 	/usr/include/c++/13/bits/cpp_type_traits.h \
 	/usr/include/c++/13/bits/cxxabi_forced.h \
@@ -52,6 +63,10 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/c++/13/bits/exception.h \
 	/usr/include/c++/13/bits/exception_defines.h \
 	/usr/include/c++/13/bits/exception_ptr.h \
+	/usr/include/c++/13/bits/fs_dir.h \
+	/usr/include/c++/13/bits/fs_fwd.h \
+	/usr/include/c++/13/bits/fs_ops.h \
+	/usr/include/c++/13/bits/fs_path.h \
 	/usr/include/c++/13/bits/functexcept.h \
 	/usr/include/c++/13/bits/functional_hash.h \
 	/usr/include/c++/13/bits/hash_bytes.h \
@@ -61,8 +76,11 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/c++/13/bits/list.tcc \
 	/usr/include/c++/13/bits/locale_classes.h \
 	/usr/include/c++/13/bits/locale_classes.tcc \
+	/usr/include/c++/13/bits/locale_conv.h \
 	/usr/include/c++/13/bits/locale_facets.h \
 	/usr/include/c++/13/bits/locale_facets.tcc \
+	/usr/include/c++/13/bits/locale_facets_nonio.h \
+	/usr/include/c++/13/bits/locale_facets_nonio.tcc \
 	/usr/include/c++/13/bits/localefwd.h \
 	/usr/include/c++/13/bits/max_size_type.h \
 	/usr/include/c++/13/bits/memory_resource.h \
@@ -79,6 +97,7 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/c++/13/bits/postypes.h \
 	/usr/include/c++/13/bits/predefined_ops.h \
 	/usr/include/c++/13/bits/ptr_traits.h \
+	/usr/include/c++/13/bits/quoted_string.h \
 	/usr/include/c++/13/bits/range_access.h \
 	/usr/include/c++/13/bits/ranges_algo.h \
 	/usr/include/c++/13/bits/ranges_algobase.h \
@@ -132,12 +151,14 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/c++/13/climits \
 	/usr/include/c++/13/clocale \
 	/usr/include/c++/13/cmath \
+	/usr/include/c++/13/codecvt \
 	/usr/include/c++/13/compare \
 	/usr/include/c++/13/concepts \
 	/usr/include/c++/13/cstddef \
 	/usr/include/c++/13/cstdint \
 	/usr/include/c++/13/cstdlib \
 	/usr/include/c++/13/cstring \
+	/usr/include/c++/13/ctime \
 	/usr/include/c++/13/cwchar \
 	/usr/include/c++/13/cwctype \
 	/usr/include/c++/13/debug/assertions.h \
@@ -150,13 +171,16 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/c++/13/ext/numeric_traits.h \
 	/usr/include/c++/13/ext/string_conversions.h \
 	/usr/include/c++/13/ext/type_traits.h \
+	/usr/include/c++/13/filesystem \
 	/usr/include/c++/13/functional \
 	/usr/include/c++/13/initializer_list \
+	/usr/include/c++/13/iomanip \
 	/usr/include/c++/13/ios \
 	/usr/include/c++/13/iosfwd \
 	/usr/include/c++/13/iterator \
 	/usr/include/c++/13/limits \
 	/usr/include/c++/13/list \
+	/usr/include/c++/13/locale \
 	/usr/include/c++/13/map \
 	/usr/include/c++/13/memory \
 	/usr/include/c++/13/new \
@@ -168,10 +192,12 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/c++/13/pstl/glue_algorithm_defs.h \
 	/usr/include/c++/13/pstl/glue_memory_defs.h \
 	/usr/include/c++/13/pstl/glue_numeric_defs.h \
+	/usr/include/c++/13/ratio \
 	/usr/include/c++/13/stdexcept \
 	/usr/include/c++/13/streambuf \
 	/usr/include/c++/13/string \
 	/usr/include/c++/13/string_view \
+	/usr/include/c++/13/system_error \
 	/usr/include/c++/13/tr1/bessel_function.tcc \
 	/usr/include/c++/13/tr1/beta_function.tcc \
 	/usr/include/c++/13/tr1/ell_integral.tcc \
@@ -196,6 +222,7 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/errno.h \
 	/usr/include/features-time64.h \
 	/usr/include/features.h \
+	/usr/include/libintl.h \
 	/usr/include/limits.h \
 	/usr/include/linux/errno.h \
 	/usr/include/linux/limits.h \
@@ -298,7 +325,9 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h \
 	/usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
 	/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+	/usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
 	/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
+	/usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonArray \
@@ -306,7 +335,9 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QMap \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QProcess \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QTemporaryFile \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QVector \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
@@ -336,6 +367,8 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
@@ -343,6 +376,7 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
@@ -367,6 +401,7 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs_impl.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
@@ -394,6 +429,7 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtemporaryfile.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
@@ -519,6 +555,145 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsTargets-none.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningPlugins.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6PositioningVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryGeoclue2PluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryGeoclue2PluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryGeoclue2PluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryGeoclue2PluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryNmeaPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryNmeaPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryNmeaPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryNmeaPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryPollPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryPollPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryPollPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Positioning/Qt6QGeoPositionInfoSourceFactoryPollPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6PrintSupport/Qt6PrintSupportVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QDebugMessageServiceFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QDebugMessageServiceFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QDebugMessageServiceFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QDebugMessageServiceFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QLocalClientConnectionFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QLocalClientConnectionFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QLocalClientConnectionFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QLocalClientConnectionFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebugServerFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebugServerFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebugServerFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebugServerFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebuggerServiceFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebuggerServiceFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebuggerServiceFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlDebuggerServiceFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlInspectorServiceFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlInspectorServiceFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlInspectorServiceFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlInspectorServiceFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugConnectorFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugConnectorFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugConnectorFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugConnectorFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugServiceFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugServiceFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugServiceFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlNativeDebugServiceFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlPreviewServiceFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlPreviewServiceFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlPreviewServiceFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlPreviewServiceFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlProfilerServiceFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlProfilerServiceFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlProfilerServiceFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQmlProfilerServiceFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQuickProfilerAdapterFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQuickProfilerAdapterFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQuickProfilerAdapterFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QQuickProfilerAdapterFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QTcpServerConnectionFactoryPluginAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QTcpServerConnectionFactoryPluginConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QTcpServerConnectionFactoryPluginTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QTcpServerConnectionFactoryPluginTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlConfigExtras.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlFindQmlscInternal.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlMacros.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlPlugins.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6QuickWidgets/Qt6QuickWidgetsVersionlessTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Svg/Qt6SvgAdditionalTargetInfo.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Svg/Qt6SvgConfig.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake \
@@ -535,6 +710,39 @@ StrategientArchitect_autogen/timestamp: \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6SvgWidgets/Qt6SvgWidgetsTargets-none.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6SvgWidgets/Qt6SvgWidgetsTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6SvgWidgets/Qt6SvgWidgetsVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebChannel/Qt6WebChannelVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreMacros.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCore/Qt6WebEngineCoreVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineCoreTools/Qt6WebEngineCoreToolsVersionlessTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsAdditionalTargetInfo.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsConfig.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsConfigVersion.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsConfigVersionImpl.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsDependencies.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsTargets-none.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsTargets.cmake \
+	/usr/lib/x86_64-linux-gnu/cmake/Qt6WebEngineWidgets/Qt6WebEngineWidgetsVersionlessTargets.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake \
 	/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake \

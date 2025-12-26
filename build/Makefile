@@ -168,6 +168,30 @@ StrategientArchitect_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect_autogen.dir/build.make CMakeFiles/StrategientArchitect_autogen.dir/build
 .PHONY : StrategientArchitect_autogen/fast
 
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.o: StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o
+.PHONY : StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.o
+
+# target to build an object file
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o
+.PHONY : StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.o
+
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.i: StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.i
+.PHONY : StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.i
+
+# target to preprocess a source file
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.i
+.PHONY : StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.i
+
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.s: StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.s
+.PHONY : StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.s
+
+# target to generate assembly for a file
+StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.s
+.PHONY : StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.cpp.s
+
 StrategientArchitect_autogen/mocs_compilation.o: StrategientArchitect_autogen/mocs_compilation.cpp.o
 .PHONY : StrategientArchitect_autogen/mocs_compilation.o
 
@@ -215,6 +239,30 @@ src/DiagramPlaceholder.s: src/DiagramPlaceholder.cpp.s
 src/DiagramPlaceholder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramPlaceholder.cpp.s
 .PHONY : src/DiagramPlaceholder.cpp.s
+
+src/DiagramView.o: src/DiagramView.cpp.o
+.PHONY : src/DiagramView.o
+
+# target to build an object file
+src/DiagramView.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramView.cpp.o
+.PHONY : src/DiagramView.cpp.o
+
+src/DiagramView.i: src/DiagramView.cpp.i
+.PHONY : src/DiagramView.i
+
+# target to preprocess a source file
+src/DiagramView.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramView.cpp.i
+.PHONY : src/DiagramView.cpp.i
+
+src/DiagramView.s: src/DiagramView.cpp.s
+.PHONY : src/DiagramView.s
+
+# target to generate assembly for a file
+src/DiagramView.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/DiagramView.cpp.s
+.PHONY : src/DiagramView.cpp.s
 
 src/DocumentModel.o: src/DocumentModel.cpp.o
 .PHONY : src/DocumentModel.o
@@ -264,6 +312,54 @@ src/MainWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.s
 .PHONY : src/MainWindow.cpp.s
 
+src/MonacoBridge.o: src/MonacoBridge.cpp.o
+.PHONY : src/MonacoBridge.o
+
+# target to build an object file
+src/MonacoBridge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MonacoBridge.cpp.o
+.PHONY : src/MonacoBridge.cpp.o
+
+src/MonacoBridge.i: src/MonacoBridge.cpp.i
+.PHONY : src/MonacoBridge.i
+
+# target to preprocess a source file
+src/MonacoBridge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MonacoBridge.cpp.i
+.PHONY : src/MonacoBridge.cpp.i
+
+src/MonacoBridge.s: src/MonacoBridge.cpp.s
+.PHONY : src/MonacoBridge.s
+
+# target to generate assembly for a file
+src/MonacoBridge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MonacoBridge.cpp.s
+.PHONY : src/MonacoBridge.cpp.s
+
+src/MonacoEditorWidget.o: src/MonacoEditorWidget.cpp.o
+.PHONY : src/MonacoEditorWidget.o
+
+# target to build an object file
+src/MonacoEditorWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.o
+.PHONY : src/MonacoEditorWidget.cpp.o
+
+src/MonacoEditorWidget.i: src/MonacoEditorWidget.cpp.i
+.PHONY : src/MonacoEditorWidget.i
+
+# target to preprocess a source file
+src/MonacoEditorWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.i
+.PHONY : src/MonacoEditorWidget.cpp.i
+
+src/MonacoEditorWidget.s: src/MonacoEditorWidget.cpp.s
+.PHONY : src/MonacoEditorWidget.s
+
+# target to generate assembly for a file
+src/MonacoEditorWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.s
+.PHONY : src/MonacoEditorWidget.cpp.s
+
 src/PagesSidebar.o: src/PagesSidebar.cpp.o
 .PHONY : src/PagesSidebar.o
 
@@ -311,6 +407,30 @@ src/PlantUMLPreview.s: src/PlantUMLPreview.cpp.s
 src/PlantUMLPreview.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLPreview.cpp.s
 .PHONY : src/PlantUMLPreview.cpp.s
+
+src/PlantUMLRenderer.o: src/PlantUMLRenderer.cpp.o
+.PHONY : src/PlantUMLRenderer.o
+
+# target to build an object file
+src/PlantUMLRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.o
+.PHONY : src/PlantUMLRenderer.cpp.o
+
+src/PlantUMLRenderer.i: src/PlantUMLRenderer.cpp.i
+.PHONY : src/PlantUMLRenderer.i
+
+# target to preprocess a source file
+src/PlantUMLRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.i
+.PHONY : src/PlantUMLRenderer.cpp.i
+
+src/PlantUMLRenderer.s: src/PlantUMLRenderer.cpp.s
+.PHONY : src/PlantUMLRenderer.s
+
+# target to generate assembly for a file
+src/PlantUMLRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/PlantUMLRenderer.cpp.s
+.PHONY : src/PlantUMLRenderer.cpp.s
 
 src/ProjectModel.o: src/ProjectModel.cpp.o
 .PHONY : src/ProjectModel.o
@@ -396,24 +516,39 @@ help:
 	@echo "... StrategientArchitect_autogen_timestamp_deps"
 	@echo "... engine_build"
 	@echo "... StrategientArchitect"
+	@echo "... StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.o"
+	@echo "... StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.i"
+	@echo "... StrategientArchitect_autogen/EWIEGA46WW/qrc_resources.s"
 	@echo "... StrategientArchitect_autogen/mocs_compilation.o"
 	@echo "... StrategientArchitect_autogen/mocs_compilation.i"
 	@echo "... StrategientArchitect_autogen/mocs_compilation.s"
 	@echo "... src/DiagramPlaceholder.o"
 	@echo "... src/DiagramPlaceholder.i"
 	@echo "... src/DiagramPlaceholder.s"
+	@echo "... src/DiagramView.o"
+	@echo "... src/DiagramView.i"
+	@echo "... src/DiagramView.s"
 	@echo "... src/DocumentModel.o"
 	@echo "... src/DocumentModel.i"
 	@echo "... src/DocumentModel.s"
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"
+	@echo "... src/MonacoBridge.o"
+	@echo "... src/MonacoBridge.i"
+	@echo "... src/MonacoBridge.s"
+	@echo "... src/MonacoEditorWidget.o"
+	@echo "... src/MonacoEditorWidget.i"
+	@echo "... src/MonacoEditorWidget.s"
 	@echo "... src/PagesSidebar.o"
 	@echo "... src/PagesSidebar.i"
 	@echo "... src/PagesSidebar.s"
 	@echo "... src/PlantUMLPreview.o"
 	@echo "... src/PlantUMLPreview.i"
 	@echo "... src/PlantUMLPreview.s"
+	@echo "... src/PlantUMLRenderer.o"
+	@echo "... src/PlantUMLRenderer.i"
+	@echo "... src/PlantUMLRenderer.s"
 	@echo "... src/ProjectModel.o"
 	@echo "... src/ProjectModel.i"
 	@echo "... src/ProjectModel.s"
