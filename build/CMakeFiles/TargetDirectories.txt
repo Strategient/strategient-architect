@@ -1,0 +1,6 @@
+/home/dodzw/projects/strategient-architect/build/CMakeFiles/StrategientArchitect.dir
+/home/dodzw/projects/strategient-architect/build/CMakeFiles/engine_build.dir
+/home/dodzw/projects/strategient-architect/build/CMakeFiles/edit_cache.dir
+/home/dodzw/projects/strategient-architect/build/CMakeFiles/rebuild_cache.dir
+/home/dodzw/projects/strategient-architect/build/CMakeFiles/StrategientArchitect_autogen_timestamp_deps.dir
+/home/dodzw/projects/strategient-architect/build/CMakeFiles/StrategientArchitect_autogen.dir

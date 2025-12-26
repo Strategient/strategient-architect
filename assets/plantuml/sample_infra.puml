@@ -1,0 +1,59 @@
+@startuml sample_infra
+
+!theme plain
+skinparam backgroundColor #fefefe
+skinparam componentStyle rectangle
+
+title Strategient Architect - Infrastructure Overview
+
+package "Strategient Architect" {
+    
+    component "Qt6 Studio" as studio {
+        [MainWindow]
+        [DiagramView]
+        [Inspector]
+        [RunConsole]
+        [PlantUMLPreview]
+    }
+    
+    component "Rust Engine" as engine {
+        [Core Logic]
+        [IR Model]
+        [Persistence]
+    }
+    
+    database "Local Storage" as storage {
+        [YAML/JSON IR]
+        [Config Files]
+    }
+}
+
+package "External Tools" {
+    [PlantUML] as plantuml
+    [Cursor CLI] as cursor
+}
+
+package "Cloud Providers" as cloud {
+    [AWS]
+    [GCP]
+    [Azure]
+}
+
+studio --> engine : C ABI
+engine --> storage : Read/Write
+studio --> plantuml : Render Diagrams
+studio ..> cursor : Agent Integration
+engine ..> cloud : Deploy/Manage
+
+note right of engine
+  Rust static library
+  linked via C ABI
+end note
+
+note bottom of studio
+  Qt6 Widgets Application
+  C++20 / CMake
+end note
+
+@enduml
+
