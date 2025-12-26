@@ -20,6 +20,9 @@ NodeItem::NodeItem(const QString& nodeId, const QString& label,
     setAcceptHoverEvents(true);
     setCursor(Qt::OpenHandCursor);
     
+    // Disable caching to prevent ghosting during drag
+    setCacheMode(QGraphicsItem::NoCache);
+    
     updateGeometry();
 }
 

@@ -11,6 +11,9 @@ DiagramScene::DiagramScene(QObject* parent)
     // Set a default scene rect
     setSceneRect(-2000, -2000, 4000, 4000);
     
+    // Use NoIndex to prevent BSP tree issues during drag (smoother updates)
+    setItemIndexMethod(QGraphicsScene::NoIndex);
+    
     // Set background color to match theme
     setBackgroundBrush(QColor("#1a1d21"));
 }

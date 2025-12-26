@@ -24,12 +24,16 @@ public:
     {
         setRenderHint(QPainter::Antialiasing);
         setRenderHint(QPainter::SmoothPixmapTransform);
-        setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
+        // Use FullViewportUpdate to prevent ghosting/trails during drag
+        setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
         setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
         setResizeAnchor(QGraphicsView::AnchorUnderMouse);
         setDragMode(QGraphicsView::NoDrag);
         setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        
+        // Optimize for smooth updates
+        setOptimizationFlag(QGraphicsView::DontAdjustForAntialiasing, true);
         
         // Set background
         setBackgroundBrush(QColor("#1a1d21"));

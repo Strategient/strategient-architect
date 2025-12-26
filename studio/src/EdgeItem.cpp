@@ -13,6 +13,9 @@ EdgeItem::EdgeItem(NodeItem* fromNode, NodeItem* toNode, QGraphicsItem* parent)
     setPen(QPen(m_color, m_lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     setFlag(QGraphicsItem::ItemIsSelectable);
     
+    // Disable caching to prevent ghosting during node drag
+    setCacheMode(QGraphicsItem::NoCache);
+    
     // Register with nodes
     if (m_fromNode) {
         m_fromNode->addEdge(this);
@@ -56,7 +59,9 @@ void EdgeItem::setArrowType(const QString& arrowType) {
 }
 
 void EdgeItem::updatePath() {
+    prepareGeometryChange();
     calculatePath();
+    update();
 }
 
 void EdgeItem::calculatePath() {
