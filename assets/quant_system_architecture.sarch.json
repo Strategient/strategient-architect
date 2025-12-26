@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "project_id": "quant-algotrading-system",
+  "title": "Quantitative Algotrading System Architecture",
+  "pages": [
+    {
+      "page_id": "system_overview",
+      "title": "1. System Overview",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Quantitative Algotrading System - High Level\n\ncomponent \"Market Data\\nSources\" as data_src\ncomponent \"On-Premise\\nResearch Cluster\" as onprem\ncomponent \"Backtest\\nEngine\" as backtest\ncomponent \"Walk-Forward\\nOptimizer\" as wfo\ncomponent \"Portfolio\\nOptimizer\" as portfolio\ncomponent \"Paper Trading\\nSimulator\" as paper\ncomponent \"AWS Live\\nTrading\" as live\ncomponent \"Broker\\nConnectivity\" as broker\n\ndata_src --> onprem : Historical Data\nonprem --> backtest : Distributed Processing\nbacktest --> wfo : Qualified Strategies\nwfo --> portfolio : Validated Strategies\nportfolio --> paper : Optimal Portfolio\npaper --> live : Promoted Strategies\nlive --> broker : Order Execution\nbroker --> live : Fills & Positions\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "onprem_infrastructure",
+      "title": "2. On-Premise Infrastructure",
+      "page_type": "InfraConfig",
+      "plantuml": "@startuml\ntitle On-Premise Server Rack Cluster\n\ncomponent \"Rack Controller\" as rack_ctrl\n\ncomponent \"Node 1\\n64 cores, 256GB\\nSymbols: A-D\" as node1\ncomponent \"Node 2\\n64 cores, 256GB\\nSymbols: E-H\" as node2\ncomponent \"Node 3\\n64 cores, 256GB\\nSymbols: I-L\" as node3\ncomponent \"Node 4\\n64 cores, 256GB\\nSymbols: M-P\" as node4\ncomponent \"Node 5\\n64 cores, 256GB\\nSymbols: Q-T\" as node5\ncomponent \"Node 6\\n64 cores, 256GB\\nSymbols: U-Z\" as node6\n\ncomponent \"10GbE Switch\" as switch\ncomponent \"NAS Storage\\n100TB\" as nas\n\nrack_ctrl --> switch\nswitch --> node1\nswitch --> node2\nswitch --> node3\nswitch --> node4\nswitch --> node5\nswitch --> node6\nswitch --> nas\n\nnode1 --> nas : NFS Mount\nnode2 --> nas : NFS Mount\nnode3 --> nas : NFS Mount\nnode4 --> nas : NFS Mount\nnode5 --> nas : NFS Mount\nnode6 --> nas : NFS Mount\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "kubernetes_cluster",
+      "title": "3. Kubernetes Cluster",
+      "page_type": "InfraConfig",
+      "plantuml": "@startuml\ntitle Kubernetes Cluster Deployment\n\ncomponent \"K8s Master\\nControl Plane\" as k8s_master\ncomponent \"etcd\" as etcd\ncomponent \"API Server\" as api\n\ncomponent \"Worker Node 1\" as w1\ncomponent \"Worker Node 2\" as w2\ncomponent \"Worker Node 3\" as w3\ncomponent \"Worker Node 4\" as w4\ncomponent \"Worker Node 5\" as w5\ncomponent \"Worker Node 6\" as w6\n\ncomponent \"Spark Driver Pod\" as spark_driver\ncomponent \"Spark Executor Pods\" as spark_exec\ncomponent \"Airflow Scheduler\" as airflow_sched\ncomponent \"Airflow Workers\" as airflow_work\ncomponent \"Kafka Brokers\" as kafka\ncomponent \"PostgreSQL\" as postgres\ncomponent \"DuckDB Sidecar\" as duckdb\n\nk8s_master --> etcd\nk8s_master --> api\n\napi --> w1\napi --> w2\napi --> w3\napi --> w4\napi --> w5\napi --> w6\n\nw1 --> spark_driver\nw2 --> spark_exec\nw3 --> spark_exec\nw4 --> airflow_sched\nw4 --> airflow_work\nw5 --> kafka\nw6 --> postgres\nw6 --> duckdb\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "data_pipeline",
+      "title": "4. Data Pipeline",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Market Data Pipeline\n\ncomponent \"Polygon.io\" as polygon\ncomponent \"IEX Cloud\" as iex\ncomponent \"Alpaca\" as alpaca\n\nqueue \"Kafka Ingest\" as kafka_in\ncomponent \"Data Normalizer\" as normalizer\ncomponent \"Symbol Router\" as router\n\ndatabase \"Node 1 DuckDB\\nSymbols A-D\" as duck1\ndatabase \"Node 2 DuckDB\\nSymbols E-H\" as duck2\ndatabase \"Node 3 DuckDB\\nSymbols I-L\" as duck3\ndatabase \"Node 4 DuckDB\\nSymbols M-P\" as duck4\ndatabase \"Node 5 DuckDB\\nSymbols Q-T\" as duck5\ndatabase \"Node 6 DuckDB\\nSymbols U-Z\" as duck6\n\ndatabase \"PostgreSQL\\nMetadata & Results\" as postgres\n\npolygon --> kafka_in\niex --> kafka_in\nalpaca --> kafka_in\n\nkafka_in --> normalizer\nnormalizer --> router\n\nrouter --> duck1\nrouter --> duck2\nrouter --> duck3\nrouter --> duck4\nrouter --> duck5\nrouter --> duck6\n\nrouter --> postgres\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "backtest_engine",
+      "title": "5. Rust Backtest Engine",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Rust Backtest Engine - Indicator Sweep\n\nstorage \"Local DuckDB\\nSymbol Partition\" as duckdb\n\ncomponent \"Indicator Library\" as indicators\ncomponent \"Parameter Grid\\nGenerator\" as param_gen\n\ncomponent \"Entry Signal\\nSweeper\" as entry_sweep\ncomponent \"Exit Signal\\nSweeper\" as exit_sweep\ncomponent \"Backtest\\nExecutor\" as executor\ncomponent \"Performance\\nCalculator\" as perf_calc\n\nqueue \"Results Queue\" as results_q\ndatabase \"Strategy Results\\nPostgreSQL\" as results_db\n\nduckdb --> entry_sweep : OHLCV Data\nindicators --> entry_sweep\nparam_gen --> entry_sweep\n\nentry_sweep --> executor : Entry Signals\nexit_sweep --> executor : Exit Signals\nduckdb --> exit_sweep\nindicators --> exit_sweep\nparam_gen --> exit_sweep\n\nexecutor --> perf_calc\nperf_calc --> results_q\nresults_q --> results_db\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "spark_orchestration",
+      "title": "6. Spark Orchestration",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Apache Spark Distributed Processing\n\ncomponent \"Spark Driver\" as driver\n\ncomponent \"Executor 1\\nNode 1\" as exec1\ncomponent \"Executor 2\\nNode 2\" as exec2\ncomponent \"Executor 3\\nNode 3\" as exec3\ncomponent \"Executor 4\\nNode 4\" as exec4\ncomponent \"Executor 5\\nNode 5\" as exec5\ncomponent \"Executor 6\\nNode 6\" as exec6\n\ncomponent \"Task: Backtest\\nSymbols A-D\" as task1\ncomponent \"Task: Backtest\\nSymbols E-H\" as task2\ncomponent \"Task: Backtest\\nSymbols I-L\" as task3\ncomponent \"Task: Backtest\\nSymbols M-P\" as task4\ncomponent \"Task: Backtest\\nSymbols Q-T\" as task5\ncomponent \"Task: Backtest\\nSymbols U-Z\" as task6\n\ndriver --> exec1\ndriver --> exec2\ndriver --> exec3\ndriver --> exec4\ndriver --> exec5\ndriver --> exec6\n\nexec1 --> task1\nexec2 --> task2\nexec3 --> task3\nexec4 --> task4\nexec5 --> task5\nexec6 --> task6\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "walk_forward",
+      "title": "7. Walk-Forward Optimization",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Walk-Forward Optimization Pipeline\n\ndatabase \"Backtest Results\" as results\n\ncomponent \"WFO Partitioner\\n(In-Sample / Out-of-Sample)\" as partitioner\ncomponent \"In-Sample\\nOptimizer\" as in_sample\ncomponent \"Out-of-Sample\\nValidator\" as out_sample\ncomponent \"Performance\\nAggregator\" as aggregator\ncomponent \"Minimum Criteria\\nFilter\" as filter\n\ndatabase \"Qualified\\nStrategies\" as qualified\n\nresults --> partitioner\npartitioner --> in_sample : Training Data\npartitioner --> out_sample : Test Data\nin_sample --> out_sample : Optimal Params\nout_sample --> aggregator\naggregator --> filter\nfilter --> qualified : Strategies Meeting Criteria\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "portfolio_optimization",
+      "title": "8. Portfolio Optimization",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Portfolio Optimization Engine\n\ndatabase \"Qualified\\nStrategies\" as qualified\n\ncomponent \"Returns\\nExtractor\" as returns\ncomponent \"Correlation\\nMatrix Builder\" as corr\ncomponent \"Monte Carlo\\nSimulator\" as monte_carlo\ncomponent \"Efficient Frontier\\nCalculator\" as efficient\ncomponent \"Diversification\\nScorer\" as diversify\ncomponent \"Portfolio\\nSelector\" as selector\n\ndatabase \"Optimal\\nPortfolio\" as optimal\n\nqualified --> returns\nreturns --> corr\nreturns --> monte_carlo\ncorr --> diversify\nmonte_carlo --> efficient\nefficient --> selector\ndiversify --> selector\nselector --> optimal\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "promotion_pipeline",
+      "title": "9. Strategy Promotion Pipeline",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Strategy Promotion: Paper to Live\n\ndatabase \"Optimal Portfolio\" as optimal\n\ncomponent \"Paper Trading\\nSimulator\" as paper\ncomponent \"Performance\\nMonitor\" as monitor\ncomponent \"Promotion\\nDecision Engine\" as decision\ncomponent \"Risk Validator\" as risk\n\ncomponent \"Live Trading\\nEngine (AWS)\" as live\ncomponent \"Position Sizer\" as sizer\ncomponent \"Broker Gateway\" as broker\n\noptimal --> paper\npaper --> monitor\nmonitor --> decision\ndecision --> risk : Promote?\nrisk --> live : Approved\nlive --> sizer\nsizer --> broker\nbroker --> live : Fills\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "airflow_dags",
+      "title": "10. Airflow DAGs",
+      "page_type": "Scheduler",
+      "plantuml": "@startuml\ntitle Apache Airflow Workflow DAGs\n\ncomponent \"DAG: Daily\\nData Ingest\" as dag_ingest\ncomponent \"DAG: Nightly\\nBacktest Sweep\" as dag_backtest\ncomponent \"DAG: Weekly\\nWFO Refresh\" as dag_wfo\ncomponent \"DAG: Hourly\\nPortfolio Rebalance\" as dag_rebalance\ncomponent \"DAG: Continuous\\nLive Monitor\" as dag_monitor\n\ncomponent \"Task: Fetch\\nMarket Data\" as t_fetch\ncomponent \"Task: Validate\\n& Store\" as t_store\ncomponent \"Task: Trigger\\nSpark Jobs\" as t_spark\ncomponent \"Task: Aggregate\\nResults\" as t_agg\ncomponent \"Task: Run WFO\" as t_wfo\ncomponent \"Task: Update\\nPortfolio\" as t_port\ncomponent \"Task: Check\\nPerformance\" as t_perf\n\ndag_ingest --> t_fetch\nt_fetch --> t_store\n\ndag_backtest --> t_spark\nt_spark --> t_agg\n\ndag_wfo --> t_wfo\nt_wfo --> t_port\n\ndag_rebalance --> t_port\n\ndag_monitor --> t_perf\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "aws_live_trading",
+      "title": "11. AWS Live Trading",
+      "page_type": "InfraConfig",
+      "plantuml": "@startuml\ntitle AWS Live Trading Infrastructure\n\ncomponent \"Route 53\\nDNS\" as r53\ncomponent \"ALB\" as alb\n\ncomponent \"EC2: Trading\\nEngine 1\" as ec2_1\ncomponent \"EC2: Trading\\nEngine 2\" as ec2_2\ncomponent \"EC2: Risk\\nManager\" as ec2_risk\n\ncomponent \"Lambda:\\nOrder Router\" as lambda\ncomponent \"API Gateway\" as apigw\n\ndatabase \"RDS PostgreSQL\\nPositions & Orders\" as rds\nqueue \"SQS Order Queue\" as sqs\nstorage \"S3 Trade Logs\" as s3\n\ncomponent \"Alpaca API\" as alpaca\ncomponent \"IBKR TWS\" as ibkr\n\nr53 --> alb\nalb --> ec2_1\nalb --> ec2_2\nec2_1 --> sqs\nec2_2 --> sqs\nsqs --> lambda\nlambda --> apigw\napigw --> alpaca\napigw --> ibkr\n\nec2_1 --> rds\nec2_2 --> rds\nec2_risk --> rds\nlambda --> s3\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "kafka_streaming",
+      "title": "12. Kafka Real-Time Stream",
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml\ntitle Kafka Real-Time Analytics (Live Trading Config)\n\ncomponent \"Market Data\\nWebSocket\" as ws\n\nqueue \"Kafka Topic:\\nraw-ticks\" as topic_raw\nqueue \"Kafka Topic:\\nindicators\" as topic_ind\nqueue \"Kafka Topic:\\nsignals\" as topic_sig\nqueue \"Kafka Topic:\\norders\" as topic_ord\n\ncomponent \"Flink: Tick\\nNormalizer\" as flink_norm\ncomponent \"Flink: Indicator\\nCalculator\" as flink_ind\ncomponent \"Flink: Signal\\nGenerator\" as flink_sig\ncomponent \"Flink: Order\\nExecutor\" as flink_exec\n\nws --> topic_raw\ntopic_raw --> flink_norm\nflink_norm --> topic_ind\ntopic_ind --> flink_ind\nflink_ind --> topic_sig\ntopic_sig --> flink_sig\nflink_sig --> topic_ord\ntopic_ord --> flink_exec\n\n@enduml",
+      "metadata": {}
+    },
+    {
+      "page_id": "monitoring",
+      "title": "13. Monitoring & Observability",
+      "page_type": "InfraConfig",
+      "plantuml": "@startuml\ntitle Monitoring Stack\n\ncomponent \"Prometheus\" as prom\ncomponent \"Grafana\" as grafana\ncomponent \"AlertManager\" as alert\ncomponent \"Loki\" as loki\n\ncomponent \"Node Exporter\\n(All Nodes)\" as node_exp\ncomponent \"Kafka Exporter\" as kafka_exp\ncomponent \"Spark Metrics\" as spark_met\ncomponent \"Airflow Metrics\" as airflow_met\ncomponent \"App Metrics\" as app_met\n\ncomponent \"Slack Alerts\" as slack\ncomponent \"PagerDuty\" as pager\n\nnode_exp --> prom\nkafka_exp --> prom\nspark_met --> prom\nairflow_met --> prom\napp_met --> prom\n\nprom --> grafana\nprom --> alert\nalert --> slack\nalert --> pager\n\nloki --> grafana\n\n@enduml",
+      "metadata": {}
+    }
+  ]
+}
+

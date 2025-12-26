@@ -9,12 +9,16 @@ class NodeItem;
 /**
  * EdgeItem - A connecting line/arrow between two nodes.
  * 
+ * Uses orthogonal (right-angle) routing for clean diagram appearance.
  * Automatically updates its path when connected nodes move.
  * Supports different arrow styles and optional labels.
  */
 class EdgeItem : public QGraphicsPathItem {
 public:
     enum { Type = UserType + 2 };
+    
+    // Connection side for orthogonal routing
+    enum Side { Top, Bottom, Left, Right };
     
     explicit EdgeItem(NodeItem* fromNode, NodeItem* toNode, QGraphicsItem* parent = nullptr);
     ~EdgeItem() override = default;
@@ -44,7 +48,14 @@ public:
 
 private:
     void calculatePath();
+    
+    // Orthogonal routing helpers
+    Side bestConnectionSide(NodeItem* node, const QPointF& targetPos) const;
+    QPointF connectionPointForSide(NodeItem* node, Side side) const;
+    
+    // Legacy method (still used internally)
     QPointF connectionPoint(NodeItem* node, const QPointF& otherCenter) const;
+    
     void drawArrowHead(QPainter* painter, const QPointF& tip, const QPointF& from);
     
     NodeItem* m_fromNode;
