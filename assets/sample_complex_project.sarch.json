@@ -1,72 +1,63 @@
 {
-  "version": "1.0",
-  "name": "Complex Trading Platform",
-  "description": "Full quantitative trading system architecture with multiple subsystems",
+  "schema_version": 1,
+  "project_id": "complex-trading-platform",
+  "title": "Complex Trading Platform",
   "pages": [
     {
-      "id": "overview",
+      "page_id": "overview",
       "title": "System Overview",
+      "page_type": "PipelineDiagram",
       "plantuml": "@startuml System Overview\n!theme strategient from ../assets/plantuml/themes\n\ntitle Trading Platform - High Level\n\ncloud \"External Data\" as ext\nrectangle \"Ingestion\" as ingest\nrectangle \"Storage\" as store\nrectangle \"Alpha\" as alpha\nrectangle \"Portfolio\" as port\nrectangle \"Execution\" as exec\ncloud \"Brokers\" as broker\n\next --> ingest\ningest --> store\nstore --> alpha\nalpha --> port\nport --> exec\nexec --> broker\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "metadata": {}
     },
     {
-      "id": "data_ingestion",
+      "page_id": "data_ingestion",
       "title": "Data Ingestion",
-      "plantuml": "@startuml Data Ingestion\n!theme strategient from ../assets/plantuml/themes\n\ntitle Data Ingestion Layer\n\ncloud \"Market Data\" as market {\n    component \"Bloomberg\" as bloom\n    component \"Reuters\" as reut\n    component \"IEX\" as iex\n    component \"Polygon\" as poly\n}\n\ncloud \"Alt Data\" as alt {\n    component \"Satellite\" as sat\n    component \"Sentiment\" as sent\n    component \"News\" as news\n}\n\nrectangle \"Feed Handlers\" as feeds {\n    component \"Handler A\" as ha\n    component \"Handler B\" as hb\n    component \"Handler C\" as hc\n    component \"Alt Processor\" as ap\n}\n\nqueue \"Raw Queue\" as rq\ncomponent \"Normalizer\" as norm\ncomponent \"Symbol Mapper\" as sym\ncomponent \"Corp Actions\" as corp\n\nbloom --> ha\nreut --> hb\niex --> hc\npoly --> hc\nsat --> ap\nsent --> ap\nnews --> ap\n\nha --> rq\nhb --> rq\nhc --> rq\nap --> rq\n\nrq --> norm\nnorm --> sym\nsym --> corp\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml Data Ingestion\n!theme strategient from ../assets/plantuml/themes\n\ntitle Data Ingestion Layer\n\ncomponent \"Bloomberg\" as bloom\ncomponent \"Reuters\" as reut\ncomponent \"IEX\" as iex\ncomponent \"Polygon\" as poly\n\ncomponent \"Satellite\" as sat\ncomponent \"Sentiment\" as sent\ncomponent \"News\" as news\n\ncomponent \"Handler A\" as ha\ncomponent \"Handler B\" as hb\ncomponent \"Handler C\" as hc\ncomponent \"Alt Processor\" as ap\n\nqueue \"Raw Queue\" as rq\ncomponent \"Normalizer\" as norm\ncomponent \"Symbol Mapper\" as sym\ncomponent \"Corp Actions\" as corp\n\nbloom --> ha\nreut --> hb\niex --> hc\npoly --> hc\nsat --> ap\nsent --> ap\nnews --> ap\n\nha --> rq\nhb --> rq\nhc --> rq\nap --> rq\n\nrq --> norm\nnorm --> sym\nsym --> corp\n\n@enduml",
+      "metadata": {}
     },
     {
-      "id": "storage",
+      "page_id": "storage",
       "title": "Data Storage",
-      "plantuml": "@startuml Data Storage\n!theme strategient from ../assets/plantuml/themes\n\ntitle Data Storage Layer\n\nrectangle \"Time Series\" as ts {\n    database \"Tick DB\\n(TimescaleDB)\" as tick\n    database \"OHLCV\\n(ClickHouse)\" as ohlcv\n}\n\nrectangle \"Reference\" as ref {\n    database \"Reference Data\\n(PostgreSQL)\" as refdb\n    database \"Corporate Actions\" as corpdb\n}\n\nrectangle \"Alternative\" as altstore {\n    database \"Alt Data Lake\\n(S3/Parquet)\" as lake\n    database \"Sentiment Store\" as sentdb\n}\n\nrectangle \"ML/Features\" as ml {\n    storage \"Feature Store\\n(Redis)\" as feat\n    database \"Model Registry\\n(MLflow)\" as mlflow\n}\n\ntick --> feat\nohlcv --> feat\nlake --> feat\nfeat --> mlflow\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml Data Storage\n!theme strategient from ../assets/plantuml/themes\n\ntitle Data Storage Layer\n\ndatabase \"Tick DB\" as tick\ndatabase \"OHLCV\" as ohlcv\ndatabase \"Reference Data\" as refdb\ndatabase \"Corporate Actions\" as corpdb\ndatabase \"Alt Data Lake\" as lake\ndatabase \"Sentiment Store\" as sentdb\nstorage \"Feature Store\" as feat\ndatabase \"Model Registry\" as mlflow\n\ntick --> feat\nohlcv --> feat\nlake --> feat\nfeat --> mlflow\n\n@enduml",
+      "metadata": {}
     },
     {
-      "id": "alpha",
+      "page_id": "alpha",
       "title": "Alpha Generation",
-      "plantuml": "@startuml Alpha Generation\n!theme strategient from ../assets/plantuml/themes\n\ntitle Alpha Generation Pipeline\n\nstorage \"Feature Store\" as fs\n\nrectangle \"Traditional Alphas\" as trad {\n    component \"Momentum\" as mom\n    component \"Mean Reversion\" as mr\n    component \"Stat Arb\" as stat\n    component \"Carry\" as carry\n}\n\nrectangle \"ML Alphas\" as mlalpha {\n    component \"XGBoost\" as xgb\n    component \"Transformer\" as trans\n    component \"LSTM\" as lstm\n    component \"GNN\" as gnn\n}\n\nrectangle \"Alt Data Alphas\" as altalpha {\n    component \"NLP Sentiment\" as nlp\n    component \"Satellite\" as satimg\n    component \"Web Traffic\" as web\n}\n\ncomponent \"Alpha Combiner\" as comb\ncomponent \"Signal Decay\" as decay\ncomponent \"Alpha Scaler\" as scale\n\nfs --> mom\nfs --> mr\nfs --> stat\nfs --> carry\nfs --> xgb\nfs --> trans\nfs --> lstm\nfs --> gnn\nfs --> nlp\nfs --> satimg\nfs --> web\n\nmom --> comb\nmr --> comb\nstat --> comb\ncarry --> comb\nxgb --> comb\ntrans --> comb\nlstm --> comb\ngnn --> comb\nnlp --> comb\nsatimg --> comb\nweb --> comb\n\ncomb --> decay\ndecay --> scale\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml Alpha Generation\n!theme strategient from ../assets/plantuml/themes\n\ntitle Alpha Generation Pipeline\n\nstorage \"Feature Store\" as fs\n\ncomponent \"Momentum\" as mom\ncomponent \"Mean Reversion\" as mr\ncomponent \"Stat Arb\" as stat\ncomponent \"Carry\" as carry\n\ncomponent \"XGBoost\" as xgb\ncomponent \"Transformer\" as trans\ncomponent \"LSTM\" as lstm\ncomponent \"GNN\" as gnn\n\ncomponent \"NLP Sentiment\" as nlp\ncomponent \"Satellite\" as satimg\ncomponent \"Web Traffic\" as web\n\ncomponent \"Alpha Combiner\" as comb\ncomponent \"Signal Decay\" as decay\ncomponent \"Alpha Scaler\" as scale\n\nfs --> mom\nfs --> mr\nfs --> stat\nfs --> carry\nfs --> xgb\nfs --> trans\nfs --> lstm\nfs --> gnn\nfs --> nlp\nfs --> satimg\nfs --> web\n\nmom --> comb\nmr --> comb\nstat --> comb\ncarry --> comb\nxgb --> comb\ntrans --> comb\nlstm --> comb\ngnn --> comb\nnlp --> comb\nsatimg --> comb\nweb --> comb\n\ncomb --> decay\ndecay --> scale\n\n@enduml",
+      "metadata": {}
     },
     {
-      "id": "risk",
+      "page_id": "risk",
       "title": "Risk Management",
-      "plantuml": "@startuml Risk Management\n!theme strategient from ../assets/plantuml/themes\n\ntitle Risk Management System\n\nrectangle \"Pre-Trade\" as pre {\n    component \"Order Validator\" as valid\n    component \"Position Limits\" as poslim\n    component \"Concentration\" as conc\n    component \"Sector Limits\" as sect\n}\n\nrectangle \"Real-Time\" as rt {\n    component \"P&L Monitor\" as pnl\n    component \"Drawdown Alert\" as dd\n    component \"Volatility\" as vol\n    component \"Greeks\" as greeks\n}\n\nrectangle \"Analytics\" as anal {\n    component \"VaR Calculator\" as var\n    component \"Stress Test\" as stress\n    component \"Scenario\" as scen\n    component \"Correlation\" as corr\n}\n\nrectangle \"Controls\" as ctrl {\n    component \"Kill Switch\" as kill\n    component \"Margin Manager\" as margin\n    component \"Exposure Limits\" as exp\n}\n\nvalid --> pnl\nposlim --> dd\nconc --> vol\nsect --> greeks\n\npnl --> var\ndd --> stress\nvol --> scen\ngreeks --> corr\n\nvar --> kill\nstress --> margin\nscen --> exp\ncorr --> exp\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml Risk Management\n!theme strategient from ../assets/plantuml/themes\n\ntitle Risk Management System\n\ncomponent \"Order Validator\" as valid\ncomponent \"Position Limits\" as poslim\ncomponent \"Concentration\" as conc\ncomponent \"Sector Limits\" as sect\n\ncomponent \"P&L Monitor\" as pnl\ncomponent \"Drawdown Alert\" as dd\ncomponent \"Volatility\" as vol\ncomponent \"Greeks\" as greeks\n\ncomponent \"VaR Calculator\" as var\ncomponent \"Stress Test\" as stress\ncomponent \"Scenario\" as scen\ncomponent \"Correlation\" as corr\n\ncomponent \"Kill Switch\" as kill\ncomponent \"Margin Manager\" as margin\ncomponent \"Exposure Limits\" as exp\n\nvalid --> pnl\nposlim --> dd\nconc --> vol\nsect --> greeks\n\npnl --> var\ndd --> stress\nvol --> scen\ngreeks --> corr\n\nvar --> kill\nstress --> margin\nscen --> exp\ncorr --> exp\n\n@enduml",
+      "metadata": {}
     },
     {
-      "id": "portfolio",
+      "page_id": "portfolio",
       "title": "Portfolio Construction",
-      "plantuml": "@startuml Portfolio Construction\n!theme strategient from ../assets/plantuml/themes\n\ntitle Portfolio Construction & Optimization\n\ncomponent \"Alpha Signals\" as alpha\ncomponent \"Risk Model\" as risk\n\nrectangle \"Universe\" as univ {\n    component \"Universe Filter\" as filter\n    component \"Liquidity Screen\" as liq\n    component \"Borrowability\" as borrow\n}\n\nrectangle \"Optimization\" as opt {\n    component \"Mean-Variance\" as mv\n    component \"Black-Litterman\" as bl\n    component \"Risk Parity\" as rp\n    component \"Factor Neutral\" as fn\n}\n\nrectangle \"Constraints\" as con {\n    component \"Position Limits\" as pos\n    component \"Sector Bounds\" as sect\n    component \"Turnover\" as turn\n    component \"Transaction Cost\" as tcost\n}\n\ncomponent \"Rebalancer\" as reb\ncomponent \"Tax Lot Optimizer\" as tax\ncomponent \"Target Portfolio\" as target\n\nalpha --> filter\nrisk --> filter\nfilter --> liq\nliq --> borrow\n\nborrow --> mv\nborrow --> bl\nborrow --> rp\nborrow --> fn\n\nmv --> pos\nbl --> pos\nrp --> pos\nfn --> pos\n\npos --> sect\nsect --> turn\nturn --> tcost\n\ntcost --> reb\nreb --> tax\ntax --> target\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml Portfolio Construction\n!theme strategient from ../assets/plantuml/themes\n\ntitle Portfolio Construction & Optimization\n\ncomponent \"Alpha Signals\" as alpha\ncomponent \"Risk Model\" as risk\n\ncomponent \"Universe Filter\" as filter\ncomponent \"Liquidity Screen\" as liq\ncomponent \"Borrowability\" as borrow\n\ncomponent \"Mean-Variance\" as mv\ncomponent \"Black-Litterman\" as bl\ncomponent \"Risk Parity\" as rp\ncomponent \"Factor Neutral\" as fn\n\ncomponent \"Position Limits\" as pos\ncomponent \"Sector Bounds\" as sect\ncomponent \"Turnover\" as turn\ncomponent \"Transaction Cost\" as tcost\n\ncomponent \"Rebalancer\" as reb\ncomponent \"Tax Lot Optimizer\" as tax\ncomponent \"Target Portfolio\" as target\n\nalpha --> filter\nrisk --> filter\nfilter --> liq\nliq --> borrow\n\nborrow --> mv\nborrow --> bl\nborrow --> rp\nborrow --> fn\n\nmv --> pos\nbl --> pos\nrp --> pos\nfn --> pos\n\npos --> sect\nsect --> turn\nturn --> tcost\n\ntcost --> reb\nreb --> tax\ntax --> target\n\n@enduml",
+      "metadata": {}
     },
     {
-      "id": "execution",
+      "page_id": "execution",
       "title": "Execution Layer",
-      "plantuml": "@startuml Execution Layer\n!theme strategient from ../assets/plantuml/themes\n\ntitle Order Execution System\n\ncomponent \"Target Portfolio\" as target\n\nrectangle \"Order Management\" as oms {\n    component \"Order Manager\" as om\n    component \"Order Validator\" as valid\n    component \"Compliance\" as comp\n    queue \"Order Queue\" as oq\n}\n\nrectangle \"Smart Router\" as router {\n    component \"Venue Selector\" as venue\n    component \"Cost Estimator\" as cost\n    component \"Latency Optimizer\" as lat\n}\n\nrectangle \"Algorithms\" as algos {\n    component \"TWAP\" as twap\n    component \"VWAP\" as vwap\n    component \"POV\" as pov\n    component \"IS\" as is\n    component \"Arrival Price\" as arrival\n    component \"Dark Aggregator\" as dark\n}\n\nrectangle \"Connectivity\" as conn {\n    component \"FIX Gateway A\" as fixa\n    component \"FIX Gateway B\" as fixb\n    component \"REST API\" as rest\n    component \"WebSocket\" as ws\n}\n\ntarget --> om\nom --> valid\nvalid --> comp\ncomp --> oq\n\noq --> venue\nvenue --> cost\ncost --> lat\n\nlat --> twap\nlat --> vwap\nlat --> pov\nlat --> is\nlat --> arrival\nlat --> dark\n\ntwap --> fixa\nvwap --> fixa\npov --> fixb\nis --> fixb\narrival --> rest\ndark --> ws\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml Execution Layer\n!theme strategient from ../assets/plantuml/themes\n\ntitle Order Execution System\n\ncomponent \"Target Portfolio\" as target\n\ncomponent \"Order Manager\" as om\ncomponent \"Order Validator\" as valid\ncomponent \"Compliance\" as comp\nqueue \"Order Queue\" as oq\n\ncomponent \"Venue Selector\" as venue\ncomponent \"Cost Estimator\" as cost\ncomponent \"Latency Optimizer\" as lat\n\ncomponent \"TWAP\" as twap\ncomponent \"VWAP\" as vwap\ncomponent \"POV\" as pov\ncomponent \"IS\" as is\ncomponent \"Arrival Price\" as arrival\ncomponent \"Dark Aggregator\" as dark\n\ncomponent \"FIX Gateway A\" as fixa\ncomponent \"FIX Gateway B\" as fixb\ncomponent \"REST API\" as rest\ncomponent \"WebSocket\" as ws\n\ntarget --> om\nom --> valid\nvalid --> comp\ncomp --> oq\n\noq --> venue\nvenue --> cost\ncost --> lat\n\nlat --> twap\nlat --> vwap\nlat --> pov\nlat --> is\nlat --> arrival\nlat --> dark\n\ntwap --> fixa\nvwap --> fixa\npov --> fixb\nis --> fixb\narrival --> rest\ndark --> ws\n\n@enduml",
+      "metadata": {}
     },
     {
-      "id": "full_architecture",
+      "page_id": "full_architecture",
       "title": "Full Architecture",
-      "plantuml": "@startuml Full Architecture\n!theme strategient from ../assets/plantuml/themes\n\ntitle Complete Trading Platform\n\n' Data Sources\ncloud \"Bloomberg\" as bloom\ncloud \"Reuters\" as reut\ncloud \"Alt Data\" as alt\n\n' Ingestion\nrectangle \"Ingestion\" as ing {\n    component \"Feed A\" as fa\n    component \"Feed B\" as fb\n    component \"Alt Proc\" as ap\n    queue \"Queue\" as q\n    component \"Normalizer\" as norm\n}\n\n' Storage\nrectangle \"Storage\" as stor {\n    database \"Tick DB\" as tick\n    database \"OHLCV\" as ohlcv\n    database \"Alt Lake\" as lake\n    storage \"Features\" as feat\n}\n\n' Alpha\nrectangle \"Alpha\" as alph {\n    component \"Momentum\" as mom\n    component \"ML Model\" as ml\n    component \"Combiner\" as comb\n}\n\n' Risk\nrectangle \"Risk\" as risk {\n    component \"Pre-Trade\" as pre\n    component \"Real-Time\" as rt\n    component \"VaR\" as var\n}\n\n' Portfolio\nrectangle \"Portfolio\" as port {\n    component \"Optimizer\" as opt\n    component \"Constraints\" as con\n    component \"Rebalancer\" as reb\n}\n\n' Execution\nrectangle \"Execution\" as exec {\n    component \"OMS\" as oms\n    component \"Algos\" as algo\n    component \"Router\" as rout\n}\n\n' Brokers\ncloud \"Broker A\" as bra\ncloud \"Broker B\" as brb\n\n' Monitoring\nrectangle \"Monitoring\" as mon {\n    component \"P&L\" as pnl\n    component \"Analytics\" as anal\n    component \"Alerts\" as alert\n}\n\n' Connections\nbloom --> fa\nreut --> fb\nalt --> ap\n\nfa --> q\nfb --> q\nap --> q\nq --> norm\n\nnorm --> tick\nnorm --> ohlcv\nap --> lake\n\ntick --> feat\nohlcv --> feat\nlake --> feat\n\nfeat --> mom\nfeat --> ml\nmom --> comb\nml --> comb\n\ncomb --> pre\npre --> opt\nrt --> opt\nvar --> con\n\nopt --> con\ncon --> reb\n\nreb --> oms\noms --> algo\nalgo --> rout\n\nrout --> bra\nrout --> brb\n\nbra --> pnl\nbrb --> pnl\npnl --> anal\nanal --> alert\nalert --> rt\n\n@enduml",
-      "metadata": {
-        "layout": {}
-      }
+      "page_type": "PipelineDiagram",
+      "plantuml": "@startuml Full Architecture\n!theme strategient from ../assets/plantuml/themes\n\ntitle Complete Trading Platform\n\ncomponent \"Bloomberg\" as bloom\ncomponent \"Reuters\" as reut\ncomponent \"Alt Data\" as alt\n\ncomponent \"Feed A\" as fa\ncomponent \"Feed B\" as fb\ncomponent \"Alt Proc\" as ap\nqueue \"Queue\" as q\ncomponent \"Normalizer\" as norm\n\ndatabase \"Tick DB\" as tick\ndatabase \"OHLCV\" as ohlcv\ndatabase \"Alt Lake\" as lake\nstorage \"Features\" as feat\n\ncomponent \"Momentum\" as mom\ncomponent \"ML Model\" as ml\ncomponent \"Combiner\" as comb\n\ncomponent \"Pre-Trade\" as pre\ncomponent \"Real-Time\" as rt\ncomponent \"VaR\" as var\n\ncomponent \"Optimizer\" as opt\ncomponent \"Constraints\" as con\ncomponent \"Rebalancer\" as reb\n\ncomponent \"OMS\" as oms\ncomponent \"Algos\" as algo\ncomponent \"Router\" as rout\n\ncomponent \"Broker A\" as bra\ncomponent \"Broker B\" as brb\n\ncomponent \"P&L\" as pnl\ncomponent \"Analytics\" as anal\ncomponent \"Alerts\" as alert\n\nbloom --> fa\nreut --> fb\nalt --> ap\n\nfa --> q\nfb --> q\nap --> q\nq --> norm\n\nnorm --> tick\nnorm --> ohlcv\nap --> lake\n\ntick --> feat\nohlcv --> feat\nlake --> feat\n\nfeat --> mom\nfeat --> ml\nmom --> comb\nml --> comb\n\ncomb --> pre\npre --> opt\nrt --> opt\nvar --> con\n\nopt --> con\ncon --> reb\n\nreb --> oms\noms --> algo\nalgo --> rout\n\nrout --> bra\nrout --> brb\n\nbra --> pnl\nbrb --> pnl\npnl --> anal\nanal --> alert\nalert --> rt\n\n@enduml",
+      "metadata": {}
     }
   ]
 }
-
