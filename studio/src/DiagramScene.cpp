@@ -14,8 +14,8 @@ DiagramScene::DiagramScene(QObject* parent)
     // Use NoIndex to prevent BSP tree issues during drag (smoother updates)
     setItemIndexMethod(QGraphicsScene::NoIndex);
     
-    // Set background color to match theme
-    setBackgroundBrush(QColor("#1a1d21"));
+    // Set background color to match theme (slate blue)
+    setBackgroundBrush(QColor("#2D3A47"));
 }
 
 void DiagramScene::loadDiagram(const QString& plantuml, 
@@ -59,15 +59,8 @@ void DiagramScene::clearDiagram() {
 
 void DiagramScene::createNodesAndEdges(const architect::ParsedDiagram& diagram,
                                        const architect::PageMetadata& metadata) {
-    // Create nodes
+    // Create nodes for all parsed items
     for (const architect::ParsedNode& parsedNode : diagram.nodes) {
-        // Skip container nodes for now (just use their children)
-        if (parsedNode.type == "rectangle" || parsedNode.type == "package" ||
-            parsedNode.type == "cloud" || parsedNode.type == "node" ||
-            parsedNode.type == "frame" || parsedNode.type == "folder") {
-            continue;
-        }
-        
         // Get display name from metadata or use parsed label
         QString displayName = parsedNode.label;
         architect::TestStatus testStatus = architect::TestStatus::NotRun;

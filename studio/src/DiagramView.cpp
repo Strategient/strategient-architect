@@ -35,8 +35,8 @@ public:
         // Optimize for smooth updates
         setOptimizationFlag(QGraphicsView::DontAdjustForAntialiasing, true);
         
-        // Set background
-        setBackgroundBrush(QColor("#1a1d21"));
+        // Set background (slate blue to match theme)
+        setBackgroundBrush(QColor("#2D3A47"));
         setFrameShape(QFrame::NoFrame);
     }
 
@@ -103,6 +103,15 @@ protected:
             m_spacePressed = true;
             setCursor(Qt::OpenHandCursor);
         }
+        // F = Fit to view
+        else if (event->key() == Qt::Key_F) {
+            fitToContents();
+        }
+        // 0 or Home = Reset zoom to 100%
+        else if (event->key() == Qt::Key_0 || event->key() == Qt::Key_Home) {
+            resetTransform();
+            centerOnContents();
+        }
         QGraphicsView::keyPressEvent(event);
     }
     
@@ -114,6 +123,19 @@ protected:
             }
         }
         QGraphicsView::keyReleaseEvent(event);
+    }
+    
+    void fitToContents() {
+        if (scene() && !scene()->items().isEmpty()) {
+            QRectF bounds = scene()->itemsBoundingRect().adjusted(-50, -50, 50, 50);
+            fitInView(bounds, Qt::KeepAspectRatio);
+        }
+    }
+    
+    void centerOnContents() {
+        if (scene() && !scene()->items().isEmpty()) {
+            centerOn(scene()->itemsBoundingRect().center());
+        }
     }
 
 private:
@@ -136,7 +158,7 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
         m_isRendering = true;
         m_statusLabel->setText("Rendering PlantUML...");
         m_statusLabel->setStyleSheet(
-            "QLabel { background-color: #22262b; color: #dcdcaa; "
+            "QLabel { background-color: #435160; color: #dcdcaa; "
             "padding: 4px 8px; font-size: 11px; }");
         m_statusLabel->setVisible(true);
         emit renderStarted();
@@ -170,7 +192,7 @@ void DiagramView::setupUI() {
     // Status bar at top
     m_statusLabel = new QLabel("");
     m_statusLabel->setStyleSheet(
-        "QLabel { background-color: #22262b; color: #6a7280; "
+        "QLabel { background-color: #435160; color: #8495A9; "
         "padding: 4px 8px; font-size: 11px; }");
     m_statusLabel->setVisible(false);
     layout->addWidget(m_statusLabel);
@@ -184,11 +206,11 @@ void DiagramView::setupUI() {
                                "and edit PlantUML in the editor below.");
     m_placeholder->setAlignment(Qt::AlignCenter);
     m_placeholder->setStyleSheet(
-        "QLabel { background-color: #1a1d21; color: #6a7280; font-size: 14px; }");
+        "QLabel { background-color: #2D3A47; color: #8495A9; font-size: 14px; }");
 
     // Error display
     m_errorWidget = new QWidget(this);
-    m_errorWidget->setStyleSheet("background-color: #1a1d21;");
+    m_errorWidget->setStyleSheet("background-color: #2D3A47;");
     auto* errorLayout = new QVBoxLayout(m_errorWidget);
     errorLayout->setAlignment(Qt::AlignCenter);
     errorLayout->setSpacing(16);
@@ -207,9 +229,9 @@ void DiagramView::setupUI() {
     m_errorDetails->setTextInteractionFlags(Qt::TextSelectableByMouse);
     m_errorDetails->setMaximumWidth(600);
     m_errorDetails->setStyleSheet(
-        "QLabel { color: #d1d5db; font-size: 12px; "
+        "QLabel { color: #AEB9C7; font-size: 12px; "
         "font-family: 'JetBrains Mono', 'Fira Code', monospace; "
-        "background-color: #22262b; border: 1px solid #363c44; "
+        "background-color: #384858; border: 1px solid #60748A; "
         "border-radius: 4px; padding: 16px; }");
     errorLayout->addWidget(m_errorDetails);
 
@@ -225,7 +247,7 @@ void DiagramView::setupUI() {
 
     // Static SVG view
     m_svgContainer = new QWidget(this);
-    m_svgContainer->setStyleSheet("background-color: #1a1d21;");
+    m_svgContainer->setStyleSheet("background-color: #2D3A47;");
     auto* svgLayout = new QVBoxLayout(m_svgContainer);
     svgLayout->setContentsMargins(20, 20, 20, 20);
     svgLayout->setAlignment(Qt::AlignCenter);
@@ -235,7 +257,7 @@ void DiagramView::setupUI() {
     m_scrollArea->setAlignment(Qt::AlignCenter);
     m_scrollArea->setFrameShape(QFrame::NoFrame);
     m_scrollArea->setStyleSheet(
-        "QScrollArea { background-color: #1a1d21; border: none; }");
+        "QScrollArea { background-color: #2D3A47; border: none; }");
     
     m_svgWidget = new QSvgWidget();
     m_scrollArea->setWidget(m_svgWidget);
@@ -327,7 +349,7 @@ void DiagramView::updateDisplay() {
 
     m_statusLabel->setText(QString("Page: %1").arg(page->title));
     m_statusLabel->setStyleSheet(
-        "QLabel { background-color: #22262b; color: #6a7280; "
+        "QLabel { background-color: #435160; color: #8495A9; "
         "padding: 4px 8px; font-size: 11px; }");
     m_statusLabel->setVisible(true);
 
@@ -346,7 +368,7 @@ void DiagramView::onRenderComplete(const QString& svgPath) {
     const auto* page = m_model->currentPage();
     m_statusLabel->setText(QString("Page: %1 ✓").arg(page ? page->title : ""));
     m_statusLabel->setStyleSheet(
-        "QLabel { background-color: #22262b; color: #6a9955; "
+        "QLabel { background-color: #435160; color: #6a9955; "
         "padding: 4px 8px; font-size: 11px; }");
     
     if (m_viewMode == Static) {
@@ -361,7 +383,7 @@ void DiagramView::onRenderError(const QString& errorTitle, const QString& errorD
     const auto* page = m_model->currentPage();
     m_statusLabel->setText(QString("Page: %1 ✗").arg(page ? page->title : ""));
     m_statusLabel->setStyleSheet(
-        "QLabel { background-color: #22262b; color: #f48771; "
+        "QLabel { background-color: #435160; color: #f48771; "
         "padding: 4px 8px; font-size: 11px; }");
     
     showError(errorTitle, errorDetails);
