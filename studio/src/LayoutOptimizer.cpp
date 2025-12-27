@@ -79,54 +79,20 @@ GraphMetrics LayoutOptimizer::analyzeGraph(const QString& dotSource) {
 LayoutConfig LayoutOptimizer::selectLayout(const GraphMetrics& metrics) {
     LayoutConfig config;
     
-    // === Engine Selection Logic ===
-    
-    // 1. Cluster-heavy graphs → osage (array-based packing)
-    if (metrics.isClusterHeavy() && metrics.crossClusterEdges < metrics.edgeCount * 0.3) {
-        config.engine = "osage";
-        qDebug() << "LayoutOptimizer: Selected 'osage' - cluster-heavy graph";
-    }
-    // 2. Large or dense graphs → sfdp (scalable force-directed)
-    else if (metrics.isLargeGraph() || (metrics.isMediumGraph() && metrics.isDense())) {
-        config.engine = "sfdp";
-        qDebug() << "LayoutOptimizer: Selected 'sfdp' - large/dense graph";
-    }
-    // 3. Strict DAGs with few cross edges → dot (hierarchical)
-    else if (metrics.isDAG() && metrics.crossClusterEdges < metrics.edgeCount * 0.2) {
-        config.engine = "dot";
-        qDebug() << "LayoutOptimizer: Selected 'dot' - strict DAG";
-    }
-    // 4. Medium graphs, loosely structured → fdp
-    else if (metrics.isMediumGraph()) {
-        config.engine = "fdp";
-        qDebug() << "LayoutOptimizer: Selected 'fdp' - medium loosely-structured graph";
-    }
-    // 5. Small graphs → dot (usually looks best)
-    else if (metrics.isSmallGraph()) {
-        config.engine = "dot";
-        qDebug() << "LayoutOptimizer: Selected 'dot' - small graph";
-    }
-    // 6. Default fallback → sfdp
-    else {
-        config.engine = "sfdp";
-        qDebug() << "LayoutOptimizer: Selected 'sfdp' - default fallback";
-    }
+    // === Engine Selection: Always use "dot" for consistent hierarchical layouts ===
+    // The "dot" engine produces the best results for most architecture diagrams
+    config.engine = "dot";
+    qDebug() << "LayoutOptimizer: Using 'dot' engine for hierarchical layout";
     
     // === Attribute Configuration ===
     
-    // Rankdir: LR for pipeline-style, TB for hierarchical
-    if (metrics.clusterCount > 2) {
-        config.rankdir = "TB";  // Top-to-bottom for cluster layouts
-    } else if (metrics.isDirected && metrics.isDAG()) {
-        config.rankdir = "LR";  // Left-to-right for pipelines
-    } else {
-        config.rankdir = "TB";
-    }
+    // Rankdir: LR (left-to-right) works best on wide screen monitors
+    config.rankdir = "LR";
     
-    // Node/rank separation scaled to graph size
+    // Node/rank separation - use generous spacing
     if (metrics.isLargeGraph()) {
-        config.nodesep = 0.3;
-        config.ranksep = 0.4;
+        config.nodesep = 0.5;
+        config.ranksep = 0.75;
     } else if (metrics.isMediumGraph()) {
         config.nodesep = 0.5;
         config.ranksep = 0.6;
@@ -135,24 +101,14 @@ LayoutConfig LayoutOptimizer::selectLayout(const GraphMetrics& metrics) {
         config.ranksep = 1.0;
     }
     
-    // Splines configuration
-    if (metrics.isDense() || metrics.edgeCount > 100) {
-        config.splines = "true";  // Curved splines for dense graphs (faster)
-    } else if (config.engine == "osage") {
-        config.splines = "polyline";  // osage works better with polyline
-    } else {
-        config.splines = "ortho";  // Orthogonal for clean diagrams
-    }
+    // Splines: use spline for smooth curved edges (works well with dot engine)
+    config.splines = "spline";
     
-    // Concentrate parallel edges in dense graphs
-    config.concentrate = metrics.isDense() || metrics.edgeCount > 50;
+    // Don't concentrate - it can cause "trouble in init_rank" errors
+    config.concentrate = false;
     
-    // Overlap handling for force-directed layouts
-    if (config.engine == "fdp" || config.engine == "sfdp" || config.engine == "neato") {
-        config.overlap = "prism";  // Good balance of speed and quality
-    } else {
-        config.overlap = "false";
-    }
+    // Overlap handling
+    config.overlap = "false";
     
     m_lastConfig = config;
     
@@ -338,13 +294,52 @@ int LayoutOptimizer::countCrossClusterEdges(const QString& source, const QString
 QString LayoutOptimizer::injectAttributes(const QString& source, const LayoutConfig& config) {
     QString result = source;
     
+    // Remove existing layout attributes that we want to override
+    // DOT uses last-defined value, so we need to remove originals
+    static QRegularExpression rankdirPattern(
+        "\\s*rankdir\\s*=\\s*[A-Za-z]+\\s*;?",
+        QRegularExpression::CaseInsensitiveOption
+    );
+    static QRegularExpression nodesepPattern(
+        "\\s*nodesep\\s*=\\s*[\\d.]+\\s*;?",
+        QRegularExpression::CaseInsensitiveOption
+    );
+    static QRegularExpression ranksepPattern(
+        "\\s*ranksep\\s*=\\s*[\\d.]+\\s*;?",
+        QRegularExpression::CaseInsensitiveOption
+    );
+    static QRegularExpression splinesPattern(
+        "\\s*splines\\s*=\\s*[A-Za-z]+\\s*;?",
+        QRegularExpression::CaseInsensitiveOption
+    );
+    
+    // Remove image attributes - Graphviz CLI can't access Qt resources
+    // We only need positions from Graphviz, images are rendered by Qt
+    static QRegularExpression imagePattern(
+        ",?\\s*image\\s*=\\s*\"[^\"]*\"",
+        QRegularExpression::CaseInsensitiveOption
+    );
+    static QRegularExpression imagescalePattern(
+        ",?\\s*imagescale\\s*=\\s*[A-Za-z]+",
+        QRegularExpression::CaseInsensitiveOption
+    );
+    
+    result.remove(rankdirPattern);
+    result.remove(nodesepPattern);
+    result.remove(ranksepPattern);
+    result.remove(splinesPattern);
+    result.remove(imagePattern);
+    result.remove(imagescalePattern);
+    
+    qDebug() << "LayoutOptimizer: Removed existing layout and image attributes from DOT";
+    
     // Find the opening brace of the main graph
     static QRegularExpression graphOpenPattern(
         "((?:strict\\s+)?(?:digraph|graph)\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s*)\\{",
         QRegularExpression::CaseInsensitiveOption
     );
     
-    QRegularExpressionMatch match = graphOpenPattern.match(source);
+    QRegularExpressionMatch match = graphOpenPattern.match(result);
     if (match.hasMatch()) {
         int insertPos = match.capturedEnd();
         
@@ -352,9 +347,8 @@ QString LayoutOptimizer::injectAttributes(const QString& source, const LayoutCon
         QString attrs = QString("\n    // Auto-generated layout attributes (engine: %1)\n").arg(config.engine);
         attrs += "    " + config.toAttributeString() + ";\n";
         
-        // Check if attributes already exist and should be overridden
-        // For now, we prepend them (DOT uses last-defined value)
         result.insert(insertPos, attrs);
+        qDebug() << "LayoutOptimizer: Injected attributes - rankdir:" << config.rankdir;
     }
     
     return result;
