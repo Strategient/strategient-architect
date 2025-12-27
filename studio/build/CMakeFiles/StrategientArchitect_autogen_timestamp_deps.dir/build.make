@@ -66,12 +66,12 @@ include CMakeFiles/StrategientArchitect_autogen_timestamp_deps.dir/compiler_depe
 # Include the progress variables for this target.
 include CMakeFiles/StrategientArchitect_autogen_timestamp_deps.dir/progress.make
 
-CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
-CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
 CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
-CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6WebEngineWidgets.so.6.4.2
-CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Svg.so.6.4.2
 CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6SvgWidgets.so.6.4.2
+CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Svg.so.6.4.2
+CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
+CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
+CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6WebEngineWidgets.so.6.4.2
 CMakeFiles/StrategientArchitect_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6WebChannel.so.6.4.2
 
 StrategientArchitect_autogen_timestamp_deps: CMakeFiles/StrategientArchitect_autogen_timestamp_deps

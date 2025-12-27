@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/dodzw/projects/strategient-architect/studio/src/DotParser.cpp" "CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o" "gcc" "CMakeFiles/StrategientArchitect.dir/src/DotParser.cpp.o.d"
   "/home/dodzw/projects/strategient-architect/studio/src/EdgeItem.cpp" "CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o" "gcc" "CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o.d"
   "/home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.cpp" "CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o" "gcc" "CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o.d"
+  "/home/dodzw/projects/strategient-architect/studio/src/LayoutOptimizer.cpp" "CMakeFiles/StrategientArchitect.dir/src/LayoutOptimizer.cpp.o" "gcc" "CMakeFiles/StrategientArchitect.dir/src/LayoutOptimizer.cpp.o.d"
   "/home/dodzw/projects/strategient-architect/studio/src/MainWindow.cpp" "CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.o" "gcc" "CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.o.d"
   "/home/dodzw/projects/strategient-architect/studio/src/MonacoBridge.cpp" "CMakeFiles/StrategientArchitect.dir/src/MonacoBridge.cpp.o" "gcc" "CMakeFiles/StrategientArchitect.dir/src/MonacoBridge.cpp.o.d"
   "/home/dodzw/projects/strategient-architect/studio/src/MonacoEditorWidget.cpp" "CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.o" "gcc" "CMakeFiles/StrategientArchitect.dir/src/MonacoEditorWidget.cpp.o.d"

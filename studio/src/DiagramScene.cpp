@@ -5,6 +5,9 @@
 
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
+#include <QProcess>
+#include <QTemporaryFile>
+#include <QRegularExpression>
 
 DiagramScene::DiagramScene(QObject* parent)
     : QGraphicsScene(parent)
@@ -27,18 +30,38 @@ void DiagramScene::loadDiagram(const QString& dotSource,
         return;
     }
     
+    // Cache the DOT source for potential re-layout
+    m_lastDotSource = dotSource;
+    
     // Parse DOT source
     architect::ParsedDiagram diagram = m_parser.parse(dotSource);
     
     // Create graphics items
     createNodesAndEdges(diagram, metadata);
     
-    // Apply saved layout or auto-layout
+    // Apply saved layout or auto-layout using Graphviz
     if (!metadata.layout.isEmpty()) {
         applyLayout(metadata.layout);
     } else {
-        autoLayoutNodes();
+        // Use Graphviz for intelligent auto-layout
+        autoLayoutWithGraphviz(dotSource);
     }
+}
+
+void DiagramScene::forceAutoLayout(const QString& dotSource) {
+    if (dotSource.isEmpty() && m_lastDotSource.isEmpty()) {
+        qWarning() << "[DiagramScene] No DOT source for auto-layout";
+        return;
+    }
+    
+    QString source = dotSource.isEmpty() ? m_lastDotSource : dotSource;
+    m_lastDotSource = source;
+    
+    qDebug() << "[DiagramScene] Force auto-layout requested";
+    autoLayoutWithGraphviz(source);
+    
+    // Emit layout changed to trigger save
+    emit layoutChanged();
 }
 
 void DiagramScene::clearDiagram() {
@@ -209,4 +232,146 @@ void DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent* event) {
 void DiagramScene::onNodePositionChanged(const QString& nodeId, const QPointF& newPos) {
     emit nodePositionChanged(nodeId, newPos);
 }
+
+void DiagramScene::autoLayoutWithGraphviz(const QString& dotSource) {
+    qDebug() << "[DiagramScene] Computing Graphviz layout for" << m_nodeMap.size() << "nodes";
+    
+    // Use LayoutOptimizer to analyze and select best engine
+    QString optimizedDot = m_layoutOptimizer.optimizeDot(dotSource);
+    architect::LayoutConfig config = m_layoutOptimizer.lastConfig();
+    architect::GraphMetrics metrics = m_layoutOptimizer.lastMetrics();
+    
+    qDebug() << "[DiagramScene] LayoutOptimizer selected engine:" << config.engine
+             << "for" << metrics.nodeCount << "nodes," << metrics.edgeCount << "edges,"
+             << metrics.clusterCount << "clusters";
+    
+    // Compute positions using Graphviz
+    QMap<QString, QPointF> positions = computeGraphvizLayout(optimizedDot);
+    
+    if (positions.isEmpty()) {
+        qWarning() << "[DiagramScene] Graphviz layout failed, falling back to grid layout";
+        autoLayoutNodes();
+        return;
+    }
+    
+    // Apply computed positions
+    for (auto it = positions.constBegin(); it != positions.constEnd(); ++it) {
+        NodeItem* node = m_nodeMap.value(it.key(), nullptr);
+        if (node) {
+            node->setPos(it.value());
+        }
+    }
+    
+    // Update all edges
+    for (EdgeItem* edge : m_edges) {
+        edge->updatePath();
+    }
+    
+    qDebug() << "[DiagramScene] Applied Graphviz layout to" << positions.size() << "nodes";
+}
+
+QMap<QString, QPointF> DiagramScene::computeGraphvizLayout(const QString& dotSource) {
+    QMap<QString, QPointF> positions;
+    
+    // Get the selected layout engine
+    architect::LayoutConfig config = m_layoutOptimizer.lastConfig();
+    QString engine = config.engine;
+    
+    // Write DOT to temp file
+    QTemporaryFile tempFile;
+    tempFile.setAutoRemove(true);
+    if (!tempFile.open()) {
+        qWarning() << "[DiagramScene] Failed to create temp file for Graphviz";
+        return positions;
+    }
+    
+    tempFile.write(dotSource.toUtf8());
+    tempFile.flush();
+    
+    // Run Graphviz with -Tplain to get node positions
+    // Plain format outputs: node <name> <x> <y> <width> <height> <label> ...
+    QProcess process;
+    QStringList args = {"-Tplain", "-K" + engine, tempFile.fileName()};
+    
+    qDebug() << "[DiagramScene] Running: dot" << args.join(" ");
+    
+    process.start("dot", args);
+    if (!process.waitForFinished(10000)) {
+        qWarning() << "[DiagramScene] Graphviz timed out";
+        return positions;
+    }
+    
+    if (process.exitCode() != 0) {
+        QString errorOutput = QString::fromUtf8(process.readAllStandardError());
+        qWarning() << "[DiagramScene] Graphviz error:" << errorOutput;
+        return positions;
+    }
+    
+    // Parse plain format output
+    QString output = QString::fromUtf8(process.readAllStandardOutput());
+    QStringList lines = output.split('\n');
+    
+    qDebug() << "[DiagramScene] Graphviz plain output:" << lines.size() << "lines";
+    if (!lines.isEmpty()) {
+        qDebug() << "[DiagramScene] First line:" << lines[0];
+    }
+    
+    // Plain format: coordinates are in inches
+    // Convert to pixels: 1 inch = 72 points, but we want more spread
+    // Use 100 pixels per inch for nice spacing
+    const double pixelsPerInch = 100.0;
+    
+    // Parse node positions
+    // Format: node <name> <x> <y> <width> <height> <label> <style> <shape> <color> <fillcolor>
+    static QRegularExpression nodeRe(
+        R"(^node\s+(\S+)\s+([\d.-]+)\s+([\d.-]+)\s+([\d.-]+)\s+([\d.-]+))"
+    );
+    
+    double minY = 0, maxY = 0;
+    bool first = true;
+    
+    for (const QString& line : lines) {
+        QRegularExpressionMatch match = nodeRe.match(line);
+        if (match.hasMatch()) {
+            QString nodeId = match.captured(1);
+            
+            // Remove quotes if present
+            if (nodeId.startsWith('"') && nodeId.endsWith('"')) {
+                nodeId = nodeId.mid(1, nodeId.length() - 2);
+            }
+            
+            // Graphviz outputs coordinates in inches
+            double xInches = match.captured(2).toDouble();
+            double yInches = match.captured(3).toDouble();
+            
+            // Convert to pixels
+            double x = xInches * pixelsPerInch;
+            double y = yInches * pixelsPerInch;
+            
+            // Track Y range for flipping
+            if (first) {
+                minY = maxY = y;
+                first = false;
+            } else {
+                minY = qMin(minY, y);
+                maxY = qMax(maxY, y);
+            }
+            
+            positions[nodeId] = QPointF(x, y);
+            qDebug() << "[DiagramScene] Node" << nodeId << "raw:" << xInches << "," << yInches << "-> pixels:" << x << "," << y;
+        }
+    }
+    
+    // Flip Y axis (Graphviz Y goes up, Qt Y goes down)
+    // Transform: y' = maxY - (y - minY) = maxY + minY - y
+    double yOffset = maxY + minY;
+    for (auto it = positions.begin(); it != positions.end(); ++it) {
+        it.value().setY(yOffset - it.value().y());
+    }
+    
+    qDebug() << "[DiagramScene] Parsed" << positions.size() << "node positions";
+    
+    return positions;
+}
+
 

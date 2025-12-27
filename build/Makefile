@@ -384,6 +384,30 @@ src/GraphvizRenderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.s
 .PHONY : src/GraphvizRenderer.cpp.s
 
+src/LayoutOptimizer.o: src/LayoutOptimizer.cpp.o
+.PHONY : src/LayoutOptimizer.o
+
+# target to build an object file
+src/LayoutOptimizer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/LayoutOptimizer.cpp.o
+.PHONY : src/LayoutOptimizer.cpp.o
+
+src/LayoutOptimizer.i: src/LayoutOptimizer.cpp.i
+.PHONY : src/LayoutOptimizer.i
+
+# target to preprocess a source file
+src/LayoutOptimizer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/LayoutOptimizer.cpp.i
+.PHONY : src/LayoutOptimizer.cpp.i
+
+src/LayoutOptimizer.s: src/LayoutOptimizer.cpp.s
+.PHONY : src/LayoutOptimizer.s
+
+# target to generate assembly for a file
+src/LayoutOptimizer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StrategientArchitect.dir/build.make CMakeFiles/StrategientArchitect.dir/src/LayoutOptimizer.cpp.s
+.PHONY : src/LayoutOptimizer.cpp.s
+
 src/MainWindow.o: src/MainWindow.cpp.o
 .PHONY : src/MainWindow.o
 
@@ -615,6 +639,9 @@ help:
 	@echo "... src/GraphvizRenderer.o"
 	@echo "... src/GraphvizRenderer.i"
 	@echo "... src/GraphvizRenderer.s"
+	@echo "... src/LayoutOptimizer.o"
+	@echo "... src/LayoutOptimizer.i"
+	@echo "... src/LayoutOptimizer.s"
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"

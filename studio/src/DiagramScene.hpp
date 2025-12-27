@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <QMap>
 #include "DotParser.hpp"
+#include "LayoutOptimizer.hpp"
 #include "ProjectModel.hpp"
 
 class NodeItem;
@@ -28,6 +29,9 @@ public:
     
     // Load diagram from DOT source and metadata
     void loadDiagram(const QString& dotSource, const architect::PageMetadata& metadata);
+    
+    // Force auto-layout using Graphviz (discards saved positions)
+    void forceAutoLayout(const QString& dotSource);
     
     // Clear all items
     void clearDiagram();
@@ -61,10 +65,14 @@ private:
     void createNodesAndEdges(const architect::ParsedDiagram& diagram, 
                              const architect::PageMetadata& metadata);
     void autoLayoutNodes();
+    void autoLayoutWithGraphviz(const QString& dotSource);
+    QMap<QString, QPointF> computeGraphvizLayout(const QString& dotSource);
     
     architect::DotParser m_parser;
+    architect::LayoutOptimizer m_layoutOptimizer;
     QMap<QString, NodeItem*> m_nodeMap;
     QVector<EdgeItem*> m_edges;
+    QString m_lastDotSource;  // Cache for re-layout
     
     bool m_isDragging = false;
 };

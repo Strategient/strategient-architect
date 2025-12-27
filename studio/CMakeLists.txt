@@ -35,6 +35,7 @@ set(SOURCES
     src/MonacoEditorWidget.cpp
     src/GraphvizRenderer.cpp
     src/DotParser.cpp
+    src/LayoutOptimizer.cpp
     src/NodeItem.cpp
     src/EdgeItem.cpp
     src/DiagramScene.cpp
@@ -52,6 +53,7 @@ set(HEADERS
     src/MonacoEditorWidget.hpp
     src/GraphvizRenderer.hpp
     src/DotParser.hpp
+    src/LayoutOptimizer.hpp
     src/NodeItem.hpp
     src/EdgeItem.hpp
     src/DiagramScene.hpp

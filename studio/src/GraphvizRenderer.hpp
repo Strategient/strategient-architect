@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <QByteArray>
+#include "LayoutOptimizer.hpp"
 
 // Forward declarations for Graphviz types
 typedef struct GVC_s GVC_t;
@@ -60,6 +61,15 @@ public:
     LayoutEngine layoutEngine() const { return m_layoutEngine; }
     QString layoutEngineName() const;
     
+    // Auto-optimization (uses LayoutOptimizer to select engine/attributes)
+    void setAutoOptimize(bool enabled) { m_autoOptimize = enabled; }
+    bool autoOptimize() const { return m_autoOptimize; }
+    
+    // Access to the optimizer for metrics inspection
+    const architect::LayoutOptimizer& optimizer() const { return m_optimizer; }
+    architect::GraphMetrics lastGraphMetrics() const { return m_optimizer.lastMetrics(); }
+    architect::LayoutConfig lastLayoutConfig() const { return m_optimizer.lastConfig(); }
+    
     // Static helper to convert engine enum to string
     static QString engineToString(LayoutEngine engine);
     static LayoutEngine engineFromString(const QString& name);
@@ -83,6 +93,8 @@ private:
     GVC_t* m_gvc{nullptr};
 #endif
     LayoutEngine m_layoutEngine{LayoutEngine::Dot};
+    bool m_autoOptimize{true};  // Enable auto-optimization by default
+    architect::LayoutOptimizer m_optimizer;
     
     QString m_lastSvgPath;
     QByteArray m_lastSvgContent;

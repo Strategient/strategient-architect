@@ -11,36 +11,49 @@
 #include <QStackedWidget>
 #include <QScrollArea>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
 #include <QFile>
 #include <QWheelEvent>
 #include <QKeyEvent>
 #include <QScrollBar>
+#include <QMenu>
+#include <QAction>
+#include <QContextMenuEvent>
+#include <QMouseEvent>
 
 // Custom QGraphicsView with pan/zoom support
 class InteractiveGraphicsView : public QGraphicsView {
+    Q_OBJECT
+    
 public:
     explicit InteractiveGraphicsView(QWidget* parent = nullptr)
         : QGraphicsView(parent)
     {
         setRenderHint(QPainter::Antialiasing);
         setRenderHint(QPainter::SmoothPixmapTransform);
-        // Use FullViewportUpdate to prevent ghosting/trails during drag
         setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
         setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
         setResizeAnchor(QGraphicsView::AnchorUnderMouse);
         setDragMode(QGraphicsView::NoDrag);
         setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        
-        // Optimize for smooth updates
         setOptimizationFlag(QGraphicsView::DontAdjustForAntialiasing, true);
-        
-        // Set background (slate blue to match theme)
         setBackgroundBrush(QColor("#2D3A47"));
         setFrameShape(QFrame::NoFrame);
     }
 
+signals:
+    void autoLayoutRequested();
+
 protected:
+    void contextMenuEvent(QContextMenuEvent* event) override {
+        QMenu menu(this);
+        QAction* autoLayoutAction = menu.addAction("Auto Layout");
+        connect(autoLayoutAction, &QAction::triggered, this, &InteractiveGraphicsView::autoLayoutRequested);
+        menu.exec(event->globalPos());
+    }
+    
     void wheelEvent(QWheelEvent* event) override {
         // Ctrl + wheel = zoom
         if (event->modifiers() & Qt::ControlModifier) {
@@ -152,6 +165,7 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
     , m_scene(new DiagramScene(this))
 {
     setupUI();
+    connectGraphicsViewSignals();
     
     // Connect renderer signals
     connect(m_renderer, &GraphvizRenderer::renderStarted, this, [this]() {
@@ -182,6 +196,14 @@ DiagramView::DiagramView(DocumentModel* model, QWidget* parent)
             this, &DiagramView::nodeDoubleClicked);
     connect(m_scene, &DiagramScene::layoutChanged,
             this, &DiagramView::onSceneLayoutChanged);
+    
+    // Connect graphics view signals (will be connected after setupUI)
+}
+
+void DiagramView::connectGraphicsViewSignals() {
+    InteractiveGraphicsView* view = static_cast<InteractiveGraphicsView*>(m_graphicsView);
+    connect(view, &InteractiveGraphicsView::autoLayoutRequested,
+            this, &DiagramView::triggerAutoLayout);
 }
 
 void DiagramView::setupUI() {
@@ -189,13 +211,34 @@ void DiagramView::setupUI() {
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
 
-    // Status bar at top
+    // Toolbar at top
+    auto* toolbar = new QWidget(this);
+    toolbar->setStyleSheet("background-color: #435160;");
+    auto* toolbarLayout = new QHBoxLayout(toolbar);
+    toolbarLayout->setContentsMargins(8, 4, 8, 4);
+    toolbarLayout->setSpacing(8);
+    
+    // Status label
     m_statusLabel = new QLabel("");
-    m_statusLabel->setStyleSheet(
-        "QLabel { background-color: #435160; color: #8495A9; "
-        "padding: 4px 8px; font-size: 11px; }");
-    m_statusLabel->setVisible(false);
-    layout->addWidget(m_statusLabel);
+    m_statusLabel->setStyleSheet("QLabel { color: #8495A9; font-size: 11px; background: transparent; }");
+    toolbarLayout->addWidget(m_statusLabel);
+    
+    toolbarLayout->addStretch();
+    
+    // Auto Layout button
+    auto* autoLayoutBtn = new QPushButton("⟳ Auto Layout", this);
+    autoLayoutBtn->setStyleSheet(
+        "QPushButton { background-color: #4A6080; color: #E1E1E1; border: 1px solid #60748A; "
+        "border-radius: 3px; padding: 4px 12px; font-size: 11px; }"
+        "QPushButton:hover { background-color: #5A7090; }"
+        "QPushButton:pressed { background-color: #3A5070; }"
+    );
+    autoLayoutBtn->setToolTip("Re-layout diagram using Graphviz (Ctrl+L)");
+    autoLayoutBtn->setShortcut(QKeySequence("Ctrl+L"));
+    connect(autoLayoutBtn, &QPushButton::clicked, this, &DiagramView::triggerAutoLayout);
+    toolbarLayout->addWidget(autoLayoutBtn);
+    
+    layout->addWidget(toolbar);
 
     // Stacked widget for different views
     m_stack = new QStackedWidget(this);
@@ -428,4 +471,31 @@ void DiagramView::saveLayoutToModel() {
     // Get layout from scene and save to model
     page->metadata.layout = m_scene->getLayout();
     m_model->setDirty(true);
+    
+    qDebug() << "[DiagramView] Saved layout for" << page->metadata.layout.size() << "nodes";
 }
+
+void DiagramView::triggerAutoLayout() {
+    const architect::Page* page = m_model->currentPage();
+    if (!page || page->graphviz.isEmpty()) {
+        qWarning() << "[DiagramView] No page or DOT content for auto-layout";
+        return;
+    }
+    
+    qDebug() << "[DiagramView] Triggering auto-layout...";
+    
+    // Force re-layout using Graphviz
+    m_scene->forceAutoLayout(page->graphviz);
+    
+    // Fit the view to show all content
+    m_graphicsView->fitInView(m_scene->itemsBoundingRect().adjusted(-50, -50, 50, 50), 
+                               Qt::KeepAspectRatio);
+    
+    // Save the new layout
+    saveLayoutToModel();
+    
+    m_statusLabel->setText(m_statusLabel->text().replace(" ✓", "").replace(" (interactive)", "") + " (auto-layout applied)");
+}
+
+// Include moc file for InteractiveGraphicsView (Q_OBJECT in cpp file)
+#include "DiagramView.moc"

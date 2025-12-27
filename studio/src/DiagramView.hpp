@@ -70,12 +70,14 @@ private slots:
 
 private:
     void setupUI();
+    void connectGraphicsViewSignals();
     void updateDisplay();
     void showPlaceholder(const QString& message);
     void showInteractiveView();
     void showStaticView();
     void showError(const QString& title, const QString& details);
     void saveLayoutToModel();
+    void triggerAutoLayout();
 
     DocumentModel* m_model;
     GraphvizRenderer* m_renderer;

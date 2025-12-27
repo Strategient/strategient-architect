@@ -20,6 +20,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/StrategientArchitect.dir/src/EdgeItem.cpp.o.d"
   "CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o"
   "CMakeFiles/StrategientArchitect.dir/src/GraphvizRenderer.cpp.o.d"
+  "CMakeFiles/StrategientArchitect.dir/src/LayoutOptimizer.cpp.o"
+  "CMakeFiles/StrategientArchitect.dir/src/LayoutOptimizer.cpp.o.d"
   "CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.o"
   "CMakeFiles/StrategientArchitect.dir/src/MainWindow.cpp.o.d"
   "CMakeFiles/StrategientArchitect.dir/src/MonacoBridge.cpp.o"

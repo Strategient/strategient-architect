@@ -222,8 +222,27 @@ void GraphvizRenderer::renderToSvg(const QString& dotSource) {
         return;
     }
 
+    QString processedSource = dotSource;
+    
+    // === Auto-optimization: analyze graph and select best layout ===
+    if (m_autoOptimize) {
+        qDebug() << "[GraphvizRenderer] Running layout optimization...";
+        
+        // Analyze and optimize
+        processedSource = m_optimizer.optimizeDot(dotSource);
+        
+        // Get the selected engine from optimizer and apply it
+        architect::LayoutConfig config = m_optimizer.lastConfig();
+        m_layoutEngine = engineFromString(config.engine);
+        
+        qDebug() << "[GraphvizRenderer] Auto-selected engine:" << config.engine
+                 << "for graph with" << m_optimizer.lastMetrics().nodeCount << "nodes,"
+                 << m_optimizer.lastMetrics().edgeCount << "edges,"
+                 << m_optimizer.lastMetrics().clusterCount << "clusters";
+    }
+
     // Resolve relative image paths to absolute paths
-    QString processedSource = resolveImagePaths(dotSource);
+    processedSource = resolveImagePaths(processedSource);
 
     emit renderStarted();
 

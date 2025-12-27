@@ -448,6 +448,12 @@
 			null
 		],
 		[
+			"/home/dodzw/projects/strategient-architect/studio/src/LayoutOptimizer.hpp",
+			"MU",
+			"UVLADIE3JM/moc_LayoutOptimizer.cpp",
+			null
+		],
+		[
 			"/home/dodzw/projects/strategient-architect/studio/src/MainWindow.hpp",
 			"MU",
 			"UVLADIE3JM/moc_MainWindow.cpp",
@@ -614,6 +620,11 @@
 		],
 		[
 			"/home/dodzw/projects/strategient-architect/studio/src/GraphvizRenderer.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/dodzw/projects/strategient-architect/studio/src/LayoutOptimizer.cpp",
 			"MU",
 			null
 		],
